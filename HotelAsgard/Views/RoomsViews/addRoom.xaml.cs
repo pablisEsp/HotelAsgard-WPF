@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +24,32 @@ namespace HotelAsgard.Views.RoomsViews
         {
             InitializeComponent();
         }
+
+        private void UploadImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Crear un diálogo para seleccionar archivos
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Archivos de imagen (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp", // Filtro para imágenes
+                Title = "Seleccionar una imagen"
+            };
+
+            // Mostrar el diálogo
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    // Cargar la imagen seleccionada en el control Image
+                    BitmapImage bitmap = new BitmapImage(new Uri(openFileDialog.FileName));
+                    //PreviewImage.Source = bitmap;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al cargar la imagen: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
     }
+
+
 }
