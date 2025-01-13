@@ -10,6 +10,9 @@
 
   <ItemGroup>
     <Folder Include="Images\" />
+    <Folder Include="Views\BookingViews\" />
+    <Folder Include="Views\RoomsViews\" />
+    <Folder Include="Views\UserViews\" />
   </ItemGroup>
 
 </Project>
