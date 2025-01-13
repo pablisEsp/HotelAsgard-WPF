@@ -1,0 +1,83 @@
+﻿<Window x:Class="HotelAsgard.Views.BookingViews.AddReservation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HotelAsgard.Views.BookingViews"
+        mc:Ignorable="d"
+        Title="AddReservation" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="../../Images/logo_con_fondo.png" Width="40" Height="40" />
+                    <TextBlock Text="Hotel Asgard"/>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Bienvenido Ivan"/>
+                        <TextBlock Text="Cerrar Sesion"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <Border Grid.Column="1" HorizontalAlignment="Right">
+                <Button Content="Añadir reserva"/>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="1" Background="#F4F4F4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Buscador :" Grid.Row="0"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions >
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Row="0">
+                    <StackPanel Orientation="Vertical" >
+                        <Label Content="Número de huéspedes"/>
+                        <ComboBox/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" >
+                        <Label Content="Fecha de entrada"/>
+                        <DatePicker/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" >
+                        <Label Content="Fecha Salida"/>
+                        <DatePicker/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="Precio Noche"/>
+                        <Slider />
+                    </StackPanel>
+                    <Button Content="Ofertas"/>
+                    <Button Content="Buscar" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Resultados :"  Grid.Row="0"/>
+            <StackPanel Orientation="Vertical" Grid.Row="1">
+                <Image Source="../../Images/hab_odin.jpg" Width="100" Height="140" />
+                <TextBlock Text="Habitación Odin"/>
+                <TextBlock Text="36€ / noche"/>
+                <Button Content="Reservar Habitación"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

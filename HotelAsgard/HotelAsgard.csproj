@@ -9,7 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\BookingViews\" />
+    <None Remove="Images\hab_odin.jpg" />
+    <None Remove="Images\logo_con_fondo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\hab_odin.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\logo_con_fondo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
