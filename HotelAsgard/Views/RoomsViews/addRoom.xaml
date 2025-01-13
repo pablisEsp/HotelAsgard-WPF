@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="addRoom" Height="450" Width="800">
     <Grid>
-        
+        <!-- prueba commit -->
     </Grid>
 </Window>
