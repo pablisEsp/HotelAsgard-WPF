@@ -49,7 +49,7 @@
             <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Descripción</TextBlock>
             <RichTextBox
                 Name="DescriptionRichTextBox"
-                Height="100" VerticalScrollBarVisibility="Auto">
+                Height="125" VerticalScrollBarVisibility="Auto">
                 <FlowDocument>
                     <Paragraph LineHeight="5"/>
                 </FlowDocument>
