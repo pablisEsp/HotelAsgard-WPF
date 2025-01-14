@@ -5,64 +5,99 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HotelAsgard.Views.BookingViews"
         mc:Ignorable="d"
-        Title="AddReservation" Height="450" Width="800">
+        Title="AddReservation" Height="720" Width="1280">
+    <Window.Resources>
+        <!-- Estilo para el TextBlock de título -->
+        <Style x:Key="TituloTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20" />
+
+            <Setter Property="FontWeight" Value="Bold" />
+
+            <Setter Property="Foreground" Value="#B0DAF1" />
+
+            <Setter Property="TextWrapping" Value="Wrap" />
+
+            
+
+        </Style>
+
+        <Style x:Key="labelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Bold" />
+
+            <Setter Property="Foreground" Value="#3C3C3C" />
+
+            <Setter Property="Margin" Value="2" />
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Margin=" 0,0,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="../../Images/logo_con_fondo.png" Width="40" Height="40" />
-                    <TextBlock Text="Hotel Asgard"/>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Bienvenido Ivan"/>
-                        <TextBlock Text="Cerrar Sesion"/>
+                    <Image Source="../../Images/logo_con_fondo.png" Width="80" Height="80" />
+                    <TextBlock Text="Hotel Asgard" VerticalAlignment="Center" Foreground="#3C3C3C" FontWeight="DemiBold" FontSize="22"/>
+                    <Border Margin="20,0,20,0" BorderBrush="#B0DAF1" BorderThickness="1" Height="60" Width="2"/>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <TextBlock Text="Bienvenido Ivan" Foreground="#3C3C3C" FontWeight="Medium" FontSize="18"/>
+                        <TextBlock Text="Cerrar Sesion" Foreground="#BCBCBC" FontSize="16" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
-            <Border Grid.Column="1" HorizontalAlignment="Right">
-                <Button Content="Añadir reserva"/>
+            <Border  Grid.Column="1" Background="#B0DAF1" CornerRadius="15" Width="100" Height="40" HorizontalAlignment="Right" Margin="0,0,30,0">
+                <Button Background="Transparent" Content="Añadir Reserva" Width="80" Height="40" BorderThickness="0"/>
             </Border>
         </Grid>
-        <Grid Grid.Row="1" Background="#F4F4F4">
+        <Grid Grid.Row="1" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Buscador :" Grid.Row="0"/>
-            <Grid Grid.Row="1">
+            <TextBlock Text="Buscador :" Margin="10,10,10,0" Grid.Row="0" Style="{StaticResource TituloTextBlockStyle}" FontSize="40" VerticalAlignment="Bottom" FontStretch="Condensed"/>
+            <Grid Grid.Row="1" Background="#F4F4F4" Margin="70,10,70,0" >
                 <Grid.RowDefinitions >
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <StackPanel Orientation="Horizontal" Grid.Row="0">
-                    <StackPanel Orientation="Vertical" >
-                        <Label Content="Número de huéspedes"/>
-                        <ComboBox/>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="15" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                        <Label Content="Número de huéspedes" Style="{StaticResource labelStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="-6,8,0,0"/>
+                        <ComboBox VerticalAlignment="Bottom" Margin="0,12,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="120,0,120,0" >
+                        <Label Content="Fecha de entrada" Style="{StaticResource labelStyle}" Margin="-6,8,0,0"/>
+                        <DatePicker Margin="0,12,0,0"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" >
-                        <Label Content="Fecha de entrada"/>
-                        <DatePicker/>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" >
-                        <Label Content="Fecha Salida"/>
-                        <DatePicker/>
+                        <Label Content="Fecha Salida" Style="{StaticResource labelStyle}" Margin="-6,8,0,0"/>
+                        <DatePicker Margin="0,12,0,0"/>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Grid.Row="1">
-                    <StackPanel Orientation="Vertical">
-                        <Label Content="Precio Noche"/>
-                        <Slider />
+                <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Left">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="160,0,0,0">
+                        <Label Content="Precio Noche" Style="{StaticResource labelStyle}" HorizontalAlignment="Center"/>
+                        
+                        <Slider Width="300" Value="500" Minimum="100" Maximum="1000"  Margin="0,10,0,0" TickPlacement="TopLeft" IsSnapToTickEnabled="True" AutoToolTipPlacement="BottomRight" TickFrequency="50"/>
+                        <TextBlock Text="0" 
+                       HorizontalAlignment="Left"
+                           VerticalAlignment="Bottom"
+                                        Margin="0,0,0,-14"/>
+                        <TextBlock Text="1000" 
+                            HorizontalAlignment="Right"
+                           VerticalAlignment="Bottom"
+                                    Margin="0,0,0,-14"/>
                     </StackPanel>
-                    <Button Content="Ofertas"/>
-                    <Button Content="Buscar" />
+                    <Border  Grid.Column="1" Background="#B0DAF1" CornerRadius="15" Width="100" Height="40" HorizontalAlignment="Right" Margin="200,0,30,0">
+                        <Button Background="Transparent" Content="Buscar" Width="80" Height="40" BorderThickness="0"/>
+                    </Border>
                 </StackPanel>
             </Grid>
         </Grid>
@@ -71,12 +106,14 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Resultados :"  Grid.Row="0"/>
-            <StackPanel Orientation="Vertical" Grid.Row="1">
-                <Image Source="../../Images/hab_odin.jpg" Width="100" Height="140" />
-                <TextBlock Text="Habitación Odin"/>
-                <TextBlock Text="36€ / noche"/>
-                <Button Content="Reservar Habitación"/>
+            <TextBlock Text="Resultados :"  Grid.Row="0" FontSize="42" FontWeight="Bold"/>
+            <StackPanel Orientation="Vertical" Grid.Row="1" VerticalAlignment="Top" >
+                <Image Source="../../Images/hab_odin.jpg" Width="300" Height="200" />
+                <TextBlock Text="Habitación Odin" HorizontalAlignment="Center" Foreground="#3C3C3C" FontSize="20" FontWeight="DemiBold"/>
+                <TextBlock Text="36€ / noche" Foreground="#B0DAF1" HorizontalAlignment="Center" FontSize="18"/>
+                <Border  Grid.Column="1" Background="#B0DAF1" CornerRadius="15" Margin="0,0,0,10" Width="180" Height="30" HorizontalAlignment="Center">
+                    <Button Background="Transparent" Content="Añadir Reserva" Width="180" Height="30" BorderThickness="0"/>
+                </Border>
             </StackPanel>
         </Grid>
     </Grid>
