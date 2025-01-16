@@ -16,17 +16,16 @@ using System.Windows.Shapes;
 namespace HotelAsgard.Views.RoomsViews
 {
     /// <summary>
-    /// Lógica de interacción para addRoom.xaml
+    /// Lógica de interacción para editRoom.xaml
     /// </summary>
-    public partial class addRoom : Window
+    public partial class editRoom : Window
     {
-        public addRoom()
+        public editRoom()
         {
             InitializeComponent();
-            
         }
 
-        private void UploadImageButton_Click(object sender, RoutedEventArgs e)
+        private void UploadImageButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             // Crear un diálogo para seleccionar archivos
             OpenFileDialog openFileDialog = new OpenFileDialog
@@ -51,6 +50,4 @@ namespace HotelAsgard.Views.RoomsViews
             }
         }
     }
-
-
 }
