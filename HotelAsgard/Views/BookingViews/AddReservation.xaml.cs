@@ -23,24 +23,9 @@ namespace HotelAsgard.Views.BookingViews
         public AddReservation()
         {
             InitializeComponent();
+           
 
-            Habitaciones = new ObservableCollection<Habitacion>
-            {
-                new Habitacion { Imagen = "Images/hab_odin.jpg", Nombre = "Habitación Odin", Precio = "36€ / noche" },
-                new Habitacion { Imagen = "Images/hab_valhalla.jpg", Nombre = "Habitación Valhalla", Precio = "42€ / noche" },
-                new Habitacion { Imagen = "Images/hab_freyja.jpg", Nombre = "Habitación Freyja", Precio = "50€ / noche" }
-            };
-
-            DataContext = this;
-        }
-
-        public ObservableCollection<Habitacion> Habitaciones { get; }
-
-        public class Habitacion
-        {
-            public string Imagen { get; set; }
-            public string Nombre { get; set; }
-            public string Precio { get; set; }
+            DataContext = new HabitacionesViewModel();
         }
     }
 }
