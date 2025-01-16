@@ -9,7 +9,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\add_users.png" />
+    <None Remove="Images\delete.png" />
+    <None Remove="Images\edit.png" />
+    <None Remove="Images\info.png" />
+    <None Remove="Images\logo_con_fondo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Views\BookingViews\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\add_users.png" />
+    <Resource Include="Images\delete.png" />
+    <Resource Include="Images\edit.png" />
+    <Resource Include="Images\info.png" />
+    <Resource Include="Images\logo_con_fondo.png" />
   </ItemGroup>
 
 </Project>
