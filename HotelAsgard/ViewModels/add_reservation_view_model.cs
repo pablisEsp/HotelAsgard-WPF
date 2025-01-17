@@ -1,22 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 
-public class HabitacionesViewModel
+public class AddReservationViewModel
 {
-    public class Habitacion
-    {
-        public string Nombre { get; set; } // Nombre de la habitación
-        public List<string> Imagenes { get; set; } // Lista de rutas de imágenes asociadas
-        public decimal Precio { get; set; } // Precio de la habitación
-
-        public Habitacion()
-        {
-            Imagenes = new List<string>(); // Inicializar la lista de imágenes para evitar null
-        }
-    }
+    
     public ObservableCollection<Habitacion> Habitaciones { get; set; }
 
-    public HabitacionesViewModel()
-    {
+    public AddReservationViewModel() =>
         // Datos de ejemplo
         Habitaciones = new ObservableCollection<Habitacion>
         {
@@ -63,5 +52,4 @@ public class HabitacionesViewModel
                 Precio = 350.75m
             },
         };
-    }
 }

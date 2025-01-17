@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace HotelAsgard.Views.BookingViews
 {
@@ -22,6 +12,10 @@ namespace HotelAsgard.Views.BookingViews
     {
         public BookingListView()
         {
+            DataExamples dt = new DataExamples();
+
+            UsuarioSingleton.ObtenerInstancia(usuario: dt.UsuarioActivo);
+
             InitializeComponent();
             BookByRoom br = new BookByRoom();
             br.Show();
@@ -42,11 +36,11 @@ namespace HotelAsgard.Views.BookingViews
         {
             Reservas = new ObservableCollection<Reserva>
             {
-                new Reserva { Id = 1, Foto = "\"../../Images/hab_odin.jpg\"", Codigo = "ABC123", Rol = "Administrador", Email = "ivan@example.com" },
-                new Reserva { Id = 2, Foto = "\"../../Images/hab_odin.jpg\"", Codigo = "DEF456", Rol = "Usuario", Email = "maria@example.com" },
-                new Reserva { Id = 1, Foto = "\"../../Images/hab_odin.jpg\"", Codigo = "ABC123", Rol = "Administrador", Email = "ivan@example.com" },
-                new Reserva { Id = 1, Foto = "\"../../Images/hab_odin.jpg\"", Codigo = "ABC123", Rol = "Administrador", Email = "ivan@example.com" },
-                new Reserva { Id = 1, Foto = "\"../../Images/hab_odin.jpg\"", Codigo = "ABC123", Rol = "Administrador", Email = "ivan@example.com" },
+               // new Reserva { Id = 1, Foto = "\"../../Images/hab_odin.jpg\"", Codigo = "ABC123", Rol = "Administrador", Email = "ivan@example.com" },
+                // new Reserva { Id = 2, Foto = "\"../../Images/hab_odin.jpg\"", Codigo = "DEF456", Rol = "Usuario", Email = "maria@example.com" },
+                //new Reserva { Id = 1, Foto = "\"../../Images/hab_odin.jpg\"", Codigo = "ABC123", Rol = "Administrador", Email = "ivan@example.com" },
+                // new Reserva { Id = 1, Foto = "\"../../Images/hab_odin.jpg\"", Codigo = "ABC123", Rol = "Administrador", Email = "ivan@example.com" },
+                // new Reserva { Id = 1, Foto = "\"../../Images/hab_odin.jpg\"", Codigo = "ABC123", Rol = "Administrador", Email = "ivan@example.com" },
             };
 
             EditCommand = new RelayCommand(EditReserva);
@@ -69,16 +63,6 @@ namespace HotelAsgard.Views.BookingViews
             }
         }
     }
-
-    public class Reserva
-    {
-        public int Id { get; set; }
-        public string Foto { get; set; }
-        public string Codigo { get; set; }
-        public string Rol { get; set; }
-        public string Email { get; set; }
-    }
-
     public class RelayCommand : ICommand
     {
         private readonly Action<object> _execute;

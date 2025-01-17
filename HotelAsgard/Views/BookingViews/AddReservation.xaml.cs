@@ -25,7 +25,7 @@ namespace HotelAsgard.Views.BookingViews
             InitializeComponent();
            
 
-            DataContext = new HabitacionesViewModel();
+            DataContext = new AddReservationViewModel();
         }
     }
 }
