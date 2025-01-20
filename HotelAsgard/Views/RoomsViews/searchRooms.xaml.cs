@@ -26,8 +26,7 @@ namespace HotelAsgard.Views.RoomsViews
         public searchRooms()
         {
             InitializeComponent();
-            addRoom a = new addRoom();
-            a.Show();
+            
             Habitaciones = new ObservableCollection<Habitacion>
             {
                 new Habitacion
@@ -59,6 +58,14 @@ namespace HotelAsgard.Views.RoomsViews
             };
             DataContext = this;
         }
+
+        private void editRoom_Click(object sender, RoutedEventArgs e)
+        {
+            //Habitaciones[0]
+            addRoom window = new addRoom("Editar habitación", "Editar");
+            window.Show(); 
+        }
+
     }
 
     public class Habitacion

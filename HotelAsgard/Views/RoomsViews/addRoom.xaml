@@ -23,18 +23,18 @@
         </Grid.ColumnDefinitions>
         
         <!-- Title -->
-        <TextBlock VerticalAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="#B0DAF1">Añadir habitación</TextBlock>
+        <TextBlock x:Name="title" VerticalAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="#B0DAF1"></TextBlock>
         
         <!-- Name -->
         <StackPanel Margin="10" Grid.Row="1">
             <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Nombre</TextBlock>
-            <TextBox></TextBox>
+            <TextBox x:Name="roomName"></TextBox>
         </StackPanel>
 
         <!-- Max guests -->
         <StackPanel Margin="10" Grid.Row="1" Grid.Column="2">
             <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Huéspedes</TextBlock>
-            <ComboBox SelectedIndex="0">
+            <ComboBox x:Name="maxGuests" SelectedIndex="0">
                 <ComboBoxItem>1</ComboBoxItem>
                 <ComboBoxItem>2</ComboBoxItem>
                 <ComboBoxItem>3</ComboBoxItem>
@@ -48,22 +48,23 @@
         <StackPanel Margin="10" Grid.Row="2" Grid.ColumnSpan="3">
             <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Descripción</TextBlock>
             <RichTextBox
-                Name="DescriptionRichTextBox"
+                x:Name="DescriptionRichTextBox"
                 Height="125" VerticalScrollBarVisibility="Auto">
                 <FlowDocument>
-                    <Paragraph LineHeight="5"/>
+                    <Paragraph x:Name="descriptionText" LineHeight="5"/>
                 </FlowDocument>
             </RichTextBox>
         </StackPanel>
         
-        <!-- Seleccioanr Imagen -->
         <StackPanel Margin="10" Orientation="Vertical" Grid.Row="3">
+            <!-- Image Selector -->
             <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Seleccionar imagen principal</TextBlock>
             <StackPanel HorizontalAlignment="Left">
                 <Button Name="UploadImageButton" Content="Seleccionar archivo" Width="400" Height="40" Click="UploadImageButton_Click"/>
                 <!-- <Image x:Name="PreviewImage" Width="200" Height="200" Margin="10" Stretch="Uniform"/> -->
             </StackPanel>
             
+            <!-- Disccount -->
             <TextBlock Margin="0,30,0,5" FontSize="20" Foreground="#3C3C3C">Oferta</TextBlock>
             <StackPanel Orientation="Horizontal">
                 <RadioButton VerticalContentAlignment="Center" FontSize="18" Margin="0,0,15,0">Sí</RadioButton>
@@ -72,24 +73,22 @@
         </StackPanel>
         
         
-        
-        
         <!-- Extra settings -->
         <StackPanel Margin="10" Grid.Column="1" Grid.Row="3">
             <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Opciones adicionales</TextBlock>
             <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
-                <CheckBox FontSize="18" VerticalContentAlignment="Center">Cuna</CheckBox>
-                <CheckBox Margin="20,0,0,0" FontSize="18" VerticalContentAlignment="Center">Cama extra</CheckBox>
+                <CheckBox x:Name="cradleCheck" FontSize="18" VerticalContentAlignment="Center">Cuna</CheckBox>
+                <CheckBox x:Name="extraBedCheck" Margin="20,0,0,0" FontSize="18" VerticalContentAlignment="Center">Cama extra</CheckBox>
             </StackPanel>
         </StackPanel>
 
         <!-- Price -->
         <StackPanel Margin="10" Grid.Row="3" Grid.Column="2">
             <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Precio</TextBlock>
-            <TextBox></TextBox>
+            <TextBox x:Name="roomPrice"></TextBox>
         </StackPanel>
         
         <!-- Enviar -->
-        <Button Grid.Column="2" Grid.Row="4" Width="200" Height="40">Enviar</Button>
+        <Button x:Name="sendButton" Grid.Column="2" Grid.Row="4" Width="200" Height="40"/>
     </Grid>
 </Window>

@@ -26,7 +26,7 @@
 
 
         <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button  Width="100" FontSize="20" Background="Transparent" BorderBrush="Transparent">Buscador</Button>
+            <Button  Width="100" FontSize="20" Background="Transparent" BorderBrush="Transparent">Home</Button>
             <Button Margin="20,0,20,0" Width="100" FontSize="20" Background="Transparent" BorderBrush="Transparent">Usuarios</Button>
             <Button Margin="20,0,20,0" Width="100" FontSize="20" Background="Transparent" BorderBrush="Transparent">Reservas</Button>
             <Button Margin="20,0,20,0" Width="120" FontSize="20" Background="Transparent" BorderBrush="Transparent">Habitaciones</Button>
@@ -48,7 +48,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="0.5*"/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -162,11 +162,11 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <!-- Botón Editar -->
-                                <Button Content="✏️" ToolTip="Editar" Command="{Binding DataContext.EditarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" />
+                                <Button Content="✏️" ToolTip="Editar" Command="{Binding DataContext.EditarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" Click="editRoom_Click"/>
                                 <!-- Botón Eliminar -->
-                                <Button Content="❌" ToolTip="Eliminar" Command="{Binding DataContext.EliminarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" />
+                                <Button Content="❌" ToolTip="Eliminar" Command="{Binding DataContext.EliminarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" />
                                 <!-- Botón Más Información -->
-                                <Button Content="ℹ️" ToolTip="Más Información" Command="{Binding DataContext.MasInfoCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" />
+                                <Button Content="ℹ️" ToolTip="Más Información" Command="{Binding DataContext.MasInfoCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" />
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
