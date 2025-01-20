@@ -61,8 +61,8 @@ namespace HotelAsgard.Views.RoomsViews
 
         private void editRoom_Click(object sender, RoutedEventArgs e)
         {
-            Habitaciones[0]
-            addRoom window = new addRoom("Editar habitación", "Editar", );
+            //Habitaciones[0]
+            addRoom window = new addRoom("Editar habitación", "Editar");
             window.Show(); 
         }
 
