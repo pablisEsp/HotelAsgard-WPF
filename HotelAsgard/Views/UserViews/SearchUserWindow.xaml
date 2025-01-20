@@ -1,0 +1,115 @@
+﻿<Window x:Class="HotelAsgard.Views.UserViews.SearchUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HotelAsgard.Views.UserViews"
+        mc:Ignorable="d"
+        Title="SearchUserWindow" Height="720" Width="1280">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"  
+                        BorderThickness="{TemplateBinding BorderThickness}" 
+                        CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DodgerBlue"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#b0daf1"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="127*"></ColumnDefinition>
+            <ColumnDefinition Width="513*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33*"></RowDefinition>
+            <RowDefinition Height="200*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Image Source="..\..\Images\logo_con_fondo.png"></Image>
+
+        <Grid Grid.Row="1" Margin="10,10,10,10">
+            <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="17*"/>
+                        <RowDefinition Height="112*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label FontFamily="Mongolian Baiti" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="228" >BUSCADOR</Label>
+
+                    <StackPanel Grid.Row="1" Orientation="Vertical">
+                        <TextBlock Margin="10,0,0,0" FontSize="15" FontFamily="Mongolian Baiti">Rol</TextBlock>
+                        <ComboBox Margin="10,5,10,15" HorizontalAlignment="Stretch">
+                            <ComboBoxItem FontFamily="Mongolian Baiti">Cliente</ComboBoxItem>
+                            <ComboBoxItem FontFamily="Mongolian Baiti">Empleado</ComboBoxItem>
+                            <ComboBoxItem FontFamily="Mongolian Baiti">Administrador</ComboBoxItem>
+                        </ComboBox>
+
+
+                        <TextBlock Margin="10,0,0,5" FontSize="15" FontFamily="Mongolian Baiti">Usuarios</TextBlock>
+                        <StackPanel HorizontalAlignment="Stretch" Height="20" Orientation="Horizontal" Margin="0,0,0,15">
+                            <CheckBox Content="Nuevos" FontSize="15" FontFamily="Mongolian Baiti" Margin="10,0,0,0" HorizontalAlignment="Left"></CheckBox>
+                            <CheckBox Content="Repetidor" FontSize="15" FontFamily="Mongolian Baiti" Margin="10,0,0,0" HorizontalAlignment="Left"></CheckBox>
+                        </StackPanel>
+
+                        <TextBlock Margin="10,0,0,5" FontSize="15" FontFamily="Mongolian Baiti">Fecha de nacimiento</TextBlock>
+                        <DatePicker Margin="10,0,10,20" ></DatePicker>
+
+                        <TextBlock Margin="10,0,0,5" FontSize="15" FontFamily="Mongolian Baiti">Ciudad</TextBlock>
+                        <ComboBox Margin="10,5,10,20" HorizontalAlignment="Stretch">
+                            <ComboBoxItem FontFamily="Mongolian Baiti">Alicante</ComboBoxItem>
+                            <ComboBoxItem FontFamily="Mongolian Baiti">Madrid</ComboBoxItem>
+                            <ComboBoxItem FontFamily="Mongolian Baiti">Cataluña</ComboBoxItem>
+                            <ComboBoxItem FontFamily="Mongolian Baiti">Valencia</ComboBoxItem>
+                            <ComboBoxItem FontFamily="Mongolian Baiti">Castellon</ComboBoxItem>
+                            <ComboBoxItem FontFamily="Mongolian Baiti">Jaen</ComboBoxItem>
+                        </ComboBox>
+
+                        <TextBlock Margin="10,0,0,5" FontSize="15" FontFamily="Mongolian Baiti">Sexo</TextBlock>
+                        <StackPanel HorizontalAlignment="Stretch" Height="20" Orientation="Horizontal" Margin="0,0,0,15">
+                            <RadioButton GroupName="Sexo" Content="H" FontSize="15" FontFamily="Mongolian Baiti" Margin="10,0,0,0" HorizontalAlignment="Left"></RadioButton>
+                            <RadioButton GroupName="Sexo" Content="M" FontSize="15" FontFamily="Mongolian Baiti" Margin="10,0,0,0" HorizontalAlignment="Left"></RadioButton>
+                            <RadioButton GroupName="Sexo" Content="Indeterminado" FontSize="15" FontFamily="Mongolian Baiti" Margin="10,0,0,0" HorizontalAlignment="Left"></RadioButton>
+                        </StackPanel>
+                        <Button Content="Buscar" Height="50" Width="150" Click="Button_Click"></Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1" Background="#b0daf1" Margin="10,10,10,10">
+            <ScrollViewer >
+
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Grid.Column="1" Margin="10,10,10,10">
+            <Menu Grid.Column="1" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent">
+                <MenuItem Height="50" FontFamily="Mongolian Baiti" Header="Buscador" Foreground="#3c3c3c" FontSize="30" Margin="30,0,30,0"></MenuItem>
+                <MenuItem Height="50" FontFamily="Mongolian Baiti" Header="Usuarios" Foreground="#3c3c3c" FontSize="30" Margin="0,0,30,0"></MenuItem>
+                <MenuItem Height="50" FontFamily="Mongolian Baiti" Header="Reservas" Foreground="#3c3c3c" FontSize="30" Margin="0,0,30,0"></MenuItem>
+                <MenuItem Height="50" FontFamily="Mongolian Baiti" Header="Habitaciones" Foreground="#3c3c3c" FontSize="30" Margin="0,0,30,0"></MenuItem>
+            </Menu>
+        </Grid>
+    </Grid>
+</Window>
