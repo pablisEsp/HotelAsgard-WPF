@@ -47,6 +47,11 @@
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Width="648">
+                <Button Margin="20,0,20,0" Width="100" FontSize="20" Background="Transparent" BorderBrush="Transparent">Usuarios</Button>
+                <Button Margin="20,0,20,0" Width="100" FontSize="20" Background="Transparent" BorderBrush="Transparent">Reservas</Button>
+                <Button Margin="20,0,20,0" Width="120" FontSize="20" Background="Transparent" BorderBrush="Transparent">Habitaciones</Button>
+            </StackPanel>
             <Border  Grid.Column="1" Background="#B0DAF1" CornerRadius="15" Width="100" Height="40" HorizontalAlignment="Right" Margin="0,0,30,0">
                 <Button Background="Transparent" Content="Añadir Reserva" Width="80" Height="40" BorderThickness="0"/>
             </Border>

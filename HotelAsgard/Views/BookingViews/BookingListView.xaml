@@ -24,6 +24,11 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Margin="20,0,20,0" Width="100" FontSize="20" Background="Transparent" BorderBrush="Transparent">Usuarios</Button>
+            <Button Margin="20,0,20,0" Width="100" FontSize="20" Background="Transparent" BorderBrush="Transparent">Reservas</Button>
+            <Button Margin="20,0,20,0" Width="120" FontSize="20" Background="Transparent" BorderBrush="Transparent">Habitaciones</Button>
+        </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Image Source="../../Images/logo_con_fondo.png" Width="80" Height="80" />
             <TextBlock Text="Hotel Asgard" VerticalAlignment="Center" Foreground="#3C3C3C" FontWeight="DemiBold" FontSize="22"/>

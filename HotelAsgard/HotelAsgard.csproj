@@ -18,6 +18,7 @@
   <ItemGroup>
     <None Remove="Images\hab_odin.jpg" />
     <None Remove="Images\logo_con_fondo.png" />
+    <None Remove="Images\paisaje_cutre.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,15 +28,14 @@
     <Content Include="Images\logo_con_fondo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\paisaje_cutre.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Remove="Images\add_users.png" />
     <None Remove="Images\delete.png" />
     <None Remove="Images\edit.png" />
     <None Remove="Images\info.png" />
     <None Remove="Images\logo_con_fondo.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\BookingViews\" />
   </ItemGroup>
 
   <ItemGroup>
