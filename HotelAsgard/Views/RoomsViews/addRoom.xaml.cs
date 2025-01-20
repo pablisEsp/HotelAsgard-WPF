@@ -20,10 +20,40 @@ namespace HotelAsgard.Views.RoomsViews
     /// </summary>
     public partial class addRoom : Window
     {
-        public addRoom()
+        public addRoom(string titleText, string buttonText)
         {
             InitializeComponent();
+            title.Text = titleText;
+            this.Title = titleText;
+
+            sendButton.Content = buttonText;
             
+            
+        }
+
+        public addRoom(string titleText, string buttonText, string name, int guests, string description, bool cradle, bool extraBed, int price)
+        {
+            InitializeComponent();
+            title.Text = titleText;
+            this.Title = titleText;
+            roomName.Text = name;
+            maxGuests.SelectedIndex = guests-1;
+
+            // access the flowdocument content
+            FlowDocument flowDoc = DescriptionRichTextBox.Document;
+
+            // create new content
+            flowDoc.Blocks.Clear(); // clear previous content
+            flowDoc.Blocks.Add(new Paragraph(new Run(description)));
+            
+
+            cradleCheck.IsChecked = cradle;
+            extraBedCheck.IsChecked = cradle;
+            roomPrice.Text = price + "";
+
+            sendButton.Content = buttonText;
+
+
         }
 
         private void UploadImageButton_Click(object sender, RoutedEventArgs e)
