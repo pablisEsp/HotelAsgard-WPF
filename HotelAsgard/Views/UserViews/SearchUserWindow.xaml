@@ -91,7 +91,7 @@
                             <RadioButton GroupName="Sexo" Content="M" FontSize="15" FontFamily="Mongolian Baiti" Margin="10,0,0,0" HorizontalAlignment="Left"></RadioButton>
                             <RadioButton GroupName="Sexo" Content="Indeterminado" FontSize="15" FontFamily="Mongolian Baiti" Margin="10,0,0,0" HorizontalAlignment="Left"></RadioButton>
                         </StackPanel>
-                        <Button Content="Buscar" Height="50" Width="150" Click="Button_Click"></Button>
+                        <Button Content="Buscar" Height="50" Width="150" ></Button>
                     </StackPanel>
                 </Grid>
             </Border>
