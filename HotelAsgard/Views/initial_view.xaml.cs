@@ -1,4 +1,5 @@
-﻿using HotelAsgard.Views.UserViews;
+﻿using HotelAsgard.Views.BookingViews;
+using HotelAsgard.Views.UserViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,5 +26,29 @@ namespace HotelAsgard.Views
             aw.Show();
             this.Close();
         }
+        private void BuscarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+
+            SearchUserWindow searchUserWindow = new SearchUserWindow();
+            searchUserWindow.Show();
+            this.Close();
+        }
+
+        private void AddUser_Click(object sender, RoutedEventArgs e)
+        {
+
+            AddUserWindow aw = new AddUserWindow();
+            aw.Show();
+            this.Close();
+        }
+        private void SearchBooking_Click(object sender, RoutedEventArgs e)
+        {
+
+            BookByRoom br = new BookByRoom();
+            br.Show();
+            this.Close();
+        }
+
+
     }
 }
