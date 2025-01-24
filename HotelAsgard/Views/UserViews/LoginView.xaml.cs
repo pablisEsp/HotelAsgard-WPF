@@ -22,6 +22,17 @@ namespace HotelAsgard.Views.UserViews
         public LoginView()
         {
             InitializeComponent();
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if ((userBox.Text != "") && (passwordBox.Password != ""))
+            {
+                initial_view iv = new initial_view();
+                this.Close();
+                iv.Show();
+            }
         }
     }
 }
