@@ -17,6 +17,22 @@
 
   <ItemGroup>
     <None Remove="Images\hab_odin.jpg" />
+    <None Remove="Images\Icons\ac.png" />
+    <None Remove="Images\Icons\balcony.png" />
+    <None Remove="Images\Icons\bar.png" />
+    <None Remove="Images\Icons\billiard.png" />
+    <None Remove="Images\Icons\coffeMaker.png" />
+    <None Remove="Images\Icons\description.png" />
+    <None Remove="Images\Icons\fridge.png" />
+    <None Remove="Images\Icons\gym.png" />
+    <None Remove="Images\Icons\kitchen.png" />
+    <None Remove="Images\Icons\office.png" />
+    <None Remove="Images\Icons\premiumRoomService.png" />
+    <None Remove="Images\Icons\spa.png" />
+    <None Remove="Images\Icons\spa_black.png" />
+    <None Remove="Images\Icons\swimmingpool.png" />
+    <None Remove="Images\Icons\television.png" />
+    <None Remove="Images\Icons\wifi.png" />
     <None Remove="Images\logo_con_fondo.png" />
     <None Remove="Images\paisaje_cutre.png" />
   </ItemGroup>
@@ -42,6 +58,22 @@
     <Resource Include="Images\add_users.png" />
     <Resource Include="Images\delete.png" />
     <Resource Include="Images\edit.png" />
+    <Resource Include="Images\Icons\ac.png" />
+    <Resource Include="Images\Icons\balcony.png" />
+    <Resource Include="Images\Icons\bar.png" />
+    <Resource Include="Images\Icons\billiard.png" />
+    <Resource Include="Images\Icons\coffeMaker.png" />
+    <Resource Include="Images\Icons\description.png" />
+    <Resource Include="Images\Icons\fridge.png" />
+    <Resource Include="Images\Icons\gym.png" />
+    <Resource Include="Images\Icons\kitchen.png" />
+    <Resource Include="Images\Icons\office.png" />
+    <Resource Include="Images\Icons\premiumRoomService.png" />
+    <Resource Include="Images\Icons\spa.png" />
+    <Resource Include="Images\Icons\spa_black.png" />
+    <Resource Include="Images\Icons\swimmingpool.png" />
+    <Resource Include="Images\Icons\television.png" />
+    <Resource Include="Images\Icons\wifi.png" />
     <Resource Include="Images\info.png" />
     <Resource Include="Images\logo_con_fondo.png" />
   </ItemGroup>
