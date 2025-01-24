@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelAsgard.Views.UserViews;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,9 +25,12 @@ namespace HotelAsgard.Views
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Perfil_Click(object sender, RoutedEventArgs e)
         {
-
+            
+            AddUserWindow aw = new AddUserWindow();
+            aw.Show();
+            this.Close();
         }
     }
 }
