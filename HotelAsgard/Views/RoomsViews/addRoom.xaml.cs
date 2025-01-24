@@ -39,7 +39,7 @@ namespace HotelAsgard.Views.RoomsViews
             roomName.Text = name;
             maxGuests.SelectedIndex = guests-1;
 
-            // access the flowdocument content a
+            // access the flowdocument content as
             FlowDocument flowDoc = DescriptionRichTextBox.Document;
 
             // create new content
