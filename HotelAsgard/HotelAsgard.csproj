@@ -78,4 +78,8 @@
     <Resource Include="Images\logo_con_fondo.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\RoomsViews\" />
+  </ItemGroup>
+
 </Project>
