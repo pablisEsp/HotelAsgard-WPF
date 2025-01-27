@@ -1,4 +1,5 @@
 ﻿using HotelAsgard.Views.BookingViews;
+using HotelAsgard.Views.RoomsViews;
 using HotelAsgard.Views.UserViews;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,18 @@ namespace HotelAsgard.Views
             this.Close();
         }
 
+        private void SearchRooms_Click(object sender, RoutedEventArgs e)
+        {
+            searchRooms sr = new searchRooms();
+            sr.Show();
+            this.Close();
+        }
 
+        private void AddRoom_Click(object sender, RoutedEventArgs e)
+        {
+            addRoom ar = new addRoom("Añadir habitación", "Añadir");
+            ar.Show();
+            this.Close();
+        }
     }
 }
