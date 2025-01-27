@@ -44,11 +44,18 @@ namespace HotelAsgard.Views
         private void SearchBooking_Click(object sender, RoutedEventArgs e)
         {
 
-            BookByRoom br = new BookByRoom();
-            br.Show();
+            AddReservation ad = new AddReservation();
+            ad.Show();
             this.Close();
         }
 
+        private void AddBooking_Click(object sender, RoutedEventArgs e)
+        {
+
+            BookingListView bv = new BookingListView();
+            bv.Show();
+            this.Close();
+        }
 
     }
 }

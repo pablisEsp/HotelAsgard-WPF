@@ -54,11 +54,25 @@
             <StackPanel Orientation="Horizontal"  Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Top" >
                 <StackPanel >
                     <Label Content="Fecha entrada" Style="{StaticResource labelStyle}"/>
-                    <TextBox Text="24-12-2021"/>
+                    <DatePicker Margin="0,12,0,0"
+                        x:Name="fechaInicio"
+                        IsDropDownOpen="False"
+                        PreviewTextInput="DatePicker_PreviewTextInput"
+                        PreviewKeyDown="DatePicker_PreviewKeyDown"
+                        GotFocus="DatePicker_GotFocus"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Margin="50,0,60,0">
                     <Label Content="Fecha entrada" Style="{StaticResource labelStyle}" HorizontalAlignment="Left"/>
-                    <TextBox Text="24-12-2021"/>
+                    <DatePicker Margin="0,12,0,0"
+                            x:Name="fechaFin"
+                            IsDropDownOpen="False"
+                            PreviewTextInput="DatePicker_PreviewTextInput"
+                            PreviewKeyDown="DatePicker_PreviewKeyDown"
+                            GotFocus="DatePicker_GotFocus"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
                 </StackPanel >
                 <StackPanel >
                     <Label Content="Huespedes" Style="{StaticResource labelStyle}"/>
