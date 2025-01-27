@@ -62,6 +62,7 @@ namespace HotelAsgard.Views
             addRoom ar = new addRoom("Añadir habitación", "Añadir");
             ar.Show();
             this.Close();
+
         }
     }
 }
