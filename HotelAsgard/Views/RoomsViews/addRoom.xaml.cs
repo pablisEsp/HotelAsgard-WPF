@@ -29,7 +29,7 @@ namespace HotelAsgard.Views.RoomsViews
             sendButton.Content = buttonText;
             
             
-        }
+        } 
 
         public addRoom(string titleText, string buttonText, string name, int guests, string description, bool cradle, bool extraBed, int price)
         {
@@ -39,7 +39,7 @@ namespace HotelAsgard.Views.RoomsViews
             roomName.Text = name;
             maxGuests.SelectedIndex = guests-1;
 
-            // access the flowdocument content
+            // access the flowdocument content as
             FlowDocument flowDoc = DescriptionRichTextBox.Document;
 
             // create new content

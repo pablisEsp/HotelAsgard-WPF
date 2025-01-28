@@ -9,13 +9,13 @@
     <Window.Resources>
         <!-- Estilo para el TextBlock de título -->
         <Style x:Key="TituloTextBlockStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize" Value="20" />
 
-            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontWeight" Value="Bold" />
 
-            <Setter Property="Foreground" Value="#B0DAF1"/>
+            <Setter Property="Foreground" Value="#B0DAF1" />
 
-            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
 
         <Style x:Key="labelStyle" TargetType="Label">
@@ -24,95 +24,153 @@
             <Setter Property="Foreground" Value="#3C3C3C" />
             <Setter Property="Margin" Value="2" />
         </Style>
+
+        <Style x:Key="menuStyle" TargetType="Menu">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="menuItemStyle" TargetType="MenuItem">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Padding" Value="10,5" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#42525a" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="6*" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin=" 0,0,0,10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="../../Images/logo_con_fondo.png" Width="80" Height="80" />
-                    <TextBlock Text="Hotel Asgard" VerticalAlignment="Center" Foreground="#3C3C3C" FontWeight="DemiBold" FontSize="22"/>
-                    <Border Margin="20,0,20,0" BorderBrush="#B0DAF1" BorderThickness="1" Height="60" Width="2"/>
+                    <TextBlock Text="Hotel Asgard" VerticalAlignment="Center" Foreground="#3C3C3C" FontWeight="DemiBold" FontSize="22" />
+                    <Border Margin="20,0,20,0" BorderBrush="#B0DAF1" BorderThickness="1" Height="60" Width="2" />
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                        <TextBlock Text="Bienvenido Ivan" Foreground="#3C3C3C" FontWeight="Medium" FontSize="18"/>
-                        <TextBlock Text="Cerrar Sesion" Foreground="#BCBCBC" FontSize="16" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Bienvenido Ivan" Foreground="#3C3C3C" FontWeight="Medium" FontSize="18" />
+                        <TextBlock Text="Cerrar Sesion" Foreground="#BCBCBC" FontSize="16" HorizontalAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Width="648">
-                <Button Margin="20,0,20,0" Width="100" FontSize="20" Background="Transparent" BorderBrush="Transparent">Usuarios</Button>
-                <Button Margin="20,0,20,0" Width="100" FontSize="20" Background="Transparent" BorderBrush="Transparent">Reservas</Button>
-                <Button Margin="20,0,20,0" Width="120" FontSize="20" Background="Transparent" BorderBrush="Transparent">Habitaciones</Button>
-            </StackPanel>
-            <Border  Grid.Column="1" Background="#B0DAF1" CornerRadius="15" Width="100" Height="40" HorizontalAlignment="Right" Margin="0,0,30,0">
-                <Button Background="Transparent" Content="Añadir Reserva" Width="80" Height="40" BorderThickness="0"/>
-            </Border>
+           
+            <Menu VerticalAlignment="Center" Background="Transparent"  Grid.Column="1" Width="648">
+
+                <MenuItem Style="{StaticResource menuItemStyle}" Header="Menu" FontSize="16" FontWeight="Bold" Click="MainWindows_click"/>
+                <!-- Sección de Usuario -->
+                <MenuItem Style="{StaticResource menuItemStyle}" Header="Usuario" FontSize="16" FontWeight="Bold">
+                    <MenuItem Header="Perfil" Click="Perfil_Click" />
+                    <MenuItem Header="Buscar Usuario" Click="BuscarUsuario_Click" />
+                    <MenuItem Header="Añadir Usuario" Click="AddUser_Click" />
+                </MenuItem>
+
+                <!-- Sección de Reservas -->
+                <MenuItem Style="{StaticResource menuItemStyle}"  Header="Reservas" FontSize="16" FontWeight="Bold">
+                    <MenuItem Header="Buscar Reservas" Click="SearchBooking_Click" />
+                    <MenuItem Header="Añadir Reservas" Click="AddBooking_Click" />
+                </MenuItem>
+
+                <!-- Sección de Habitaciones -->
+                <MenuItem Style="{StaticResource menuItemStyle}"  Header="Habitaciones" FontSize="16" FontWeight="Bold">
+                    <MenuItem Header="Buscar Habitaciones" />
+                    <MenuItem Header="Añadir Habitaciones" />
+                </MenuItem>
+            </Menu>
+
         </Grid>
-        <Grid Grid.Row="1" >
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <TextBlock Text="Buscador :" Margin="10,10,10,0" Grid.Row="0" Style="{StaticResource TituloTextBlockStyle}" FontSize="40" VerticalAlignment="Bottom" FontStretch="Condensed"/>
-            <Grid Grid.Row="1" Background="#F4F4F4" Margin="70,10,70,0" >
-                <Grid.RowDefinitions >
+            <TextBlock Text="Buscador :" Margin="10,10,10,0" Grid.Row="0" Style="{StaticResource TituloTextBlockStyle}" FontSize="40" VerticalAlignment="Bottom" FontStretch="Condensed" />
+            <Grid Grid.Row="1" Background="#F4F4F4" Margin="70,10,70,0">
+                <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="15" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                        <Label Content="Número de huéspedes" Style="{StaticResource labelStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="-6,8,0,0"/>
-                        <ComboBox VerticalAlignment="Bottom" Margin="0,12,0,0"/>
+                        <Label Content="Número de huéspedes" Style="{StaticResource labelStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="-6,8,0,0" />
+                        <ComboBox VerticalAlignment="Bottom" Margin="0,12,0,0" SelectedIndex="1">
+                            <ComboBox.Items>
+                                <ComboBoxItem>1</ComboBoxItem>
+                                <ComboBoxItem>2</ComboBoxItem>
+                                <ComboBoxItem>3</ComboBoxItem>
+                                <ComboBoxItem>4</ComboBoxItem>
+                                <ComboBoxItem>5</ComboBoxItem>
+                                <ComboBoxItem>6</ComboBoxItem>
+                            </ComboBox.Items>
+                        </ComboBox>
                     </StackPanel>
-                    <StackPanel Orientation="Vertical" Margin="120,0,120,0" >
-                        <Label Content="Fecha de entrada" Style="{StaticResource labelStyle}" Margin="-6,8,0,0"/>
-                        <DatePicker Margin="0,12,0,0"/>
+                    <StackPanel Orientation="Vertical" Margin="120,0,120,0">
+                        <Label Content="Fecha de entrada" Style="{StaticResource labelStyle}" Margin="-6,8,0,0" />
+                        <DatePicker Margin="0,12,0,0"
+                            x:Name="fechaInicio"
+                            IsDropDownOpen="False"
+                            PreviewTextInput="DatePicker_PreviewTextInput"
+                            PreviewKeyDown="DatePicker_PreviewKeyDown"
+                            GotFocus="DatePicker_GotFocus"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
                     </StackPanel>
-                    <StackPanel Orientation="Vertical" >
-                        <Label Content="Fecha Salida" Style="{StaticResource labelStyle}" Margin="-6,8,0,0"/>
-                        <DatePicker Margin="0,12,0,0"/>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="Fecha Salida" Style="{StaticResource labelStyle}" Margin="-6,8,0,0" />
+                        <DatePicker Margin="0,12,0,0"
+                                    x:Name="fechaFin"
+                                    IsDropDownOpen="False"
+                                    PreviewTextInput="DatePicker_PreviewTextInput"
+                                    PreviewKeyDown="DatePicker_PreviewKeyDown"
+                                    GotFocus="DatePicker_GotFocus"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Left">
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="160,0,0,0">
-                        <Label Content="Precio Noche" Style="{StaticResource labelStyle}" HorizontalAlignment="Center"/>
-                        
-                        <Slider Width="300" Value="500" Minimum="100" Maximum="1000"  Margin="0,10,0,0" TickPlacement="TopLeft" IsSnapToTickEnabled="True" AutoToolTipPlacement="BottomRight" TickFrequency="50"/>
-                        <TextBlock Text="0" 
+                        <Label Content="Precio Noche" Style="{StaticResource labelStyle}" HorizontalAlignment="Center" />
+                        <Slider Width="300" Value="500" Minimum="100" Maximum="1000"  Margin="0,10,0,0" TickPlacement="TopLeft" IsSnapToTickEnabled="True" AutoToolTipPlacement="BottomRight" TickFrequency="50" />
+                        <TextBlock Text="0"
                        HorizontalAlignment="Left"
                            VerticalAlignment="Bottom"
-                                        Margin="0,0,0,-14"/>
-                        <TextBlock Text="1000" 
+                                        Margin="0,0,0,-14" />
+                        <TextBlock Text="1000"
                             HorizontalAlignment="Right"
                            VerticalAlignment="Bottom"
-                                    Margin="0,0,0,-14"/>
+                                    Margin="0,0,0,-14" />
                     </StackPanel>
                     <Border  Grid.Column="1" Background="#B0DAF1" CornerRadius="15" Width="100" Height="40" HorizontalAlignment="Right" Margin="200,0,30,0">
-                        <Button Background="Transparent" Content="Buscar" Width="80" Height="40" BorderThickness="0"/>
+                        <Button Background="Transparent" Content="Buscar" Width="80" Height="40" BorderThickness="0" />
                     </Border>
                 </StackPanel>
             </Grid>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="5*" />
             </Grid.RowDefinitions>
-            <TextBlock Text="Resultados :"  Grid.Row="0" FontSize="42" FontWeight="Bold"/>
-            <!--<StackPanel Orientation="Vertical" Grid.Row="1" VerticalAlignment="Top" >
+            <TextBlock Text="Resultados :"  Grid.Row="0" FontSize="42" FontWeight="Bold" />
+            <!--<StackPanel Orientation="Vertical" Grid.Row="1" VerticalAlignment="Top">
                 <Image Source="../../Images/hab_odin.jpg" Width="300" Height="200" />
-                <TextBlock Text="Habitación Odin" HorizontalAlignment="Center" Foreground="#3C3C3C" FontSize="20" FontWeight="DemiBold"/>
-                <TextBlock Text="36€ / noche" Foreground="#B0DAF1" HorizontalAlignment="Center" FontSize="18"/>
+                <TextBlock Text="Habitación Odin" HorizontalAlignment="Center" Foreground="#3C3C3C" FontSize="20" FontWeight="DemiBold" />
+                <TextBlock Text="36€ / noche" Foreground="#B0DAF1" HorizontalAlignment="Center" FontSize="18" />
                 <Border  Grid.Column="1" Background="#B0DAF1" CornerRadius="15" Margin="0,0,0,10" Width="180" Height="30" HorizontalAlignment="Center">
-                    <Button Background="Transparent" Content="Añadir Reserva" Width="180" Height="30" BorderThickness="0"/>
+                    <Button Background="Transparent" Content="Añadir Reserva" Width="180" Height="30" BorderThickness="0" />
                 </Border>
             </StackPanel>-->
             <ScrollViewer HorizontalScrollBarVisibility="Auto"  Grid.Row="1" VerticalScrollBarVisibility="Disabled">

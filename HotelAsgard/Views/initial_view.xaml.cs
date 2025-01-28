@@ -1,16 +1,12 @@
-﻿using System;
+﻿using HotelAsgard.Views.BookingViews;
+using HotelAsgard.Views.RoomsViews;
+using HotelAsgard.Views.UserViews;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace HotelAsgard.Views
 {
@@ -24,8 +20,55 @@ namespace HotelAsgard.Views
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Perfil_Click(object sender, RoutedEventArgs e)
         {
+            
+            AddUserWindow aw = new AddUserWindow();
+            aw.Show();
+            this.Close();
+        }
+        private void BuscarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+
+            SearchUserWindow searchUserWindow = new SearchUserWindow();
+            searchUserWindow.Show();
+            this.Close();
+        }
+
+        private void AddUser_Click(object sender, RoutedEventArgs e)
+        {
+
+            AddUserWindow aw = new AddUserWindow();
+            aw.Show();
+            this.Close();
+        }
+        private void SearchBooking_Click(object sender, RoutedEventArgs e)
+        {
+
+            AddReservation ad = new AddReservation();
+            ad.Show();
+            this.Close();
+        }
+
+        private void AddBooking_Click(object sender, RoutedEventArgs e)
+        {
+
+            BookingListView bv = new BookingListView();
+            bv.Show();
+            this.Close();
+        }
+        private void SearchRooms_Click(object sender, RoutedEventArgs e)
+        {
+            searchRooms sr = new searchRooms();
+            sr.Show();
+            this.Close();
+        }
+
+        private void AddRoom_Click(object sender, RoutedEventArgs e)
+        {
+            addRoom ar = new addRoom("Añadir habitación", "Añadir");
+            ar.Show();
+            this.Close();
 
         }
     }

@@ -14,7 +14,27 @@
             <Setter Property="Foreground" Value="#3C3C3C" />
             <Setter Property="Margin" Value="2" />
         </Style>
+        <Style x:Key="menuStyle" TargetType="Menu">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="menuItemStyle" TargetType="MenuItem">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Padding" Value="10,5" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#42525a" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -24,11 +44,30 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button Margin="20,0,20,0" Width="100" FontSize="20" Background="Transparent" BorderBrush="Transparent">Usuarios</Button>
-            <Button Margin="20,0,20,0" Width="100" FontSize="20" Background="Transparent" BorderBrush="Transparent">Reservas</Button>
-            <Button Margin="20,0,20,0" Width="120" FontSize="20" Background="Transparent" BorderBrush="Transparent">Habitaciones</Button>
-        </StackPanel>
+
+        <Menu VerticalAlignment="Center" Background="Transparent"  Grid.Column="1" Width="648">
+
+            <MenuItem Style="{StaticResource menuItemStyle}" Header="Menu" FontSize="16" FontWeight="Bold" Click="MainWindows_click"/>
+            <!-- Sección de Usuario -->
+            <MenuItem Style="{StaticResource menuItemStyle}" Header="Usuario" FontSize="16" FontWeight="Bold">
+                <MenuItem Header="Perfil" Click="Perfil_Click" />
+                <MenuItem Header="Buscar Usuario" Click="BuscarUsuario_Click" />
+                <MenuItem Header="Añadir Usuario" Click="AddUser_Click" />
+            </MenuItem>
+
+            <!-- Sección de Reservas -->
+            <MenuItem Style="{StaticResource menuItemStyle}"  Header="Reservas" FontSize="16" FontWeight="Bold">
+                <MenuItem Header="Buscar Reservas" Click="SearchBooking_Click" />
+                <MenuItem Header="Añadir Reservas" Click="AddBooking_Click" />
+            </MenuItem>
+
+            <!-- Sección de Habitaciones -->
+            <MenuItem Style="{StaticResource menuItemStyle}"  Header="Habitaciones" FontSize="16" FontWeight="Bold">
+                <MenuItem Header="Buscar Habitaciones" />
+                <MenuItem Header="Añadir Habitaciones" />
+            </MenuItem>
+        </Menu>
+
         <StackPanel Orientation="Horizontal">
             <Image Source="../../Images/logo_con_fondo.png" Width="80" Height="80" />
             <TextBlock Text="Hotel Asgard" VerticalAlignment="Center" Foreground="#3C3C3C" FontWeight="DemiBold" FontSize="22"/>
@@ -42,9 +81,23 @@
             <Grid Grid.Row="1">
                 <StackPanel Background="#F4F4F4" Margin="24,7,24,50" Orientation="Vertical">
                     <Label Content="Fecha Entrada" Margin="5" HorizontalAlignment="Center" Style="{StaticResource labelStyle}"/>
-                    <DatePicker Width="170" Margin="5"/>
+                    <DatePicker Margin="0,12,0,0"
+                        x:Name="fechaInicio"
+                        IsDropDownOpen="False"
+                        PreviewTextInput="DatePicker_PreviewTextInput"
+                        PreviewKeyDown="DatePicker_PreviewKeyDown"
+                        GotFocus="DatePicker_GotFocus"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
                     <Label Content="Fecha Salida" HorizontalAlignment="Center" Margin="5" Style="{StaticResource labelStyle}"/>
-                    <DatePicker Width="170" HorizontalAlignment="Center" Margin="5" />
+                    <DatePicker Margin="0,12,0,0"
+                        x:Name="fechaFin"
+                        IsDropDownOpen="False"
+                        PreviewTextInput="DatePicker_PreviewTextInput"
+                        PreviewKeyDown="DatePicker_PreviewKeyDown"
+                        GotFocus="DatePicker_GotFocus"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
                     <Label Content="Código" HorizontalAlignment="Center" Margin="5" Style="{StaticResource labelStyle}"/>
                     <TextBox Width="170"/>
                     <Label Content="Usuario" Margin="5" HorizontalAlignment="Center" Style="{StaticResource labelStyle}"/>
