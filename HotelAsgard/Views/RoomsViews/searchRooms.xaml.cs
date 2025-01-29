@@ -54,6 +54,15 @@ namespace HotelAsgard.Views.RoomsViews
             window.Show(); 
         }
 
+        private void deleteRoom_Click(object sender, RoutedEventArgs e)
+        {
+            // delete room
+        }
+
+        private void roomInfo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
     public class Habitacion

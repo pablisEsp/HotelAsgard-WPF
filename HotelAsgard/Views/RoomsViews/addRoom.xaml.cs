@@ -31,8 +31,19 @@ namespace HotelAsgard.Views.RoomsViews
             
         } 
 
-        public addRoom(string titleText, string buttonText, string name, int guests, string description, bool cradle, bool extraBed, int price)
+        public addRoom(string titleText, string buttonText, string name, int guests, string description, bool cradle, bool extraBed, int price, bool info)
         {
+            if (info)
+            {
+                roomName.IsReadOnly = true;
+                maxGuests.IsReadOnly = true;
+                DescriptionRichTextBox.IsReadOnly = true;
+                cradleCheck.IsEnabled = false;
+                extraBedCheck.IsEnabled = false;
+                roomPrice.IsReadOnly = true;
+                sendButton.Visibility = Visibility.Collapsed;
+            }
+
             InitializeComponent();
             title.Text = titleText;
             this.Title = titleText;

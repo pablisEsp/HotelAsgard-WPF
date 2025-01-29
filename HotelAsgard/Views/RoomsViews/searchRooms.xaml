@@ -164,9 +164,9 @@
                                 <!-- Botón Editar -->
                                 <Button Content="✏️" ToolTip="Editar" Command="{Binding DataContext.EditarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" Click="editRoom_Click"/>
                                 <!-- Botón Eliminar -->
-                                <Button Content="❌" ToolTip="Eliminar" Command="{Binding DataContext.EliminarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" />
+                                <Button Content="❌" ToolTip="Eliminar" Command="{Binding DataContext.EliminarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" Click="deleteRoom_Click"/>
                                 <!-- Botón Más Información -->
-                                <Button Content="ℹ️" ToolTip="Más Información" Command="{Binding DataContext.MasInfoCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" />
+                                <Button Content="ℹ️" ToolTip="Más Información" Command="{Binding DataContext.MasInfoCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" Click="roomInfo_Click"/>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

@@ -45,8 +45,8 @@ namespace HotelAsgard.Views
         private void SearchBooking_Click(object sender, RoutedEventArgs e)
         {
 
-            BookByRoom br = new BookByRoom();
-            br.Show();
+            AddReservation ar = new AddReservation();
+            ar.Show();
             this.Close();
         }
 
@@ -61,7 +61,6 @@ namespace HotelAsgard.Views
         {
             addRoom ar = new addRoom("Añadir habitación", "Añadir");
             ar.Show();
-            this.Close();
 
         }
     }
