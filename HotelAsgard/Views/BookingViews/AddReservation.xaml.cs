@@ -1,6 +1,5 @@
 ﻿using HotelAsgard.Views.UserViews;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace HotelAsgard.Views.BookingViews
@@ -12,7 +11,7 @@ namespace HotelAsgard.Views.BookingViews
     {
         public AddReservation()
         {
-            InitializeComponent();
+              InitializeComponent();
            
 
             DataContext = new AddReservationViewModel();
