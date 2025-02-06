@@ -1,17 +1,9 @@
 ﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using HotelAsgard.Models.Rooms;
 
 namespace HotelAsgard.Views.RoomsViews
 {
@@ -20,6 +12,8 @@ namespace HotelAsgard.Views.RoomsViews
     /// </summary>
     public partial class addRoom : Window
     {
+        Room r = new Room();
+        
         public addRoom(string titleText, string buttonText)
         {
             InitializeComponent();
@@ -31,13 +25,24 @@ namespace HotelAsgard.Views.RoomsViews
             
         } 
 
-        public addRoom(string titleText, string buttonText, string name, int guests, string description, bool cradle, bool extraBed, int price)
+        public addRoom(string titleText, string buttonText, string name, int guests, string description, bool cradle, bool extraBed, int price, bool info)
         {
+            if (info)
+            {
+                roomName.IsReadOnly = true;
+                maxGuests.IsReadOnly = true;
+                DescriptionRichTextBox.IsReadOnly = true;
+                //cradleCheck.IsEnabled = false;
+                //extraBedCheck.IsEnabled = false;
+                roomPrice.IsReadOnly = true;
+                sendButton.Visibility = Visibility.Collapsed;
+            }
+
             InitializeComponent();
             title.Text = titleText;
             this.Title = titleText;
             roomName.Text = name;
-            maxGuests.SelectedIndex = guests-1;
+            //maxGuests.SelectedIndex = guests-1;
 
             // access the flowdocument content as
             FlowDocument flowDoc = DescriptionRichTextBox.Document;
@@ -47,8 +52,8 @@ namespace HotelAsgard.Views.RoomsViews
             flowDoc.Blocks.Add(new Paragraph(new Run(description)));
             
 
-            cradleCheck.IsChecked = cradle;
-            extraBedCheck.IsChecked = cradle;
+            //cradleCheck.IsChecked = cradle;
+            //extraBedCheck.IsChecked = cradle;
             roomPrice.Text = price + "";
 
             sendButton.Content = buttonText;
@@ -80,6 +85,13 @@ namespace HotelAsgard.Views.RoomsViews
                 }
             }
         }
+
+        private void RoomCategory_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+        
+        
     }
 
 

@@ -17,7 +17,7 @@
             <RowDefinition  Height="0.5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="1.25*"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
@@ -28,20 +28,24 @@
         <!-- Name -->
         <StackPanel Margin="10" Grid.Row="1">
             <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Nombre</TextBlock>
-            <TextBox x:Name="roomName"></TextBox>
+            <TextBox x:Name="roomName" />
+        </StackPanel>
+        
+        <StackPanel Margin="20,10,10,10" Grid.Column="1" Grid.Row="1">
+            <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Categoría</TextBlock>
+            <ComboBox x:Name="roomCategory" SelectionChanged="RoomCategory_OnSelectionChanged">
+                <ComboBoxItem>Suite</ComboBoxItem>
+                <ComboBoxItem>Suite Junior</ComboBoxItem>
+                <ComboBoxItem>Premium</ComboBoxItem>
+                <ComboBoxItem>Standard Double</ComboBoxItem>
+                <ComboBoxItem>Standard Twin</ComboBoxItem>
+            </ComboBox>
         </StackPanel>
 
         <!-- Max guests -->
         <StackPanel Margin="10" Grid.Row="1" Grid.Column="2">
-            <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Huéspedes</TextBlock>
-            <ComboBox x:Name="maxGuests" SelectedIndex="0">
-                <ComboBoxItem>1</ComboBoxItem>
-                <ComboBoxItem>2</ComboBoxItem>
-                <ComboBoxItem>3</ComboBoxItem>
-                <ComboBoxItem>4</ComboBoxItem>
-                <ComboBoxItem>5</ComboBoxItem>
-                <ComboBoxItem>6</ComboBoxItem>
-            </ComboBox>
+            <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Capacidad de huéspedes</TextBlock>
+            <TextBox x:Name="maxGuests"/>
         </StackPanel>
         
         <!-- Description -->
@@ -60,20 +64,23 @@
             <!-- Image Selector -->
             <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Seleccionar imagen principal</TextBlock>
             <StackPanel HorizontalAlignment="Left">
-                <Button Name="UploadImageButton" Content="Seleccionar archivo" Width="400" Height="40" Click="UploadImageButton_Click"/>
+                <Button x:Name="UploadImageButton" Content="Seleccionar archivo" Width="400" Height="40" Click="UploadImageButton_Click"/>
                 <!-- <Image x:Name="PreviewImage" Width="200" Height="200" Margin="10" Stretch="Uniform"/> -->
             </StackPanel>
             
             <!-- Disccount -->
+            <!--
             <TextBlock Margin="0,30,0,5" FontSize="20" Foreground="#3C3C3C">Oferta</TextBlock>
             <StackPanel Orientation="Horizontal">
                 <RadioButton VerticalContentAlignment="Center" FontSize="18" Margin="0,0,15,0">Sí</RadioButton>
                 <RadioButton VerticalContentAlignment="Center" FontSize="18">No</RadioButton>
             </StackPanel>
+            -->
         </StackPanel>
         
         
-        <!-- Extra settings -->
+        
+        <!-- Extra settings
         <StackPanel Margin="10" Grid.Column="1" Grid.Row="3">
             <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Opciones adicionales</TextBlock>
             <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
@@ -81,11 +88,12 @@
                 <CheckBox x:Name="extraBedCheck" Margin="20,0,0,0" FontSize="18" VerticalContentAlignment="Center">Cama extra</CheckBox>
             </StackPanel>
         </StackPanel>
+        -->
 
         <!-- Price -->
         <StackPanel Margin="10" Grid.Row="3" Grid.Column="2">
             <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Precio</TextBlock>
-            <TextBox x:Name="roomPrice"></TextBox>
+            <TextBox x:Name="roomPrice" IsReadOnly="True"></TextBox>
         </StackPanel>
         
         <!-- Enviar -->
