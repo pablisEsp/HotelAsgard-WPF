@@ -13,4 +13,3 @@
     public string Descripcion { get; set; } // Descripción de la habitación
     public List<string> Imagenes { get; set; } // Almacena rutas o URLs de imágenes
 }
-

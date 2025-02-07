@@ -2,7 +2,7 @@
 
 public class AddReservationViewModel
 {
-    
+    /*
     public ObservableCollection<Habitacion> Habitaciones { get; set; }
 
     public AddReservationViewModel() =>
@@ -51,5 +51,5 @@ public class AddReservationViewModel
                 Imagenes = new List<string> { "../../Images/hab_odin.jpg" },
                 Precio = 350.75m
             },
-        };
+        };*/
 }
