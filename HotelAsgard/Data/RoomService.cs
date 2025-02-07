@@ -16,7 +16,6 @@ public class RoomService
     
     public HttpClient API => _httpClient;
     
-    
 
     public async Task<List<Room>> GetRooms()
     {

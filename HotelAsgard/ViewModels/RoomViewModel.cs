@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using HotelAsgard.Data;
 using HotelAsgard.Models.Rooms;
 
@@ -7,25 +8,43 @@ namespace HotelAsgard.ViewModels
 {
     public class RoomViewModel : INotifyPropertyChanged
     {
-        private readonly RoomService _roomService = new RoomService();
-        public ObservableCollection<Room> Rooms { get; set; } = new ObservableCollection<Room>();
+        private readonly RoomService _roomService;
+        private ObservableCollection<Room> _rooms;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public ObservableCollection<Room> Rooms
+        {
+            get => _rooms;
+            set
+            {
+                _rooms = value;
+                OnPropertyChanged();
+            }
+        }
 
         public RoomViewModel()
         {
-            _ = LoadRoomsAsync(); // Loads all rooms at the start
+            _roomService = new RoomService();
+            _rooms = new ObservableCollection<Room>();
+            LoadRooms();
         }
 
-        private async Task LoadRoomsAsync()
+        private async void LoadRooms()
         {
-            var rooms = await _roomService.GetRooms();
-            Rooms.Clear();
-
-            foreach (var room in rooms)
+            try
             {
-                Rooms.Add(room); // UI se actualiza automáticamente
+                var roomsList = await _roomService.GetRooms();
+                Rooms = new ObservableCollection<Room>(roomsList);
             }
+            catch (Exception ex)
+            {
+                // Manejo de errores, puedes mostrarlo en un log o en la UI
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

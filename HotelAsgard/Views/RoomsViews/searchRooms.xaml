@@ -171,10 +171,12 @@
                   <!--VirtualizingPanel.IsVirtualizing="True"
                   VirtualizingPanel.VirtualizationMode="Recycling"-->
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" Width="0.60*" />
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*" />
-                <DataGridTextColumn Header="Huéspedes" Binding="{Binding NumHuespedes}" Width="0.60*" />
-                <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" Width="*">
+                <DataGridTextColumn Header="Código" Binding="{Binding Codigo}"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"/>
+                <DataGridTextColumn Header="Categoria" Binding="{Binding Categoria}"/>
+                <DataGridTextColumn Header="Tamaño" Binding="{Binding Tamanyo}" />
+                <DataGridTextColumn Header="Huéspedes" Binding="{Binding NumPersonas}" />
+                <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="ToolTip" Value="{Binding Descripcion}" />
@@ -182,12 +184,8 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="*" />
-                <DataGridCheckBoxColumn Header="Oferta" Binding="{Binding Oferta}" Width="*" />
-                <DataGridCheckBoxColumn Header="Cuna" Binding="{Binding Cuna}" Width="*" />
-                <DataGridCheckBoxColumn Header="Cama Extra" Binding="{Binding CamaExtra}" Width="*" />
-                <DataGridCheckBoxColumn Header="Ocupada" Binding="{Binding Ocupada}" Width="*" />
-                <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}" Width="*" />
+                <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" />
+                <DataGridCheckBoxColumn Header="Habilitada" Binding="{Binding Habilitada}" />
 
                 <!-- Columna de iconos -->
                 <DataGridTemplateColumn Header="Acciones" Width="Auto">
