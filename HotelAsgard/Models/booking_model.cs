@@ -1,9 +1,9 @@
-﻿
-public class Reserva
+﻿public class Reserva
 {
-    public int Id { get; set; }
-    public string Codigo { get; set; }
-    public string FechaInicio { get; set; } // Manejado como string temporalmente
-    public string FechaFin { get; set; } // Manejado como string temporalmente
-    public int CodigoHabitacion { get; set; } // Referencia al ID de la habitación reservada
+    public string Codigo { get; set; } = null!;
+    public string FechaInicio { get; set; } = null!;
+    public string FechaFin { get; set; } = null!;
+    public string HabitacionId { get; set; } = null!;
+    public string UsuarioId { get; set; } = null!;
+    public string Precio { get; set; } = null!;
 }

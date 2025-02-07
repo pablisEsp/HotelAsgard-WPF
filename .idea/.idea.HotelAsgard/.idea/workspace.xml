@@ -7,7 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7231264f-3ac7-4bfa-b42f-c742d79c953a" name="Changes" comment="Added Newton JSON on nuggget" />
+    <list default="true" id="7231264f-3ac7-4bfa-b42f-c742d79c953a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Models/booking_model.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Models/booking_model.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Models/room_model.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Models/room_model.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,7 +23,6 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
@@ -59,7 +62,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Project.HotelAsgard.executor": "Run",
+    ".NET Project.HotelAsgard.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "FranRama",
@@ -68,7 +71,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -103,7 +106,8 @@
       <workItem from="1738259110851" duration="779000" />
       <workItem from="1738595240670" duration="670000" />
       <workItem from="1738766923233" duration="456000" />
-      <workItem from="1738863536852" duration="1239000" />
+      <workItem from="1738863536852" duration="4269000" />
+      <workItem from="1738914459834" duration="33000" />
     </task>
     <task id="LOCAL-00001" summary="changes on AddReservation.xaml.cs">
       <option name="closed" value="true" />
@@ -137,7 +141,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738864739788</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="algo del workspace.xml">
+      <option name="closed" value="true" />
+      <created>1738865126614</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738865126614</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,8 +161,40 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="changes on AddReservation.xaml.cs" />
     <MESSAGE value="updated" />
-    <MESSAGE value="algo del workspace.xml" />
     <MESSAGE value="Added Newton JSON on nuggget" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Newton JSON on nuggget" />
+    <MESSAGE value="algo del workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="algo del workspace.xml" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/HotelAsgard/Utils/user_active.cs</url>
+          <line>7</line>
+          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\Utils\user_active.cs" containingFunctionPresentation="Constructor 'UsuarioSingleton'">
+            <startOffsets>
+              <option value="187" />
+            </startOffsets>
+            <endOffsets>
+              <option value="188" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/HotelAsgard/Utils/user_active.cs</url>
+          <line>9</line>
+          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\Utils\user_active.cs" containingFunctionPresentation="Constructor 'UsuarioSingleton'">
+            <startOffsets>
+              <option value="226" />
+            </startOffsets>
+            <endOffsets>
+              <option value="227" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
