@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="BookingListView" Height="720" Width="1280">
     <Window.Resources>
+        <Color x:Key="TuColorDeDetalle">#B0DAF1</Color> <SolidColorBrush x:Key="TuColorDeDetalleBrush" Color="{StaticResource TuColorDeDetalle}"/>
 
         <Style x:Key="labelStyle" TargetType="Label">
             <Setter Property="FontSize" Value="12" />
@@ -33,6 +34,28 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        
+     
+            <SolidColorBrush x:Key="DataGridRowBackgroundBrush" Color="White"/>
+            <SolidColorBrush x:Key="DataGridAlternatingRowBackgroundBrush" Color="#F0F0F0"/> <SolidColorBrush x:Key="DataGridBorderBrush" Color="{StaticResource TuColorDeDetalle}"/> <SolidColorBrush x:Key="DataGridHeaderBackgroundBrush" Color="{StaticResource TuColorDeDetalle}"/> <SolidColorBrush x:Key="DataGridCellBorderBrush" Color="#DDDDDD"/> <Style x:Key="DataGridCellStyle" TargetType="DataGridCell">
+                <Setter Property="BorderBrush" Value="{StaticResource DataGridCellBorderBrush}"/>
+                <Setter Property="BorderThickness" Value="0,0,0,1"/> <Setter Property="Padding" Value="5"/>
+                <Setter Property="TextBlock.TextAlignment" Value="Left"/> </Style>
+
+            <Style x:Key="DataGridColumnHeaderStyle" TargetType="DataGridColumnHeader">
+                <Setter Property="Background" Value="{StaticResource DataGridHeaderBackgroundBrush}"/>
+                <Setter Property="Foreground" Value="White"/> <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Padding" Value="8,5"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/> <Setter Property="BorderThickness" Value="0,0,0,1"/> <Setter Property="BorderBrush" Value="{StaticResource DataGridBorderBrush}"/>
+            </Style>
+
+            <Style x:Key="DataGridRowStyle" TargetType="DataGridRow">
+                <Setter Property="Height" Value="Auto"/> <Setter Property="VerticalContentAlignment" Value="Center"/> </Style>
+
+            <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="{StaticResource TuColorDeDetalle}"/>
+            <SolidColorBrush x:Key="ButtonForegroundBrush" Color="White"/>
+
+       
     </Window.Resources>
     
     <Grid>
@@ -80,32 +103,52 @@
             <TextBlock Text="Buscador" FontWeight="Bold" FontSize="32" HorizontalAlignment="Center"  Foreground="#B0DAF1"  />
             <Grid Grid.Row="1">
                 <StackPanel Background="#F4F4F4" Margin="24,7,24,50" Orientation="Vertical">
+                    <!-- Fecha de Entrada -->
                     <Label Content="Fecha Entrada" Margin="5" HorizontalAlignment="Center" Style="{StaticResource labelStyle}"/>
-                    <DatePicker Margin="0,12,0,0"
-                        x:Name="fechaInicio"
-                        IsDropDownOpen="False"
-                        PreviewTextInput="DatePicker_PreviewTextInput"
-                        PreviewKeyDown="DatePicker_PreviewKeyDown"
-                        GotFocus="DatePicker_GotFocus"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <DatePicker Margin="0,12,0,0"
+                                    x:Name="FechaInicio"
+                                    SelectedDateFormat="Short"
+                                    IsDropDownOpen="False"
+                                    PreviewTextInput="DatePicker_PreviewTextInput"
+                                    PreviewKeyDown="DatePicker_PreviewKeyDown"
+                                    GotFocus="DatePicker_GotFocus"
+                                    VerticalAlignment="Center" />
+                        <Button Width="24" Height="24" Margin="5,12,0,0" ToolTip="Limpiar Fecha"
+                                Click="ClearFechaInicio_Click">
+                            <Image Source="/Images/delete.png" Width="16" Height="16"/>
+                        </Button>
+                    </StackPanel>
+
+                    <!-- Fecha de Salida -->
                     <Label Content="Fecha Salida" HorizontalAlignment="Center" Margin="5" Style="{StaticResource labelStyle}"/>
-                    <DatePicker Margin="0,12,0,0"
-                        x:Name="fechaFin"
-                        IsDropDownOpen="False"
-                        PreviewTextInput="DatePicker_PreviewTextInput"
-                        PreviewKeyDown="DatePicker_PreviewKeyDown"
-                        GotFocus="DatePicker_GotFocus"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <DatePicker Margin="0,12,0,0"
+                                    x:Name="FechaFin"
+                                    SelectedDateFormat="Short"
+                                    IsDropDownOpen="False"
+                                    PreviewTextInput="DatePicker_PreviewTextInput"
+                                    PreviewKeyDown="DatePicker_PreviewKeyDown"
+                                    GotFocus="DatePicker_GotFocus"
+                                    VerticalAlignment="Center" />
+                        <Button Width="24" Height="24" Margin="5,12,0,0" ToolTip="Limpiar Fecha"
+                                Click="ClearFechaFin_Click">
+                            <Image Source="/Images/delete.png" Width="16" Height="16"/>
+                        </Button>
+                    </StackPanel>
                     <Label Content="Código" HorizontalAlignment="Center" Margin="5" Style="{StaticResource labelStyle}"/>
-                    <TextBox Width="170"/>
+                    <TextBox x:Name="CodigoTextBox" Width="170"/>
                     <Label Content="Usuario" Margin="5" HorizontalAlignment="Center" Style="{StaticResource labelStyle}"/>
-                    <TextBox Width="170"/>
+                    <TextBox x:Name="UsuarioTextBox" Width="170"/>
                     <Label Content="Tipo" Margin="5" HorizontalAlignment="Center" Style="{StaticResource labelStyle}"/>
-                    <ComboBox Width="170"/>
+                    <ComboBox x:Name="TipoComboBox" Width="170" Margin="10">
+                        <ComboBoxItem Content=""/>
+                        <ComboBoxItem Content="empleado"/>
+                        <ComboBoxItem Content="admin"/>
+                        <ComboBoxItem Content="cliente"/>
+                    </ComboBox>
                     <Border Background="#B0DAF1" CornerRadius="15" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="19" >
-                        <Button Background="Transparent" Content="Buscar" Width="80" Height="30" BorderThickness="0"/>
+                        <Button Background="Transparent" Content="Buscar" Width="80" Height="30" BorderThickness="0" Click="SearchBooking_OnClick"/>
                     </Border>
                 </StackPanel>
             </Grid>
@@ -117,66 +160,36 @@
             </Grid.RowDefinitions>
             <TextBlock Text="Resultado" FontWeight="Bold" FontSize="32" HorizontalAlignment="Left"  Foreground="#3C3C3C"/>
         
-        <DataGrid ItemsSource="{Binding Reservas}" AutoGenerateColumns="False" Margin="10"  Grid.Row="1">
-            <DataGrid.Columns>
-                <!-- ID Column -->
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+            <DataGrid Grid.Row="1"
+                      x:Name="ReservasDataGrid"
+                      AutoGenerateColumns="False"
+                      Margin="10"
+                      IsReadOnly="True"
+                      ItemsSource="{Binding Reservas}"
+                      RowBackground="{StaticResource DataGridRowBackgroundBrush}"
+                      AlternatingRowBackground="{StaticResource DataGridAlternatingRowBackgroundBrush}"
+                      BorderBrush="{StaticResource DataGridBorderBrush}"
+                      BorderThickness="1"
+                      GridLinesVisibility="Horizontal"
+                      HeadersVisibility="Column"
+                      CellStyle="{StaticResource DataGridCellStyle}"
+                      ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"
+                      RowStyle="{StaticResource DataGridRowStyle}"
+                      MouseDoubleClick="OpenDetails_OnMouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" Width="100" />
+                    <DataGridTextColumn Header="Fecha Inicio" Binding="{Binding FechaInicio, StringFormat=\{0:dd/MM/yyyy\}}" Width="120" />
+                    <DataGridTextColumn Header="Fecha Fin" Binding="{Binding FechaFin, StringFormat=\{0:dd/MM/yyyy\}}" Width="120" />
 
-                <!-- Foto Column -->
-                <DataGridTemplateColumn Header="Foto" Width="70">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Foto}" Width="40" Height="40" Stretch="UniformToFill" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Habitación" Binding="{Binding Habitacion.Nombre}" Width="150" />
 
-                <!-- Código Column -->
-                <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" Width="150"/>
+                    <DataGridTextColumn Header="Usuario" Binding="{Binding Usuario.Nombre}" Width="150" />
+                    <DataGridTextColumn Header="Email" Binding="{Binding Usuario.Email}" Width="200" />
+                    <DataGridTextColumn Header="Rol" Binding="{Binding Usuario.Tipo}" Width="100" />
 
-                <!-- Rol Column -->
-                <DataGridTextColumn Header="Rol" Binding="{Binding Rol}" Width="100"/>
-
-                <!-- Email Column -->
-                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="200"/>
-
-                <!-- Acción Column -->
-                <DataGridTemplateColumn Header="Acción" Width="150">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Button Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                                            CommandParameter="{Binding}" Width="30" Height="30" Margin="5">
-                                        <TextBlock Text="&#x270E;" 
-                                   FontSize="18" 
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"
-                                   FontFamily="Segoe UI Symbol"/>
-                                    </Button>
-                                    <!-- Edit Button -->
-                                <Button Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                                        CommandParameter="{Binding}" Width="30" Height="30" Margin="5">
-                                        <TextBlock Text="&#x2139;" 
-                                            FontSize="18" 
-                                        HorizontalAlignment="Center" 
-                                        VerticalAlignment="Center"
-                                        FontFamily="Segoe UI Symbol"/>
-                                    </Button>
-                                <!-- Delete Button -->
-                                <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                                        CommandParameter="{Binding}" Width="30" Height="30" Margin="5">
-                                        <TextBlock Text="&#x1F5D1;" 
-                                                FontSize="18" 
-                                                HorizontalAlignment="Center" 
-                                                VerticalAlignment="Center"
-                                                FontFamily="Segoe UI Symbol"/>
-                                </Button>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+                    <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=\{0:C\}}" Width="100" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Grid>
 </Window>

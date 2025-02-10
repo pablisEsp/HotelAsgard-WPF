@@ -1,4 +1,6 @@
-﻿public class UsuarioSingleton
+﻿using HotelAsgard.Models;
+
+public class UsuarioSingleton
 {
     private static UsuarioSingleton? instancia;
 
