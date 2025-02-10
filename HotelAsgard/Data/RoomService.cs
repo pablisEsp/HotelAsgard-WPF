@@ -16,7 +16,6 @@ public class RoomService
     
     public HttpClient API => _httpClient;
     
-    
 
     public async Task<List<Room>> GetRooms()
     {
@@ -40,6 +39,25 @@ public class RoomService
         {
             throw new Exception($"Error: {ex.Message}");
         }
-    } 
+    }
+    
+    public async Task<bool> ToggleRoomAvailability(Room room)
+    {
+        try
+        {
+            string url = $"http://localhost:3000/api/rooms/{room.Codigo}/toggle";
+            var response = await _httpClient.PutAsync(url, null);
+            response.EnsureSuccessStatusCode();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Error al cambiar el estado de la habitación: {ex.Message}");
+        }
+    }
+    
+    
+
+
     
 }
