@@ -33,8 +33,6 @@ namespace HotelAsgard.Views.BookingViews
         {
             try
             {
-                // Mostrar indicador de carga (opcional)
-                MessageBox.Show("Cargando reservas...");
 
                 // Obtener las reservas desde la API
                 var bookings = await _bookingService.GetBookings();
@@ -125,9 +123,9 @@ namespace HotelAsgard.Views.BookingViews
 
         private void AddBooking_Click(object sender, RoutedEventArgs e)
         {
-            BookByRoom bookByRoom = new BookByRoom();
-            bookByRoom.Show();
-            this.Close();
+          AddReservation  addReservation = new AddReservation();
+          addReservation.Show();  
+          this.Close();
         }
         
  

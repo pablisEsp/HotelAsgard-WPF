@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HotelAsgard.Views.BookingViews"
+        xmlns:utils="clr-namespace:HotelAsgard.Utils"
         mc:Ignorable="d"
         Title="AddReservation" Height="720" Width="1280">
     <Window.Resources>
+        <utils:ImageUrlConverter x:Key="ImageUrlConverter"/>
         <!-- Estilo para el TextBlock de título aa -->
         <Style x:Key="TituloTextBlockStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20" />
@@ -155,31 +156,34 @@
                 <RowDefinition Height="5*" />
             </Grid.RowDefinitions>
             <TextBlock Text="Resultados :"  Grid.Row="0" FontSize="42" FontWeight="Bold" />
-            <ScrollViewer HorizontalScrollBarVisibility="Auto"  Grid.Row="1" VerticalScrollBarVisibility="Disabled">
-                <ItemsControl ItemsSource="{Binding Habitaciones}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal" />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="10" Margin="10,10,10,20" Padding="10">
-                                <StackPanel Orientation="Vertical" Margin="5" Width="300">
-                                    <!-- Imagen -->
-                                    <Image Source="{Binding Imagenes[0]}" Height="150" Stretch="UniformToFill" Margin="0,0,0,10" />
-
-                                    <!-- Nombre -->
-                                    <TextBlock Text="{Binding Nombre}" FontSize="16" FontWeight="Bold" Margin="0,0,0,5" />
-
-                                    <!-- Precio -->
-                                    <TextBlock Text="{Binding Precio, StringFormat=Precio: {0:C}}" FontSize="14" Foreground="Gray" />
-                                </StackPanel>
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </ScrollViewer>
+            <ListView ItemsSource="{Binding Habitaciones}" 
+                      SelectedItem="{Binding HabitacionSeleccionada, Mode=TwoWay}"
+                      Grid.Row="1"
+                      MouseDoubleClick="CrearReserva_Click"
+                      SelectionMode="Single"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="10" Margin="10,10,10,20" Padding="10">
+                            <StackPanel Orientation="Vertical" Margin="5" Width="300">
+                                <!-- Imagen -->
+                                <Image Source="{Binding Imagenes[0], Converter={StaticResource ImageUrlConverter}}" 
+                                       Height="150" Stretch="UniformToFill" Margin="0,0,0,10"/>
+                                <!-- Nombre -->
+                                <TextBlock Text="{Binding Nombre}" FontSize="16" FontWeight="Bold" Margin="0,0,0,5"/>
+                                <!-- Precio -->
+                                <TextBlock Text="{Binding Precio, StringFormat=Precio: {0:C}}" FontSize="14" Foreground="Gray"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </Grid>
 </Window>

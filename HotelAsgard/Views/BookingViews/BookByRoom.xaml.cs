@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HotelAsgard.Models.Rooms;
 
 namespace HotelAsgard.Views.BookingViews
 {
@@ -20,40 +21,22 @@ namespace HotelAsgard.Views.BookingViews
     /// </summary>
     public partial class BookByRoom : Window
     {
-        public BookByRoom()
+        public Room SelectedRoom { get; set; }
+        public DateTime FechaEntrada { get; set; }
+        public DateTime FechaSalida { get; set; }
+        public int NumeroHuespedes { get; set; }
+
+        public BookByRoom(Room selectedRoom, DateTime fechaEntrada, DateTime fechaSalida, int numeroHuespedes)
         {
             InitializeComponent();
-
+            SelectedRoom = selectedRoom;
+            FechaEntrada = fechaEntrada;
+            FechaSalida = fechaSalida;
+            NumeroHuespedes = numeroHuespedes;
+            DataContext = this;
         }
 
-        private void DatePicker_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = true; // Cancela la entrada de texto
-        }
-
-        // Evita que el usuario use el teclado para editar el texto
-        private void DatePicker_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            // Permite solo teclas de navegación (flechas, tab, etc.)
-            if (e.Key != Key.Enter && e.Key != Key.Tab && e.Key != Key.Escape)
-            {
-                e.Handled = true; // Cancela la entrada de teclado
-            }
-        }
-
-        // Abre el calendario cuando el DatePicker recibe el foco
-        private void DatePicker_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (sender == fechaInicio)
-            {
-                fechaInicio.IsDropDownOpen = true;
-
-            }
-            else
-            {
-                fechaFin.IsDropDownOpen = true;
-            }
-        }
+      
     }
     
 

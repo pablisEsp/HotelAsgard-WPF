@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using HotelAsgard.Views.UserViews;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using HotelAsgard.ViewModels;
 
@@ -77,7 +78,48 @@ namespace HotelAsgard.Views.BookingViews
             addUser.Show();
             this.Close();
         }
+        private void CrearReserva_Click(object sender, RoutedEventArgs e)
+        {
+            // Obtiene el ViewModel asignado al DataContext
+            if (!(DataContext is AddReservationViewModel viewModel))
+            {
+                MessageBox.Show("Error al obtener los datos de la reserva.");
+                return;
+            }
 
+            // Verifica que se haya seleccionado una habitación
+            if (viewModel.HabitacionSeleccionada == null)
+            {
+                MessageBox.Show("Por favor, seleccione una habitación.");
+                return;
+            }
+
+            // Verifica que se hayan seleccionado las fechas
+            if (fechaInicio.SelectedDate == null || fechaFin.SelectedDate == null)
+            {
+                MessageBox.Show("Por favor, seleccione la fecha de entrada y salida.");
+                return;
+            }
+
+            // Obtiene el número de huéspedes (suponiendo que el ComboBox tiene items de tipo ComboBoxItem)
+            if (NumHuespedes.SelectedItem is ComboBoxItem item && 
+                int.TryParse(item.Content.ToString(), out int numHuespedes))
+            {
+                // Crea la nueva ventana BookByRoom pasándole los datos
+                BookByRoom bookWindow = new BookByRoom(
+                    viewModel.HabitacionSeleccionada,
+                    fechaInicio.SelectedDate.Value,
+                    fechaFin.SelectedDate.Value,
+                    numHuespedes);
+
+                bookWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione el número de huéspedes.");
+            }
+        }
+    
         private void SearchBooking_Click(object sender, RoutedEventArgs e)
         {
             AddReservation addReservation = new AddReservation();   
@@ -87,8 +129,9 @@ namespace HotelAsgard.Views.BookingViews
 
         private void AddBooking_Click(object sender, RoutedEventArgs e)
         {
-            BookByRoom bookByRoom = new BookByRoom();
-            bookByRoom.Show();
+            AddReservation addReservation = new AddReservation();
+            addReservation.Show();
+            addReservation.Show();
             this.Close();
         }
 
@@ -120,6 +163,7 @@ namespace HotelAsgard.Views.BookingViews
             }
         }
 
+      
     }
 }
 

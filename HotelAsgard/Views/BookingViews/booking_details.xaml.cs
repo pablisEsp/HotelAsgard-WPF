@@ -26,7 +26,7 @@ namespace HotelAsgard.Views.BookingViews
             DataContext = reserva;
             if (reserva.Habitacion.Imagenes.Count > 0)
             {
-                string urlFinal = "http://localhost:3000"+reserva.Habitacion.Imagenes[0].ToString();
+                string urlFinal = "http://localhost:3000"+reserva.Habitacion.Imagenes[0];
                 LoadImage(urlFinal);
             }
         }

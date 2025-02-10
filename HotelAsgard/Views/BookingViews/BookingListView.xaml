@@ -91,7 +91,7 @@
             </MenuItem>
         </Menu>
 
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
             <Image Source="../../Images/logo_con_fondo.png" Width="80" Height="80" />
             <TextBlock Text="Hotel Asgard" VerticalAlignment="Center" Foreground="#3C3C3C" FontWeight="DemiBold" FontSize="22"/>
         </StackPanel>
