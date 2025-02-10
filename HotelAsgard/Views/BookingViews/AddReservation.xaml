@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AddReservation" Height="720" Width="1280">
     <Window.Resources>
-        <!-- Estilo para el TextBlock de título aa -->
+        <!-- Estilo para el TextBlock de título aaa -->
         <Style x:Key="TituloTextBlockStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20" />
 
