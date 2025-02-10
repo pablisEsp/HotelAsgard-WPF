@@ -6,7 +6,7 @@ using HotelAsgard.Models.Rooms;
 
 namespace HotelAsgard.ViewModels
 {
-    public class RoomViewModel : INotifyPropertyChanged
+    public class RoomVM : INotifyPropertyChanged
     {
         private readonly RoomService _roomService;
         private ObservableCollection<Room> _rooms;
@@ -21,7 +21,7 @@ namespace HotelAsgard.ViewModels
             }
         }
 
-        public RoomViewModel()
+        public RoomVM()
         {
             _roomService = new RoomService();
             _rooms = new ObservableCollection<Room>();
