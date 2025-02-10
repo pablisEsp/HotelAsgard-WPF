@@ -1,5 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
+using HotelAsgard.Data;
+using HotelAsgard.Models.Rooms;
 using HotelAsgard.ViewModels;
 using HotelAsgard.Views.BookingViews;
 using HotelAsgard.Views.UserViews;
@@ -13,14 +16,14 @@ namespace HotelAsgard.Views.RoomsViews
     public partial class searchRooms : Window
     {
         //public ObservableCollection<Habitacion> Habitaciones { get; set; }
-        public RoomViewModel RoomViewModel { get; set; }
+        public RoomVM RoomVm { get; set; }
 
 
         public searchRooms()
         {
             InitializeComponent();
-            RoomViewModel = new RoomViewModel();
-            DataContext = RoomViewModel; // Enlaza la UI con el ViewModel
+            RoomVm = new RoomVM();
+            DataContext = RoomVm; // Enlaza la UI con el ViewModel
             
             
         }
@@ -85,6 +88,41 @@ namespace HotelAsgard.Views.RoomsViews
             iv.Show();
             this.Close();
         }
+    
+        private RoomService _roomService = new RoomService();
+
+        private async void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox checkBox && checkBox.DataContext is Room room)
+            {
+                try
+                {
+                    // Invertir el estado de Habilitada basado en la casilla marcada
+                    bool newStatus = checkBox.IsChecked == true;
+                    room.Habilitada = newStatus;
+
+                    // Llamar a la API para actualizar el estado en la base de datos
+                    bool success = await _roomService.ToggleRoomAvailability(room);
+            
+                    if (!success)
+                    {
+                        // Si la API falla, revertimos el cambio en la UI
+                        room.Habilitada = !newStatus;
+                        MessageBox.Show("Error al actualizar la habitación.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    
+                    MessageBox.Show("Habitación " + room.Nombre + (room.Habilitada ? " Habilitada" : " Deshabilitada"));
+                    
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        
     }
     
 }

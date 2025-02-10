@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HotelAsgard.Views.RoomsViews"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="Buscar Habitaciones" Height="720" Width="1280">
     <Grid>
@@ -171,9 +172,11 @@
                   <!--VirtualizingPanel.IsVirtualizing="True"
                   VirtualizingPanel.VirtualizationMode="Recycling"-->
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" Width="0.60*" />
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*" />
-                <DataGridTextColumn Header="Huéspedes" Binding="{Binding NumHuespedes}" Width="0.60*" />
+                <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" Width="*"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
+                <DataGridTextColumn Header="Categoria" Binding="{Binding Categoria}" Width="*"/>
+                <DataGridTextColumn Header="Tamaño" Binding="{Binding Tamanyo}" Width="*"/>
+                <DataGridTextColumn Header="Huéspedes" Binding="{Binding NumPersonas}" Width="*"/>
                 <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" Width="*">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -182,22 +185,27 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="*" />
-                <DataGridCheckBoxColumn Header="Oferta" Binding="{Binding Oferta}" Width="*" />
-                <DataGridCheckBoxColumn Header="Cuna" Binding="{Binding Cuna}" Width="*" />
-                <DataGridCheckBoxColumn Header="Cama Extra" Binding="{Binding CamaExtra}" Width="*" />
-                <DataGridCheckBoxColumn Header="Ocupada" Binding="{Binding Ocupada}" Width="*" />
-                <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}" Width="*" />
-
+                <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="0.5*"/>
+                
+                <!-- Columna de CheckBox para habilitar/deshabilitar habitación -->
+                <DataGridTemplateColumn Header="Habilitada">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Habilitada, Mode=TwoWay}" Click="CheckBox_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
                 <!-- Columna de iconos -->
-                <DataGridTemplateColumn Header="Acciones" Width="Auto">
+                <DataGridTemplateColumn Header="Acciones" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <!-- Botón Editar -->
                                 <Button Content="✏️" ToolTip="Editar" Command="{Binding DataContext.EditarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" Click="editRoom_Click"/>
-                                <!-- Botón Eliminar -->
-                                <Button Content="❌" ToolTip="Eliminar" Command="{Binding DataContext.EliminarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" Click="deleteRoom_Click"/>
+                                <!-- Botón Deshabilitar
+                                <Button Content="❌" ToolTip="Deshabilitar" Command="{Binding DataContext.EliminarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" Click="deleteRoom_Click"/>
+                                -->
                                 <!-- Botón Más Información -->
                                 <Button Content="ℹ️" ToolTip="Más Información" Command="{Binding DataContext.MasInfoCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" Click="roomInfo_Click"/>
                             </StackPanel>
