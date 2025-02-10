@@ -53,7 +53,7 @@
 
             <!-- Sección de Reservas -->
             <MenuItem Style="{StaticResource menuItemStyle}"  Header="Reservas" FontSize="16" FontWeight="Bold">
-                <MenuItem Header="Buscar Reservas" Click="SearchBooking_Click" />
+                <MenuItem Header="Lista Reservas" Click="SearchBooking_Click" />
                 <MenuItem Header="Añadir Reservas" Click="AddBooking_Click" />
             </MenuItem>
 

@@ -122,8 +122,8 @@ namespace HotelAsgard.Views.BookingViews
     
         private void SearchBooking_Click(object sender, RoutedEventArgs e)
         {
-            AddReservation addReservation = new AddReservation();   
-            addReservation.Show();
+            BookingListView bookingListView = new BookingListView();   
+            bookingListView.Show();
             this.Close();
         }
 
