@@ -3,6 +3,7 @@ using HotelAsgard.Views.UserViews;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using HotelAsgard.Models.Rooms;
 using HotelAsgard.ViewModels;
 
 namespace HotelAsgard.Views.BookingViews
@@ -80,6 +81,11 @@ namespace HotelAsgard.Views.BookingViews
         }
         private void CrearReserva_Click(object sender, RoutedEventArgs e)
         {
+            if (!(sender is Button BotonReserva))
+            {
+                MessageBox.Show("Error al identificar el botón.");
+                return;
+            }
             // Obtiene el ViewModel asignado al DataContext
             if (!(DataContext is AddReservationViewModel viewModel))
             {
@@ -87,13 +93,15 @@ namespace HotelAsgard.Views.BookingViews
                 return;
             }
 
+            var habitacionSeleccionada =  BotonReserva.DataContext as Room;
+            viewModel.HabitacionSeleccionada = habitacionSeleccionada;
             // Verifica que se haya seleccionado una habitación
             if (viewModel.HabitacionSeleccionada == null)
             {
                 MessageBox.Show("Por favor, seleccione una habitación.");
                 return;
             }
-
+            
             // Verifica que se hayan seleccionado las fechas
             if (fechaInicio.SelectedDate == null || fechaFin.SelectedDate == null)
             {
@@ -122,8 +130,8 @@ namespace HotelAsgard.Views.BookingViews
     
         private void SearchBooking_Click(object sender, RoutedEventArgs e)
         {
-            AddReservation addReservation = new AddReservation();   
-            addReservation.Show();
+            BookingListView bookingListView = new BookingListView();   
+            bookingListView.Show();
             this.Close();
         }
 

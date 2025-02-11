@@ -7,7 +7,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7231264f-3ac7-4bfa-b42f-c742d79c953a" name="Changes" comment="Update things of FranRama" />
+    <list default="true" id="7231264f-3ac7-4bfa-b42f-c742d79c953a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/HotelAsgard/Utils/ImageUrlCovertes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/App.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/App.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/ViewModels/AddReservationViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/ViewModels/AddReservationViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/AddReservation.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/AddReservation.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/AddReservation.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/AddReservation.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookByRoom.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookByRoom.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookingListView.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookingListView.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookingListView.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookingListView.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/booking_details.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/booking_details.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/searchRooms.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/searchRooms.xaml.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +33,6 @@
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
-        <entry key="$PROJECT_DIR$" value="FranRama" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,21 +79,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.HotelAsgard.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.HotelAsgard.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;FranRama&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="HotelAsgard" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -120,9 +132,7 @@
       <workItem from="1739045836403" duration="1028000" />
       <workItem from="1739088807401" duration="10606000" />
       <workItem from="1739181698571" duration="8204000" />
-      <workItem from="1739197917735" duration="5887000" />
-      <workItem from="1739209868311" duration="6200000" />
-      <workItem from="1739287750063" duration="1200000" />
+      <workItem from="1739197917735" duration="719000" />
     </task>
     <task id="LOCAL-00001" summary="changes on AddReservation.xaml.cs">
       <option name="closed" value="true" />
@@ -188,31 +198,7 @@
       <option name="project" value="LOCAL" />
       <updated>1739184909744</updated>
     </task>
-    <task id="LOCAL-00009" summary="we need to change the menu&#10;and the addResevatio">
-      <option name="closed" value="true" />
-      <created>1739199204588</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1739199204588</updated>
-    </task>
-    <task id="LOCAL-00010" summary="theres things">
-      <option name="closed" value="true" />
-      <created>1739204146424</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1739204146424</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Update things of FranRama">
-      <option name="closed" value="true" />
-      <created>1739292209011</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1739292209011</updated>
-    </task>
-    <option name="localTasksCounter" value="12" />
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,12 +226,52 @@
     <MESSAGE value="things changed of fran rama" />
     <MESSAGE value="no se que es esto , pero esta en el git ignore" />
     <MESSAGE value="added the main views with the ddbb" />
-    <MESSAGE value="we need to change the menu&#10;and the addResevatio" />
-    <MESSAGE value="theres things" />
-    <MESSAGE value="Update things of FranRama" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update things of FranRama" />
+    <option name="LAST_COMMIT_MESSAGE" value="added the main views with the ddbb" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/HotelAsgard/Utils/user_active.cs</url>
+          <line>7</line>
+          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\Utils\user_active.cs" containingFunctionPresentation="Constructor 'UsuarioSingleton'">
+            <startOffsets>
+              <option value="214" />
+            </startOffsets>
+            <endOffsets>
+              <option value="215" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/HotelAsgard/Views/BookingViews/booking_details.xaml.cs</url>
+          <line>29</line>
+          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\Views\BookingViews\booking_details.xaml.cs" containingFunctionPresentation="Constructor 'booking_details'">
+            <startOffsets>
+              <option value="871" />
+            </startOffsets>
+            <endOffsets>
+              <option value="891" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/HotelAsgard/Data/BookingService.cs</url>
+          <line>110</line>
+          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\Data\BookingService.cs" containingFunctionPresentation="Method 'SearchFreeRooms'">
+            <startOffsets>
+              <option value="3149" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3262" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Frame#HotelAsgard.Views.BookingViews.BookingListView..ctor" memberName="this" />

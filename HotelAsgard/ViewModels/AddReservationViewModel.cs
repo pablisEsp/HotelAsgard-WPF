@@ -29,11 +29,6 @@ namespace HotelAsgard.ViewModels
                 {
                     _habitacionSeleccionada = value;
                     OnPropertyChanged();
-                    if (_habitacionSeleccionada != null)
-                    {
-                        // Llama al método que procesa la habitación seleccionada
-                        OnRoomSelected(_habitacionSeleccionada);
-                    }
                 }
             }
         }
@@ -82,7 +77,7 @@ namespace HotelAsgard.ViewModels
             }
         }
 
-        // Este método se usa si decides mantener el comando SeleccionarHabitacion
+        
         private void SeleccionarHabitacion(object obj)
         {
             if (obj is Room room)
@@ -91,13 +86,7 @@ namespace HotelAsgard.ViewModels
             }
         }
 
-        // Método que se invoca al seleccionar una habitación
-        private void OnRoomSelected(Room room)
-        {
-            MessageBox.Show($"Habitación seleccionada: {room.Nombre}", 
-                            "Selección", MessageBoxButton.OK, MessageBoxImage.Information);
-            // Aquí podrías agregar lógica adicional, por ejemplo, navegar a otra vista o actualizar otras propiedades
-        }
+        
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
