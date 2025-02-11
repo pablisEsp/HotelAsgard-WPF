@@ -7,17 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7231264f-3ac7-4bfa-b42f-c742d79c953a" name="Changes" comment="we need to change the menu&#10;and the addResevatio">
+    <list default="true" id="7231264f-3ac7-4bfa-b42f-c742d79c953a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelAsgard/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/MainWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/ViewModels/AddReservationViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/ViewModels/AddReservationViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/AddReservation.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/AddReservation.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/AddReservation.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/AddReservation.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookingListView.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookingListView.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookingListView.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookingListView.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/searchRooms.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/searchRooms.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/searchRooms.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/searchRooms.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/initial_view.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/initial_view.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/initial_view.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/initial_view.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +24,6 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
@@ -54,16 +47,16 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3146526cace5c153434b15691561ac6ba930a9e7453c78d803b9b6fa41a65/StringContent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5db77782baa778fabcf4eeb678821516f8a4a5085c75d2d913faffe62b135af/Selector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c439425da351c75ac7d966a1cc8324b51a9c471865af79d2f2f3fcb65e392/HttpClient.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Data/RoomService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Data/RoomService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/ViewModels/AddReservationViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Views/BookingViews/AddReservation.xaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Views/BookingViews/AddReservation.xaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Views/BookingViews/AddReservation.xaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Views/BookingViews/AddReservation.xaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/BookingViews/BookByRoom.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/BookingViews/BookingListView.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/RoomsViews/addRoom.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/RoomsViews/searchRooms.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/UserViews/LoginView.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/UserViews/SearchUserWindow.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/initial_view.g.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -78,21 +71,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.HotelAsgard.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "FranRama",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.HotelAsgard.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;FranRama&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="HotelAsgard" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -131,7 +124,8 @@
       <workItem from="1739045836403" duration="1028000" />
       <workItem from="1739088807401" duration="10606000" />
       <workItem from="1739181698571" duration="8204000" />
-      <workItem from="1739197917735" duration="5800000" />
+      <workItem from="1739197917735" duration="5887000" />
+      <workItem from="1739209868311" duration="6200000" />
     </task>
     <task id="LOCAL-00001" summary="changes on AddReservation.xaml.cs">
       <option name="closed" value="true" />
@@ -205,7 +199,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739199204588</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="theres things">
+      <option name="closed" value="true" />
+      <created>1739204146424</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1739204146424</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,9 +236,27 @@
     <MESSAGE value="no se que es esto , pero esta en el git ignore" />
     <MESSAGE value="added the main views with the ddbb" />
     <MESSAGE value="we need to change the menu&#10;and the addResevatio" />
-    <option name="LAST_COMMIT_MESSAGE" value="we need to change the menu&#10;and the addResevatio" />
+    <MESSAGE value="theres things" />
+    <option name="LAST_COMMIT_MESSAGE" value="theres things" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/HotelAsgard/ViewModels/BookingListViewModel.cs</url>
+          <line>10</line>
+          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\ViewModels\BookingListViewModel.cs" containingFunctionPresentation="Property 'Reservas'">
+            <startOffsets>
+              <option value="251" />
+            </startOffsets>
+            <endOffsets>
+              <option value="255" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Frame#HotelAsgard.Views.BookingViews.BookingListView..ctor" memberName="this" />
