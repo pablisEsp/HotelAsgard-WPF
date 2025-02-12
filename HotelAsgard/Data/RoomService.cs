@@ -17,7 +17,7 @@ public class RoomService
     public HttpClient API => _httpClient;
     
 
-    public async Task<List<Room>> GetRooms()
+    public async Task<List<Room>> GetRooms() //function to get all rooms
     {
         try
         {
@@ -41,7 +41,7 @@ public class RoomService
         }
     }
     
-    public async Task<bool> ToggleRoomAvailability(Room room)
+    public async Task<bool> ToggleRoomAvailability(Room room) // function to toggle availability
     {
         try
         {
@@ -56,7 +56,24 @@ public class RoomService
         }
     }
     
-    
+    public async Task<List<Category>> GetCategorias() // function to get categories
+    {
+        try
+        {
+            string url = "http://localhost:3000/api/rooms/categories"; // Endpoint del backend
+            var response = await _httpClient.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync();
+            var categorias = JsonConvert.DeserializeObject<List<Category>>(json);
+
+            return categorias;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Error al obtener las categorías: {ex.Message}");
+        }
+    }
 
 
     
