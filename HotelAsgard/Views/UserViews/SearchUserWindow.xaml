@@ -79,20 +79,22 @@
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1" Background="#b0daf1" Margin="10,10,10,10">
-            <DataGrid>
+            <DataGrid ItemsSource="{Binding ListaUsuarios}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-    <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" Width="100" />
-    <DataGridTextColumn Header="Fecha Inicio" Binding="{Binding FechaInicio, StringFormat=\{0:dd/MM/yyyy\}}" Width="120" />
-    <DataGridTextColumn Header="Fecha Fin" Binding="{Binding FechaFin, StringFormat=\{0:dd/MM/yyyy\}}" Width="120" />
-
-    <DataGridTextColumn Header="Habitación" Binding="{Binding Habitacion.Nombre}" Width="150" />
-
-    <DataGridTextColumn Header="Usuario" Binding="{Binding Usuario.Nombre}" Width="150" />
-    <DataGridTextColumn Header="Email" Binding="{Binding Usuario.Email}" Width="200" />
-    <DataGridTextColumn Header="Rol" Binding="{Binding Usuario.Tipo}" Width="100" />
-
-    <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=\{0:C\}}" Width="100" />
-</DataGrid.Columns>
+                    <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="150" />
+                    <DataGridTextColumn Header="Apellido 1" Binding="{Binding Apellido1}" Width="100" />
+                    <DataGridTextColumn Header="Apellido 2" Binding="{Binding Apellido2}" Width="100" />
+                    <DataGridTextColumn Header="DNI/Pasaporte" Binding="{Binding DNIPasaporte}" Width="120" />
+                    <DataGridTextColumn Header="Móvil" Binding="{Binding Movil}" Width="120" />
+                    <DataGridTextColumn Header="Fecha Nacimiento" 
+                            Binding="{Binding FechaNacimiento, StringFormat=\{0:dd/MM/yyyy\}}" 
+                            Width="120" />
+                    <DataGridTextColumn Header="Fecha Registro" 
+                            Binding="{Binding FechaRegistro, StringFormat=\{0:dd/MM/yyyy\}}" 
+                            Width="120" />
+                    <DataGridTextColumn Header="Rol" Binding="{Binding Tipo}" Width="100" />
+                    <DataGridTextColumn Header="Reservas" Binding="{Binding Reservas.Count}" Width="80" />
+                </DataGrid.Columns>
             </DataGrid>
         </Grid>
 

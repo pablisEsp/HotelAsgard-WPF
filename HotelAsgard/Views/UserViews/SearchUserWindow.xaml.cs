@@ -22,6 +22,7 @@ namespace HotelAsgard.Views.UserViews
         public SearchUserWindow()
         {
             InitializeComponent();
+            DataContext = new UsuarioViewModel();
         }
     }
 }
