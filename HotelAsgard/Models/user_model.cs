@@ -1,6 +1,6 @@
 ﻿public class Usuario
 {
-    public Usuario(int id, string nombre, string password, string apellido1, string apellido2, string dNIPasaporte, string movil, string fechaNacimiento, string fechaRegistro, string tipo, List<string> reservas, List<string> imagenes, string provincia, string sexo)
+    public Usuario(int id, string nombre, string password, string apellido1, string apellido2, string dNIPasaporte, string movil, string fechaNacimiento, string fechaRegistro, string tipo, List<string> reservas, List<string> imagenes)
     {
         Id = id;
         Nombre = nombre;
@@ -14,8 +14,6 @@
         Tipo = tipo;
         Reservas = reservas;
         Imagenes = imagenes;
-        Provincia = provincia;
-        Sexo = sexo;
     }
 
     public int Id { get; set; }
@@ -30,6 +28,6 @@
     public string Tipo { get; set; }
     public List<string> Reservas { get; set; } // Almacena IDs de reservas asociadas
     public List<string> Imagenes { get; set; } // Almacena rutas o URLs de imágenes
-    public string Provincia { get; set; }
-    public string Sexo { get; set; }
+
 }
+

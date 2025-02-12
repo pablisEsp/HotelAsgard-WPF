@@ -58,39 +58,20 @@
                     <Label FontFamily="Mongolian Baiti" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="228" >BUSCADOR</Label>
 
                     <StackPanel Grid.Row="1" Orientation="Vertical">
-                        <TextBlock Margin="10,0,0,0" FontSize="15" FontFamily="Mongolian Baiti">Rol</TextBlock>
-                        <ComboBox Margin="10,5,10,15" HorizontalAlignment="Stretch">
-                            <ComboBoxItem FontFamily="Mongolian Baiti">Cliente</ComboBoxItem>
-                            <ComboBoxItem FontFamily="Mongolian Baiti">Empleado</ComboBoxItem>
-                            <ComboBoxItem FontFamily="Mongolian Baiti">Administrador</ComboBoxItem>
-                        </ComboBox>
+                        <TextBlock Margin="10,0,0,0" FontSize="15" FontFamily="Mongolian Baiti">Nombre</TextBlock>
+                        <TextBox Margin="10,0,10,10" FontFamily="Mongolian Baiti" FontSize="20"></TextBox>
 
 
-                        <TextBlock Margin="10,0,0,5" FontSize="15" FontFamily="Mongolian Baiti">Usuarios</TextBlock>
-                        <StackPanel HorizontalAlignment="Stretch" Height="20" Orientation="Horizontal" Margin="0,0,0,15">
-                            <CheckBox Content="Nuevos" FontSize="15" FontFamily="Mongolian Baiti" Margin="10,0,0,0" HorizontalAlignment="Left"></CheckBox>
-                            <CheckBox Content="Repetidor" FontSize="15" FontFamily="Mongolian Baiti" Margin="10,0,0,0" HorizontalAlignment="Left"></CheckBox>
-                        </StackPanel>
+                        <TextBlock Margin="10,0,0,5" FontSize="15" FontFamily="Mongolian Baiti">Apellido</TextBlock>
+                        <TextBox Margin="10,0,10,10" FontFamily="Mongolian Baiti" FontSize="20"></TextBox>
 
-                        <TextBlock Margin="10,0,0,5" FontSize="15" FontFamily="Mongolian Baiti">Fecha de nacimiento</TextBlock>
-                        <DatePicker Margin="10,0,10,20" ></DatePicker>
 
-                        <TextBlock Margin="10,0,0,5" FontSize="15" FontFamily="Mongolian Baiti">Ciudad</TextBlock>
-                        <ComboBox Margin="10,5,10,20" HorizontalAlignment="Stretch">
-                            <ComboBoxItem FontFamily="Mongolian Baiti">Alicante</ComboBoxItem>
-                            <ComboBoxItem FontFamily="Mongolian Baiti">Madrid</ComboBoxItem>
-                            <ComboBoxItem FontFamily="Mongolian Baiti">Cataluña</ComboBoxItem>
-                            <ComboBoxItem FontFamily="Mongolian Baiti">Valencia</ComboBoxItem>
-                            <ComboBoxItem FontFamily="Mongolian Baiti">Castellon</ComboBoxItem>
-                            <ComboBoxItem FontFamily="Mongolian Baiti">Jaen</ComboBoxItem>
-                        </ComboBox>
+                        <TextBlock Margin="10,0,0,5" FontSize="15" FontFamily="Mongolian Baiti">Correo electronido</TextBlock>
+                        <TextBox Margin="10,0,10,10" FontFamily="Mongolian Baiti" FontSize="20"></TextBox>
 
-                        <TextBlock Margin="10,0,0,5" FontSize="15" FontFamily="Mongolian Baiti">Sexo</TextBlock>
-                        <StackPanel HorizontalAlignment="Stretch" Height="20" Orientation="Horizontal" Margin="0,0,0,15">
-                            <RadioButton GroupName="Sexo" Content="H" FontSize="15" FontFamily="Mongolian Baiti" Margin="10,0,0,0" HorizontalAlignment="Left"></RadioButton>
-                            <RadioButton GroupName="Sexo" Content="M" FontSize="15" FontFamily="Mongolian Baiti" Margin="10,0,0,0" HorizontalAlignment="Left"></RadioButton>
-                            <RadioButton GroupName="Sexo" Content="Indeterminado" FontSize="15" FontFamily="Mongolian Baiti" Margin="10,0,0,0" HorizontalAlignment="Left"></RadioButton>
-                        </StackPanel>
+                        <TextBlock Margin="10,0,0,5" FontSize="15" FontFamily="Mongolian Baiti">Dni</TextBlock>
+                        <TextBox Margin="10,0,10,20" FontFamily="Mongolian Baiti" FontSize="20"></TextBox>
+
                         <Button Content="Buscar" Height="50" Width="150" ></Button>
                     </StackPanel>
                 </Grid>
@@ -98,9 +79,21 @@
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1" Background="#b0daf1" Margin="10,10,10,10">
-            <ScrollViewer >
+            <DataGrid>
+                <DataGrid.Columns>
+    <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" Width="100" />
+    <DataGridTextColumn Header="Fecha Inicio" Binding="{Binding FechaInicio, StringFormat=\{0:dd/MM/yyyy\}}" Width="120" />
+    <DataGridTextColumn Header="Fecha Fin" Binding="{Binding FechaFin, StringFormat=\{0:dd/MM/yyyy\}}" Width="120" />
 
-            </ScrollViewer>
+    <DataGridTextColumn Header="Habitación" Binding="{Binding Habitacion.Nombre}" Width="150" />
+
+    <DataGridTextColumn Header="Usuario" Binding="{Binding Usuario.Nombre}" Width="150" />
+    <DataGridTextColumn Header="Email" Binding="{Binding Usuario.Email}" Width="200" />
+    <DataGridTextColumn Header="Rol" Binding="{Binding Usuario.Tipo}" Width="100" />
+
+    <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=\{0:C\}}" Width="100" />
+</DataGrid.Columns>
+            </DataGrid>
         </Grid>
 
         <Grid Grid.Column="1" Margin="10,10,10,10">
