@@ -12,7 +12,7 @@ namespace HotelAsgard.Views.BookingViews
     {
         public AddReservation()
         {
-            InitializeComponent();
+              InitializeComponent();
            
 
             DataContext = new AddReservationViewModel();
