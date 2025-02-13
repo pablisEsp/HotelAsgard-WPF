@@ -1,9 +1,14 @@
-﻿using Microsoft.Win32;
+﻿using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Microsoft.Win32;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media.Imaging;
+using HotelAsgard.Data;
 using HotelAsgard.Models.Rooms;
+using HotelAsgard.ViewModels;
+using Newtonsoft.Json;
 
 namespace HotelAsgard.Views.RoomsViews
 {
@@ -12,87 +17,148 @@ namespace HotelAsgard.Views.RoomsViews
     /// </summary>
     public partial class addRoom : Window
     {
-        Room r = new Room();
-        
+        private readonly RoomService _roomService;
+        private readonly AddRoomVM _viewModel;
+        private Room _room;
+        private List<string> _imagePaths = new List<string>();
+
         public addRoom(string titleText, string buttonText)
         {
             InitializeComponent();
+            _roomService = new RoomService();
+            _viewModel = new AddRoomVM();
+            _room = new Room();
+            
+            DataContext = _viewModel;
+
             title.Text = titleText;
             this.Title = titleText;
-
             sendButton.Content = buttonText;
-            
-            
-        } 
 
-        public addRoom(string titleText, string buttonText, string name, int guests, string description, bool cradle, bool extraBed, int price, bool info)
+            // Obtener nuevo código desde la API
+            LoadRoomData();
+        }
+
+        private async void LoadRoomData()
         {
-            if (info)
-            {
-                roomName.IsReadOnly = true;
-                maxGuests.IsReadOnly = true;
-                DescriptionRichTextBox.IsReadOnly = true;
-                //cradleCheck.IsEnabled = false;
-                //extraBedCheck.IsEnabled = false;
-                roomPrice.IsReadOnly = true;
-                sendButton.Visibility = Visibility.Collapsed;
-            }
-
-            InitializeComponent();
-            title.Text = titleText;
-            this.Title = titleText;
-            roomName.Text = name;
-            //maxGuests.SelectedIndex = guests-1;
-
-            // access the flowdocument content as
-            FlowDocument flowDoc = DescriptionRichTextBox.Document;
-
-            // create new content
-            flowDoc.Blocks.Clear(); // clear previous content
-            flowDoc.Blocks.Add(new Paragraph(new Run(description)));
-            
-
-            //cradleCheck.IsChecked = cradle;
-            //extraBedCheck.IsChecked = cradle;
-            roomPrice.Text = price + "";
-
-            sendButton.Content = buttonText;
-
-
+            _room.Codigo = await _roomService.ObtenerNuevoCodigoAsync();
+            roomCode.Text = _room.Codigo;
         }
 
         private void UploadImageButton_Click(object sender, RoutedEventArgs e)
         {
-            // Crear un diálogo para seleccionar archivos
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                Filter = "Archivos de imagen (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp", // Filtro para imágenes
-                Title = "Seleccionar una imagen"
+                Multiselect = true,
+                Filter = "Imágenes (*.png;*.jpg;*.jpeg)|*.png;*.jpg;*.jpeg"
             };
 
-            // Mostrar el diálogo
             if (openFileDialog.ShowDialog() == true)
             {
-                try
+                _imagePaths.AddRange(openFileDialog.FileNames);
+                UpdateImageList();
+            }
+        }
+
+        private void UpdateImageList()
+        {
+            ImageListBox.Items.Clear();
+
+            if (_imagePaths.Count > 0)
+            {
+                // Mostrar la primera imagen como principal
+                PreviewImage.Source = new BitmapImage(new Uri(_imagePaths[0]));
+
+                // Agregar imágenes secundarias a la ListBox (excepto la primera)
+                for (int i = 1; i < _imagePaths.Count; i++)
                 {
-                    // Cargar la imagen seleccionada en el control Image
-                    BitmapImage bitmap = new BitmapImage(new Uri(openFileDialog.FileName));
-                    //PreviewImage.Source = bitmap;
+                    ImageListBox.Items.Add(_imagePaths[i]);
                 }
-                catch (Exception ex)
+            }
+            else
+            {
+                PreviewImage.Source = null;
+            }
+        }
+
+        private void DeleteSelectedImage_Click(object sender, RoutedEventArgs e)
+        {
+            if (ImageListBox.SelectedIndex >= 0)
+            {
+                int selectedIndex = ImageListBox.SelectedIndex + 1; // +1 porque la principal no está en la lista
+
+                if (selectedIndex < _imagePaths.Count)
                 {
-                    MessageBox.Show($"Error al cargar la imagen: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    _imagePaths.RemoveAt(selectedIndex);
+                    UpdateImageList();
                 }
             }
         }
 
-        private void RoomCategory_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SetAsMainImage_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (ImageListBox.SelectedIndex >= 0)
+            {
+                int selectedIndex = ImageListBox.SelectedIndex + 1; // +1 porque la principal no está en la lista
+                if (selectedIndex < _imagePaths.Count)
+                {
+                    // Intercambiar la imagen seleccionada con la principal
+                    string selectedImage = _imagePaths[selectedIndex];
+                    _imagePaths.RemoveAt(selectedIndex);
+                    _imagePaths.Insert(0, selectedImage);
+
+                    UpdateImageList();
+                }
+            }
         }
-        
-        
+
+        private void DeleteAllImages_Click(object sender, RoutedEventArgs e)
+        {
+            _imagePaths.Clear();
+            PreviewImage.Source = null; // Vaciar la imagen principal
+            UpdateImageList();
+        }
+
+        private async void SendButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Convertir la descripción de RichTextBox a texto plano
+                TextRange textRange = new TextRange(DescriptionRichTextBox.Document.ContentStart, DescriptionRichTextBox.Document.ContentEnd);
+                _room.Descripcion = textRange.Text.Trim();
+
+                // Obtener valores de la UI
+                _room.Nombre = roomName.Text;
+                _room.Categoria = roomCategory.Text;
+                _room.NumPersonas = int.Parse(maxGuests.Text);
+                _room.Precio = decimal.Parse(roomPrice.Text);
+                _room.Habilitada = true;
+                _room.Imagenes = new List<string>(_imagePaths);
+
+                // Convertir camas y servicios en JSON
+                string camasJson = JsonConvert.SerializeObject(new List<Bed>()); // Puedes cambiarlo por la lista real de camas
+                string serviciosJson = JsonConvert.SerializeObject(new List<string>()); // Puedes cambiarlo por la lista real de servicios
+
+                bool success = await _roomService.CrearHabitacionAsync(_room, _imagePaths);
+
+                if (success)
+                {
+                    MessageBox.Show("Habitación creada con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    _imagePaths.Clear();
+                    UpdateImageList();
+                    searchRooms sr = new searchRooms();
+                    sr.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Error al crear la habitación.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
-
-
 }
