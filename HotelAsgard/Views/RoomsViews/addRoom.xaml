@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:HotelAsgard.Views.RoomsViews"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="Añadir Habitación" Height="720" Width="1280">
+        Title="Añadir Habitación" Height="720" Width="1280"
+        WindowState="Maximized"
+        ResizeMode="CanMinimize">
     <Grid Margin="20">
 
         <!--Grid definitions -->
@@ -48,9 +50,9 @@
 
         <StackPanel Margin="20,10,10,10" Grid.Column="1" Grid.Row="1">
             <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Categoría</TextBlock>
-            <ComboBox x:Name="roomCategory" ItemsSource="{Binding Categorias}"
+            <ComboBox x:Name="roomCategory" SelectionChanged="roomCategory_SelectionChanged"
+                      ItemsSource="{Binding Categorias}"
                       SelectedItem="{Binding CategoriaSeleccionada, Mode=TwoWay}" DisplayMemberPath="Nombre">
-
             </ComboBox>
         </StackPanel>
 

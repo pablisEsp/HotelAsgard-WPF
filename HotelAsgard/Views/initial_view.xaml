@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:HotelAsgard.Views"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="initial_view" Height="720" Width="1200">
+        Title="Home" Height="720" Width="1200"
+        WindowState="Maximized"
+        ResizeMode="CanMinimize">
     <Window.Resources>
         <Style x:Key="MenuButtonStyle" TargetType="Button">
             <Setter Property="Margin" Value="5,10" />

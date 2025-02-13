@@ -5,7 +5,7 @@ namespace HotelAsgard.Models.Rooms
     
     public class Room
     {
-        public MongoObjectId Id { get; set; }
+        public string Id { get; set; }
         
         public string Codigo { get; set; }
         
