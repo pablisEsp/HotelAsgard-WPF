@@ -7,8 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7231264f-3ac7-4bfa-b42f-c742d79c953a" name="Changes" comment="added the selecction of users">
+    <list default="true" id="7231264f-3ac7-4bfa-b42f-c742d79c953a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Data/BookingService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Data/BookingService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Data/RoomService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Data/RoomService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Models/Rooms/RoomModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Models/Rooms/RoomModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookByRoom.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookByRoom.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,15 +44,28 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/07bfb99174b741c3b7fe42eda0be362a825938/2d/12c94ed2/TraceRoutedEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/243a037ca7a04510a506adfdd94befbac90930/53/4e3dbb16/Encoding.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9a297a7e45534117ba648d6a8ce98a8ef60938/4f/925d5455/MessageBoxButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1247563c5683b9a3b31cbd27ce4aaa465b33354d16f90f15db672ba2f186bb8/BindingExpression.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/154472d316ad8fa0f3c3af82669d217a37b88732794d26740ac467c77ebdc/FrugalList.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1a88b4a860176dd5f825206bbebf3ee3d44ff3f058ceed9eb693c1eaa018/RoutedEventArgs.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2716231ee07bacdcc5f259ad86122beb7843271a75c5b146b44b33ae29956a/DatePicker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2e8b8aa5d488ba9b46d9ca2a747d6895994b3519f2f231f4e3d1af87b86320/UnsafeNativeMethodsCLR.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3146526cace5c153434b15691561ac6ba930a9e7453c78d803b9b6fa41a65/StringContent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4bda76b5cc453e1edf5d5c754c4a8215edbd3d3e4f80706dcf4f52a4f68979/EventRoute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5c2daf74e08af53f8c9d1dcdbfae9fd12674467fdcf1d6b68321471d595e7b7/RoutedEventHandlerInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5db77782baa778fabcf4eeb678821516f8a4a5085c75d2d913faffe62b135af/Selector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/62f5c215898b692217dd22dd8dade21eab4de39f2f3de3bd6afd50a5e96628/BitVector32.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/65eecefd921ad6dce4cc6bd9199456e50c4e8ac46198c5b4fa051c0e19a69/BindingExpressionBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7c1ab578e66a1b766b609c418417d9320b7743bbc9065d1639c5b570c87d3/DependencyObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/92f8a4d622ba1745f0d289a974deef58c0ca56af1231fe7efa4d2f575021d019/UIElement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/98b1adb3779ac728cd5b2742b677821659b656cd3c4454bbcae58f22daee42e/PropertyPathWorker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9ac32f819d6853e0a6eda168c52b7f38eef9ae75936fb85d96a15c39d115245/Dispatcher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/afc0a3db843c265563d9d76716bc16141585ea8b57af9c9ebf9daf9c460/ComboBoxItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b8bd2453211aacbeef13eab26564fc0abd16d1c7de3052e334a55d708d9ce/ComboBox.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c439425da351c75ac7d966a1cc8324b51a9c471865af79d2f2f3fcb65e392/HttpClient.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/ViewModels/AddReservationViewModel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Views/BookingViews/AddReservation.xaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d882146b4f265f10bcbec2663fce248db9ffec5fa1aeaf76e32a11ba5eafcd6/MethodBaseInvoker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/BookingViews/BookByRoom.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/BookingViews/BookingListView.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/RoomsViews/addRoom.g.cs" root0="SKIP_HIGHLIGHTING" />
@@ -129,7 +147,9 @@
       <workItem from="1739303208807" duration="336000" />
       <workItem from="1739372417356" duration="4653000" />
       <workItem from="1739391563072" duration="1778000" />
-      <workItem from="1739438147178" duration="3774000" />
+      <workItem from="1739438147178" duration="16335000" />
+      <workItem from="1739463180611" duration="285000" />
+      <workItem from="1739467975840" duration="439000" />
     </task>
     <task id="LOCAL-00001" summary="changes on AddReservation.xaml.cs">
       <option name="closed" value="true" />
@@ -235,7 +255,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739440388585</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="added to the git ignore">
+      <option name="closed" value="true" />
+      <created>1739443052628</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1739443052628</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,49 +296,24 @@
     <MESSAGE value="Update things of FranRama" />
     <MESSAGE value="cosas del workspace.xml" />
     <MESSAGE value="added the selecction of users" />
-    <option name="LAST_COMMIT_MESSAGE" value="added the selecction of users" />
+    <MESSAGE value="added to the git ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="added to the git ignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/HotelAsgard/Data/RoomService.cs</url>
-          <line>23</line>
-          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\Data\RoomService.cs" containingFunctionPresentation="Method 'GetRooms'">
+          <url>file://$PROJECT_DIR$/HotelAsgard/Data/BookingService.cs</url>
+          <line>165</line>
+          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\Data\BookingService.cs" containingFunctionPresentation="Method 'CreateBookingAsync'">
             <startOffsets>
-              <option value="428" />
+              <option value="5054" />
             </startOffsets>
             <endOffsets>
-              <option value="484" />
+              <option value="5127" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/HotelAsgard/Data/RoomService.cs</url>
-          <line>25</line>
-          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\Data\RoomService.cs" containingFunctionPresentation="Method 'GetRooms'">
-            <startOffsets>
-              <option value="498" />
-            </startOffsets>
-            <endOffsets>
-              <option value="546" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs</url>
-          <line>16</line>
-          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\Views\BookingViews\BookByRoom.xaml.cs" containingFunctionPresentation="Property 'UsuarioSeleccionado'">
-            <startOffsets>
-              <option value="565" />
-            </startOffsets>
-            <endOffsets>
-              <option value="569" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
