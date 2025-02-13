@@ -7,7 +7,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7231264f-3ac7-4bfa-b42f-c742d79c953a" name="Changes" comment="Update things of FranRama" />
+    <list default="true" id="7231264f-3ac7-4bfa-b42f-c742d79c953a" name="Changes" comment="Update things of FranRama">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Models/UserApiClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Models/UserApiClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Utils/dataExamples.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Utils/dataExamples.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/ViewModels/userViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/ViewModels/userViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/AddUserWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/AddUserWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/AddUserWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/AddUserWindow.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/SearchUserWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/SearchUserWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/SearchUserWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/SearchUserWindow.xaml.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +29,6 @@
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
-        <entry key="$PROJECT_DIR$" value="FranRama" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,19 +42,16 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/pablisEsp/HotelAsgard-WPF.git&quot;,
-    &quot;accountId&quot;: &quot;4c6ca955-2e66-4e3a-9711-275ccd2c7aaf&quot;
+    &quot;accountId&quot;: &quot;b87f999c-9116-4ddb-a8fe-e2374704aa66&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/243a037ca7a04510a506adfdd94befbac90930/53/4e3dbb16/Encoding.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9a297a7e45534117ba648d6a8ce98a8ef60938/4f/925d5455/MessageBoxButton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3146526cace5c153434b15691561ac6ba930a9e7453c78d803b9b6fa41a65/StringContent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5db77782baa778fabcf4eeb678821516f8a4a5085c75d2d913faffe62b135af/Selector.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c439425da351c75ac7d966a1cc8324b51a9c471865af79d2f2f3fcb65e392/HttpClient.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/ViewModels/AddReservationViewModel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Views/BookingViews/AddReservation.xaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Luismi/Desktop/GitHub Intermodular/HotelAsgard-WPF/HotelAsgard/Models/user_model.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Luismi/Desktop/GitHub Intermodular/HotelAsgard-WPF/HotelAsgard/Models/user_model.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Luismi/Desktop/GitHub Intermodular/HotelAsgard-WPF/HotelAsgard/Utils/dataExamples.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Luismi/Desktop/GitHub Intermodular/HotelAsgard-WPF/HotelAsgard/Utils/dataExamples.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Luismi/Desktop/GitHub Intermodular/HotelAsgard-WPF/HotelAsgard/Utils/dataExamples.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Luismi/Desktop/GitHub Intermodular/HotelAsgard-WPF/HotelAsgard/Utils/dataExamples.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/BookingViews/BookByRoom.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/BookingViews/BookingListView.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/RoomsViews/addRoom.g.cs" root0="SKIP_HIGHLIGHTING" />
@@ -72,7 +77,7 @@
     ".NET Project.HotelAsgard.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Luismi-Brench",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -123,6 +128,9 @@
       <workItem from="1739197917735" duration="5887000" />
       <workItem from="1739209868311" duration="6200000" />
       <workItem from="1739287750063" duration="1200000" />
+      <workItem from="1739446625705" duration="2383000" />
+      <workItem from="1739455621136" duration="20000" />
+      <workItem from="1739471983848" duration="3436000" />
     </task>
     <task id="LOCAL-00001" summary="changes on AddReservation.xaml.cs">
       <option name="closed" value="true" />
@@ -246,6 +254,36 @@
     <option name="LAST_COMMIT_MESSAGE" value="Update things of FranRama" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/HotelAsgard/Models/UserApiClient.cs</url>
+          <line>40</line>
+          <properties documentPath="C:\Users\Luismi\Desktop\GitHub Intermodular\HotelAsgard-WPF\HotelAsgard\Models\UserApiClient.cs" containingFunctionPresentation="Method 'RegisterUserAsync'">
+            <startOffsets>
+              <option value="1237" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1238" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/HotelAsgard/Models/UserApiClient.cs</url>
+          <line>59</line>
+          <properties documentPath="C:\Users\Luismi\Desktop\GitHub Intermodular\HotelAsgard-WPF\HotelAsgard\Models\UserApiClient.cs" containingFunctionPresentation="Method 'RegisterUserAsync'">
+            <startOffsets>
+              <option value="1976" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1977" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Frame#HotelAsgard.Views.BookingViews.BookingListView..ctor" memberName="this" />

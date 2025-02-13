@@ -1,10 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System.Collections.ObjectModel;
+
 
 namespace HotelAsgard.ViewModels
 {
-    
+    public class userViewModel
+    {
+        public ObservableCollection<UserModel> UserModels { get; set; }
+
+
+        public userViewModel()
+        {
+            UserModels = new ObservableCollection<UserModel>();
+        }
+    }
 }

@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Http;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using HotelAsgard.ViewModels;
 
 namespace HotelAsgard.Views.UserViews
 {
@@ -19,10 +9,49 @@ namespace HotelAsgard.Views.UserViews
     /// </summary>
     public partial class SearchUserWindow : Window
     {
+        private readonly UserApiClient _userApiClient;
+        private userViewModel _viewModel;
+
         public SearchUserWindow()
         {
             InitializeComponent();
-            DataContext = new UsuarioViewModel();
+            _userApiClient = new UserApiClient(new HttpClient());
+            _viewModel = new userViewModel();
+            DataContext = _viewModel;
+            
+            LoadUsersDataGrid();
+        }
+
+        private async void LoadUsersDataGrid()
+        {
+            try
+            {
+
+                // Obtener los usuarios desde la API
+                var users = await _userApiClient.GetAllUsersAsync();
+
+                if (users != null && users.Count > 0)
+                {
+                    
+                    // Actualizar el modelo con los datos obtenidos
+                    foreach (var user in users)
+                    {
+                        _viewModel.UserModels.Add(user);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron reservas.");
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show($"Error de red: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}");
+            } 
         }
     }
 }
