@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using HotelAsgard.Data;
 using HotelAsgard.Models.Rooms;
+using Microsoft.Win32;
 
 namespace HotelAsgard.ViewModels
 {
@@ -13,6 +14,28 @@ namespace HotelAsgard.ViewModels
         private readonly RoomService _roomService;
         private ObservableCollection<Category> _categorias;
         private Category _categoriaSeleccionada;
+        private ObservableCollection<string> _imagenes;
+        private string _codigo;
+        
+        public ObservableCollection<string> Imagenes
+        {
+            get => _imagenes;
+            set
+            {
+                _imagenes = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Codigo
+        {
+            get => _codigo;
+            set
+            {
+                _codigo = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ObservableCollection<Category> Categorias
         {
@@ -46,6 +69,8 @@ namespace HotelAsgard.ViewModels
             _roomService = new RoomService();
             Categorias = new ObservableCollection<Category>();
             _ = LoadCategorias();
+            Imagenes = new ObservableCollection<string>();
+
         }
 
         private async Task LoadCategorias()
@@ -67,6 +92,51 @@ namespace HotelAsgard.ViewModels
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al cargar categorías: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        
+        public async Task<string> ObtenerNuevoCodigo()
+        {
+            Codigo = await _roomService.ObtenerNuevoCodigoAsync();
+            return Codigo;
+        }
+
+        /// <summary>
+        /// Envía los datos de la habitación al backend para crearla.
+        /// </summary>
+        public async Task<bool> CrearHabitacion(Room room)
+        {
+            bool success = await _roomService.CrearHabitacionAsync(room, new List<string>(Imagenes));
+
+            if (success)
+            {
+                MessageBox.Show("Habitación creada con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Error al crear la habitación.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Abre un diálogo para seleccionar imágenes y las agrega a la lista.
+        /// </summary>
+        public void AgregarImagen()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Multiselect = true,
+                Filter = "Imágenes (*.png;*.jpg;*.jpeg)|*.png;*.jpg;*.jpeg"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                foreach (var file in openFileDialog.FileNames)
+                {
+                    Imagenes.Add(file);
+                }
             }
         }
 

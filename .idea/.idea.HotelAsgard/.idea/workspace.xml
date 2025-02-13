@@ -7,14 +7,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7a451a5-7359-440e-ac54-39ee04ea3eb7" name="Changes" comment="PabloRama merged with master">
-      <change afterPath="$PROJECT_DIR$/HotelAsgard/Models/Rooms/Category.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/.name" beforeDir="false" />
+    <list default="true" id="c7a451a5-7359-440e-ac54-39ee04ea3eb7" name="Changes" comment="Adding images changed. Categories implemented">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HotelAsgard/Data/RoomService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Data/RoomService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HotelAsgard/ViewModels/Rooms/AddRoomVM.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/ViewModels/Rooms/AddRoomVM.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/addRoom.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/addRoom.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/addRoom.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/addRoom.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/editRoom.xaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/editRoom.xaml.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +48,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/528231ff9f911f33068aaa888c96c7cc92cabbf0bc1f31386d66e14174ecae/Grid.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -59,20 +62,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.HotelAsgard.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;PabloRama&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.HotelAsgard.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "PabloRama",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "settings.qodana",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="HotelAsgard" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -107,7 +111,7 @@
       <workItem from="1738259102269" duration="2042000" />
       <workItem from="1738751050532" duration="12625000" />
       <workItem from="1738868035361" duration="78000" />
-      <workItem from="1739288367352" duration="10314000" />
+      <workItem from="1739288367352" duration="19757000" />
     </task>
     <task id="LOCAL-00001" summary="bugs fixed">
       <option name="closed" value="true" />
@@ -141,7 +145,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739199470226</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Adding images changed. Categories implemented">
+      <option name="closed" value="true" />
+      <created>1739363853473</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1739363853473</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +168,11 @@
     <MESSAGE value="git ignore updated" />
     <MESSAGE value="Adding updates" />
     <MESSAGE value="PabloRama merged with master" />
-    <option name="LAST_COMMIT_MESSAGE" value="PabloRama merged with master" />
+    <MESSAGE value="Adding images changed. Categories implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding images changed. Categories implemented" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
