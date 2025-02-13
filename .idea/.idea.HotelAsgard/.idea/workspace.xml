@@ -7,8 +7,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7231264f-3ac7-4bfa-b42f-c742d79c953a" name="Changes" comment="added the selecction of users">
+    <list default="true" id="7231264f-3ac7-4bfa-b42f-c742d79c953a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/HotelAsgard/Utils/ImageUrlCovertes.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/App.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/App.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/ViewModels/AddReservationViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/ViewModels/AddReservationViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/AddReservation.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/AddReservation.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/AddReservation.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/AddReservation.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookByRoom.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookByRoom.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookingListView.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookingListView.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookingListView.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookingListView.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/booking_details.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/BookingViews/booking_details.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/searchRooms.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/searchRooms.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,15 +132,7 @@
       <workItem from="1739045836403" duration="1028000" />
       <workItem from="1739088807401" duration="10606000" />
       <workItem from="1739181698571" duration="8204000" />
-      <workItem from="1739197917735" duration="5887000" />
-      <workItem from="1739209868311" duration="6200000" />
-      <workItem from="1739287750063" duration="2090000" />
-      <workItem from="1739298554746" duration="652000" />
-      <workItem from="1739301687994" duration="681000" />
-      <workItem from="1739303208807" duration="336000" />
-      <workItem from="1739372417356" duration="4653000" />
-      <workItem from="1739391563072" duration="1778000" />
-      <workItem from="1739438147178" duration="3774000" />
+      <workItem from="1739197917735" duration="719000" />
     </task>
     <task id="LOCAL-00001" summary="changes on AddReservation.xaml.cs">
       <option name="closed" value="true" />
@@ -195,47 +198,7 @@
       <option name="project" value="LOCAL" />
       <updated>1739184909744</updated>
     </task>
-    <task id="LOCAL-00009" summary="we need to change the menu&#10;and the addResevatio">
-      <option name="closed" value="true" />
-      <created>1739199204588</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1739199204588</updated>
-    </task>
-    <task id="LOCAL-00010" summary="theres things">
-      <option name="closed" value="true" />
-      <created>1739204146424</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1739204146424</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Update things of FranRama">
-      <option name="closed" value="true" />
-      <created>1739292209011</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1739292209011</updated>
-    </task>
-    <task id="LOCAL-00012" summary="cosas del workspace.xml">
-      <option name="closed" value="true" />
-      <created>1739292253076</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1739292253076</updated>
-    </task>
-    <task id="LOCAL-00013" summary="added the selecction of users">
-      <option name="closed" value="true" />
-      <created>1739440388585</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1739440388585</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,54 +226,49 @@
     <MESSAGE value="things changed of fran rama" />
     <MESSAGE value="no se que es esto , pero esta en el git ignore" />
     <MESSAGE value="added the main views with the ddbb" />
-    <MESSAGE value="we need to change the menu&#10;and the addResevatio" />
-    <MESSAGE value="theres things" />
-    <MESSAGE value="Update things of FranRama" />
-    <MESSAGE value="cosas del workspace.xml" />
-    <MESSAGE value="added the selecction of users" />
-    <option name="LAST_COMMIT_MESSAGE" value="added the selecction of users" />
+    <option name="LAST_COMMIT_MESSAGE" value="added the main views with the ddbb" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/HotelAsgard/Data/RoomService.cs</url>
-          <line>23</line>
-          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\Data\RoomService.cs" containingFunctionPresentation="Method 'GetRooms'">
+          <url>file://$PROJECT_DIR$/HotelAsgard/Utils/user_active.cs</url>
+          <line>7</line>
+          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\Utils\user_active.cs" containingFunctionPresentation="Constructor 'UsuarioSingleton'">
             <startOffsets>
-              <option value="428" />
+              <option value="214" />
             </startOffsets>
             <endOffsets>
-              <option value="484" />
+              <option value="215" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/HotelAsgard/Data/RoomService.cs</url>
-          <line>25</line>
-          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\Data\RoomService.cs" containingFunctionPresentation="Method 'GetRooms'">
+          <url>file://$PROJECT_DIR$/HotelAsgard/Views/BookingViews/booking_details.xaml.cs</url>
+          <line>29</line>
+          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\Views\BookingViews\booking_details.xaml.cs" containingFunctionPresentation="Constructor 'booking_details'">
             <startOffsets>
-              <option value="498" />
+              <option value="871" />
             </startOffsets>
             <endOffsets>
-              <option value="546" />
+              <option value="891" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs</url>
-          <line>16</line>
-          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\Views\BookingViews\BookByRoom.xaml.cs" containingFunctionPresentation="Property 'UsuarioSeleccionado'">
+          <url>file://$PROJECT_DIR$/HotelAsgard/Data/BookingService.cs</url>
+          <line>110</line>
+          <properties documentPath="C:\Users\Francisco\source\repos\HotelAsgard-WPF\HotelAsgard\Data\BookingService.cs" containingFunctionPresentation="Method 'SearchFreeRooms'">
             <startOffsets>
-              <option value="565" />
+              <option value="3149" />
             </startOffsets>
             <endOffsets>
-              <option value="569" />
+              <option value="3262" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
