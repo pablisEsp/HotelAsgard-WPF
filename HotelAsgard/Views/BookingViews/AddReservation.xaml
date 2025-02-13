@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:utils="clr-namespace:HotelAsgard.Utils"
         mc:Ignorable="d"
+        WindowState="Maximized"
+        ResizeMode="CanMinimize"
         Title="Añadir Reserva" Height="720" Width="1280" Background="#F9F9F9">
     
     <Window.Resources>

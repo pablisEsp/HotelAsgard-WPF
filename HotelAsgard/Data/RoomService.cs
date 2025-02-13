@@ -4,7 +4,6 @@ using System.Net.Http.Headers;
 using System.Windows;
 using HotelAsgard.Models.Rooms;
 using Newtonsoft.Json;
-using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 namespace HotelAsgard.Data;
 
@@ -20,7 +19,7 @@ public class RoomService
     public HttpClient API => _httpClient;
     
 
-    public async Task<List<Room>> GetRooms() //function to get all rooms
+    public async Task<List<Room>> GetRooms()
     {
         try
         {

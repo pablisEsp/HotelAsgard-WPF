@@ -1,6 +1,5 @@
 using System.Net.Http;
 using System.Text;
-using System.Web;
 using System.Windows;
 using HotelAsgard.Models;
 using HotelAsgard.Models.Rooms;
@@ -155,7 +154,66 @@ public class BookingService
             return null;
         }
     }
+    public async Task<bool> CreateBookingAsync(CreaReserva reserva)
+    {
+        try
+        {
+            string baseUrl = Constants._baseUrl; 
+            string endpoint = "/api/bookings/createBooking";
+            string fullUrlEndpoint = baseUrl + endpoint;
+            
+            string json = JsonConvert.SerializeObject(reserva);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await _httpClient.PostAsync(fullUrlEndpoint, content);
+            return response.IsSuccessStatusCode;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al crear la reserva: {ex.Message}");
+            return false;
+        }
+    }
     
-    
-    
+    public async Task<string?> GetNextBookingCodeAsync()
+    {
+        try
+        {
+            string urlEndpoint = Constants._baseUrl + "/api/bookings/getCode";
+
+            var response = await API.GetAsync(urlEndpoint);
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+
+            if (result != null && result.TryGetValue("codigo", out string? lastCode) && !string.IsNullOrEmpty(lastCode))
+            {
+                // Extraer la parte numérica del código (suponiendo el formato "RESXXX")
+                if (int.TryParse(lastCode.Substring(3), out int numericPart))
+                {
+                    // Incrementar el número y reconstruir el nuevo código
+                    string newCode = $"RES{(numericPart + 1):D3}";
+                    return newCode;
+                }
+            }
+
+            // Si no hay código previo, devolvemos el primero de la secuencia
+            return "RES001";
+        }
+        catch (HttpRequestException ex)
+        {
+            MessageBox.Show($"Error de conexión: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return null;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            return null;
+        }
+    }
 }
+    
+    
+    
+

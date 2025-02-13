@@ -60,8 +60,10 @@
                     <DatePicker Margin="0,12,0,0"
                                 SelectedDate="{Binding FechaEntrada}"
                                 IsDropDownOpen="False"
+                                AllowDrop="False"
                                 HorizontalAlignment="Center"
                                 Focusable="False"
+                                IsEnabled="False"
                                 VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Margin="50,0,60,0">
@@ -70,6 +72,8 @@
                                 SelectedDate="{Binding FechaSalida}"
                                 IsDropDownOpen="False"
                                 Focusable="False"
+                                AllowDrop="False"
+                                IsEnabled="False"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center" />
                 </StackPanel>
@@ -84,7 +88,7 @@
 
             <StackPanel Orientation="Vertical" Grid.Row="1">
                 <Label Content="Precio" Style="{StaticResource labelStyle}"/>
-                <TextBlock Text="{Binding SelectedRoom.Precio, StringFormat=Precio: {0:C}}" 
+                <TextBlock  Name="Precio" 
                            Style="{StaticResource TituloTextBlockStyle}"/>
             </StackPanel>
 
@@ -95,15 +99,15 @@
                           Margin="18,0,0,0"
                           ItemsSource="{Binding Usuarios}"
                           DisplayMemberPath="Nombre"
-                          SelectedItem="{Binding UsuarioSeleccionado, Mode=TwoWay}"/>
+                          SelectedItem="{Binding UsuarioSeleccionado, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <TextBlock Text="Ivan Nieto - ivan@peremaria.com" Foreground="#BCBCBC" 
+                <TextBlock Name="UserInfo" Text="Sin usuario seleccionado" Foreground="#BCBCBC" 
                            VerticalAlignment="Bottom" Margin="19,0,0,0" />
             </StackPanel>
         </Grid>
         <Border Grid.Row="2" Grid.Column="1" Background="#B0DAF1" CornerRadius="15" Width="100" Height="40" 
                 HorizontalAlignment="Right" Margin="0,0,30,0">
-            <Button Background="Transparent" Content="Crear Reserva" Width="80" Height="40" BorderThickness="0"/>
+            <Button Background="Transparent" Content="Crear Reserva" Width="80" Height="40" BorderThickness="0" Click="ButtonBase_OnClick"/>
         </Border>
     </Grid>
 </Window>
