@@ -90,7 +90,13 @@
 
             <StackPanel Orientation="Vertical" Grid.Row="2">
                 <Label Content="Cliente" Style="{StaticResource labelStyle}"/>
-                <ComboBox Width="300" HorizontalAlignment="Left" Margin="18,0,0,0"/>
+                <ComboBox Width="300"
+                          HorizontalAlignment="Left"
+                          Margin="18,0,0,0"
+                          ItemsSource="{Binding Usuarios}"
+                          DisplayMemberPath="Nombre"
+                          SelectedItem="{Binding UsuarioSeleccionado, Mode=TwoWay}"/>
+
                 <TextBlock Text="Ivan Nieto - ivan@peremaria.com" Foreground="#BCBCBC" 
                            VerticalAlignment="Bottom" Margin="19,0,0,0" />
             </StackPanel>
