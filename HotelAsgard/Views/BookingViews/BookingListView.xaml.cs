@@ -1,51 +1,88 @@
-﻿using HotelAsgard.Views.UserViews;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using HotelAsgard.Data;
+using HotelAsgard.Models;
+using HotelAsgard.ViewModels;
+using HotelAsgard.Views.UserViews;
 
 namespace HotelAsgard.Views.BookingViews
 {
-    /// <summary>
-    /// Lógica de interacción para BookingListView.xaml
-    /// </summary>
     public partial class BookingListView : Window
     {
+        private readonly BookingService _bookingService;
+        private BookingListViewModel _viewModel;
+
         public BookingListView()
         {
             InitializeComponent();
-            DataExamples dt = new DataExamples();
 
-            UsuarioSingleton.ObtenerInstancia(usuario: dt.UsuarioActivo);
-
-            DataContext = new MainViewModel();
             
+            _bookingService = new BookingService();
+            _viewModel = new BookingListViewModel();
+            DataContext = _viewModel;
+
+            
+            LoadBookingsAsync();
         }
 
+        private async void LoadBookingsAsync()
+        {
+            try
+            {
+
+                // Obtener las reservas desde la API
+                var bookings = await _bookingService.GetBookings();
+
+                if (bookings != null && bookings.Count > 0)
+                {
+                    // Actualizar el modelo con los datos obtenidos
+                    foreach (var booking in bookings)
+                    {
+                        _viewModel.Reservas.Add(booking);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron reservas.");
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show($"Error de red: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}");
+            }
+        }
+
+        // Resto de métodos...
         private void DatePicker_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = true; // Cancela la entrada de texto
         }
 
-        // Evita que el usuario use el teclado para editar el texto
         private void DatePicker_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            // Permite solo teclas de navegación (flechas, tab, etc.)
             if (e.Key != Key.Enter && e.Key != Key.Tab && e.Key != Key.Escape)
             {
                 e.Handled = true; // Cancela la entrada de teclado
             }
         }
 
-        // Abre el calendario cuando el DatePicker recibe el foco
         private void DatePicker_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (sender == fechaInicio)
+            if (sender == FechaInicio)
             {
-                fechaInicio.IsDropDownOpen = true;
+                FechaInicio.IsDropDownOpen = true;
             }
             else
             {
-                fechaFin.IsDropDownOpen = true;
+                FechaFin.IsDropDownOpen = true;
             }
         }
 
@@ -55,9 +92,9 @@ namespace HotelAsgard.Views.BookingViews
             iv.Show();
             this.Close();
         }
+
         private void Perfil_Click(object sender, RoutedEventArgs e)
         {
-            // Lógica para la opción "Perfil"
             AddUserWindow addUser = new AddUserWindow();
             addUser.Show();
             this.Close();
@@ -68,7 +105,6 @@ namespace HotelAsgard.Views.BookingViews
             SearchUserWindow searchUser = new SearchUserWindow();
             searchUser.Show();
             this.Close();
-
         }
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
@@ -87,69 +123,99 @@ namespace HotelAsgard.Views.BookingViews
 
         private void AddBooking_Click(object sender, RoutedEventArgs e)
         {
-            BookByRoom bookByRoom = new BookByRoom();
-            bookByRoom.Show();
-            this.Close();
+          AddReservation  addReservation = new AddReservation();
+          addReservation.Show();  
+          this.Close();
+        }
+        
+ 
+        private async void SearchBooking_OnClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string? fechaInicio = null;
+                string? fechaFin = null;
+                string? codigo = null;
+                string? nombreUsuario = null;
+                string? tipoUsuario = null;
+
+                // Obtener valores de los controles de la interfaz
+                if (FechaInicio.SelectedDate.HasValue)
+                {
+                    fechaInicio = FechaInicio.SelectedDate.Value.ToString("yyyy-MM-dd"); // Format date as YYYY-MM-DD for API
+                }
+                if (FechaFin.SelectedDate.HasValue)
+                {
+                    fechaFin = FechaFin.SelectedDate.Value.ToString("yyyy-MM-dd"); // Format date as YYYY-MM-dd for API
+                }
+                codigo = CodigoTextBox.Text;
+                nombreUsuario = UsuarioTextBox.Text;
+                var selectedItem = TipoComboBox.SelectedItem as ComboBoxItem;
+                if (selectedItem != null)
+                {
+                    tipoUsuario = selectedItem.Content.ToString();
+                }
+                try
+                {
+             
+                    var bookings = await _bookingService.SearchBookings(fechaInicio: fechaInicio, fechaFin: fechaFin, codigo: codigo, nombre: nombreUsuario, tipo: tipoUsuario);
+
+                    if (bookings != null)
+                    {
+                    
+                        _viewModel.Reservas.Clear();
+                        if (bookings.Count > 0)
+                        {
+                            // Actualizar el modelo con los datos obtenidos
+                            foreach (var booking in bookings)
+                            {
+                                _viewModel.Reservas.Add(booking);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se encontraron reservas con los criterios de búsqueda.", "Sin Resultados", MessageBoxButton.OKCancel);
+                        }
+                    }
+                
+                }
+                catch (HttpRequestException ex)
+                {
+                    MessageBox.Show("No se encontraron reservas con los criterios de búsqueda.", "Sin Resultados", MessageBoxButton.OK);
+                    _viewModel.Reservas.Clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error inesperado al buscar reservas: {ex.Message}", "Error", MessageBoxButton.OK);
+                    _viewModel.Reservas.Clear();
+                }
+            }
+            catch (Exception y)
+            {
+                MessageBox.Show("No se encontraron reservas con los criterios de búsqueda.", "Sin Resultados", MessageBoxButton.OK);
+                _viewModel.Reservas.Clear();
+            }
+        }
+
+        private void ClearFechaFin_Click(object sender, RoutedEventArgs e)
+        {
+            FechaFin.ClearValue(DatePicker.SelectedDateProperty);
+        }
+
+        private void ClearFechaInicio_Click(object sender, RoutedEventArgs e)
+        {
+            FechaInicio.ClearValue(DatePicker.SelectedDateProperty);
+
+        }
+
+        private void OpenDetails_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedReserva = ReservasDataGrid.SelectedItem as Reserva;
+            if (selectedReserva != null)
+            {
+                booking_details bd = new booking_details(selectedReserva);
+                bd.ShowDialog();
+            }
         }
     }
-
-public class MainViewModel
-{
-    public ObservableCollection<Reserva> Reservas { get; set; }
-    public ICommand EditCommand { get; set; }
-    public ICommand DeleteCommand { get; set; }
-
-    public MainViewModel()
-    {
-        Reservas = new ObservableCollection<Reserva>
-        {
-            // new Reserva { Id = 1, Foto = "\"../../Images/hab_odin.jpg\"", Codigo = "ABC123", Rol = "Administrador", Email = "ivan@example.com" },
-            // new Reserva { Id = 2, Foto = "\"../../Images/hab_odin.jpg\"", Codigo = "DEF456", Rol = "Usuario", Email = "maria@example.com" },
-            //new Reserva { Id = 1, Foto = "\"../../Images/hab_odin.jpg\"", Codigo = "ABC123", Rol = "Administrador", Email = "ivan@example.com" },
-            // new Reserva { Id = 1, Foto = "\"../../Images/hab_odin.jpg\"", Codigo = "ABC123", Rol = "Administrador", Email = "ivan@example.com" },
-            // new Reserva { Id = 1, Foto = "\"../../Images/hab_odin.jpg\"", Codigo = "ABC123", Rol = "Administrador", Email = "ivan@example.com" },
-        };
-
-        EditCommand = new RelayCommand(EditReserva);
-        DeleteCommand = new RelayCommand(DeleteReserva);
-    }
-
-    private void EditReserva(object obj)
-    {
-        if (obj is Reserva reserva)
-        {
-            MessageBox.Show($"Editando reserva: {reserva.Codigo}");
-        }
-    }
-
-    private void DeleteReserva(object obj)
-    {
-        if (obj is Reserva reserva)
-        {
-            Reservas.Remove(reserva);
-        }
-    }
-}
-
-public class RelayCommand : ICommand
-{
-    private readonly Action<object> _execute;
-    private readonly Predicate<object> _canExecute;
-
-    public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
-    {
-        _execute = execute;
-        _canExecute = canExecute;
-    }
-
-    public bool CanExecute(object parameter) => _canExecute == null || _canExecute(parameter);
-
-    public void Execute(object parameter) => _execute(parameter);
-
-    public event EventHandler CanExecuteChanged
-    {
-        add => CommandManager.RequerySuggested += value;
-        remove => CommandManager.RequerySuggested -= value;
-    }
-}
 }

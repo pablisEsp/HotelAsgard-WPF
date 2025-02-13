@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HotelAsgard.Views"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="initial_view" Height="720" Width="1200">
     <Window.Resources>
@@ -86,7 +87,7 @@
 
                             <TextBlock  Text="Reservas" FontSize="16" FontWeight="Bold" Margin="0,10,20,10"/>
                             <Button Content="Buscar Reservas" Style="{StaticResource MenuButtonStyle}" Click="SearchBooking_Click"/>
-                            <Button Content="Añadir Reservas" Style="{StaticResource MenuButtonStyle}" Click="AddBooking_Click" />
+                            <Button Content="Lista Reservas" Style="{StaticResource MenuButtonStyle}" Click="AddBooking_Click" />
 
                             <TextBlock Text="Habitaciones" FontSize="16" FontWeight="Bold" Margin="0,10,0,10"/>
                             <Button Content="Buscar Habitaciones" Style="{StaticResource MenuButtonStyle}" Click="SearchRooms_Click" />

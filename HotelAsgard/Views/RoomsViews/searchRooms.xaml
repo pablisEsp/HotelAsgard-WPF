@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HotelAsgard.Views.RoomsViews"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="Buscar Habitaciones" Height="720" Width="1280">
     <Grid>
@@ -19,18 +20,49 @@
         </Grid.ColumnDefinitions>
 
 
-        <StackPanel Margin="15,0,0,0" Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Top">
+        <StackPanel Margin="15,0,0,0" HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Top">
             <Image Source="../../Images/logo_con_fondo.png" Width="100" Height="150"></Image>
             <TextBlock Margin="10,0,0,0" FontSize="28" VerticalAlignment="Center">Hotel Asgard</TextBlock>
         </StackPanel>
 
 
-        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button  Width="100" FontSize="20" Background="Transparent" BorderBrush="Transparent">Home</Button>
-            <Button Margin="20,0,20,0" Width="100" FontSize="20" Background="Transparent" BorderBrush="Transparent">Usuarios</Button>
-            <Button Margin="20,0,20,0" Width="100" FontSize="20" Background="Transparent" BorderBrush="Transparent">Reservas</Button>
-            <Button Margin="20,0,20,0" Width="120" FontSize="20" Background="Transparent" BorderBrush="Transparent">Habitaciones</Button>
-        </StackPanel>
+        <Menu VerticalAlignment="Center" Background="Transparent"  Grid.Column="1" Width="648">
+            <Menu.Resources>
+                <Style x:Key="menuItemStyle" TargetType="MenuItem">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="Padding" Value="10,5" />
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="#42525a" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Menu.Resources>
+
+            <MenuItem Style="{StaticResource menuItemStyle}" Header="Menu" FontSize="16" FontWeight="Bold" Click="MainWindows_click"/>
+            <!-- Sección de Usuario -->
+            <MenuItem Style="{StaticResource menuItemStyle}" Header="Usuario" FontSize="16" FontWeight="Bold">
+                <MenuItem Header="Perfil" Click="Perfil_Click" />
+                <MenuItem Header="Buscar Usuario" Click="BuscarUsuario_Click" />
+                <MenuItem Header="Añadir Usuario" Click="AddUser_Click" />
+            </MenuItem>
+
+            <!-- Sección de Reservas -->
+            <MenuItem Style="{StaticResource menuItemStyle}"  Header="Reservas" FontSize="16" FontWeight="Bold">
+                <MenuItem Header="Buscar Reservas" Click="SearchBooking_Click" />
+                <MenuItem Header="Añadir Reservas" Click="AddBooking_Click" />
+            </MenuItem>
+
+            <!-- Sección de Habitaciones -->
+            <MenuItem Style="{StaticResource menuItemStyle}"  Header="Habitaciones" FontSize="16" FontWeight="Bold">
+                <MenuItem Header="Buscar Habitaciones" />
+                <MenuItem Header="Añadir Habitaciones" />
+            </MenuItem>
+        </Menu>
 
 
         <StackPanel Margin="40,0,0,0" Grid.Row="1" VerticalAlignment="Bottom">
@@ -131,16 +163,20 @@
         
         <!-- RESULTADOS HABITACIONES -->
         <DataGrid Grid.Row="2" Grid.Column="1"
-                  ItemsSource="{Binding Habitaciones}" 
+                  ItemsSource="{Binding Rooms}" 
                   AutoGenerateColumns="False" 
                   Margin="10" 
                   CanUserAddRows="False" 
                   CanUserDeleteRows="False"
                   IsReadOnly="True">
+                  <!--VirtualizingPanel.IsVirtualizing="True"
+                  VirtualizingPanel.VirtualizationMode="Recycling"-->
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" Width="0.60*" />
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*" />
-                <DataGridTextColumn Header="Huéspedes" Binding="{Binding NumHuespedes}" Width="0.60*" />
+                <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" Width="*"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
+                <DataGridTextColumn Header="Categoria" Binding="{Binding Categoria}" Width="*"/>
+                <DataGridTextColumn Header="Tamaño" Binding="{Binding Tamanyo}" Width="*"/>
+                <DataGridTextColumn Header="Huéspedes" Binding="{Binding NumPersonas}" Width="*"/>
                 <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" Width="*">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -149,24 +185,29 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="*" />
-                <DataGridCheckBoxColumn Header="Oferta" Binding="{Binding Oferta}" Width="*" />
-                <DataGridCheckBoxColumn Header="Cuna" Binding="{Binding Cuna}" Width="*" />
-                <DataGridCheckBoxColumn Header="Cama Extra" Binding="{Binding CamaExtra}" Width="*" />
-                <DataGridCheckBoxColumn Header="Ocupada" Binding="{Binding Ocupada}" Width="*" />
-                <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}" Width="*" />
-
+                <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="0.5*"/>
+                
+                <!-- Columna de CheckBox para habilitar/deshabilitar habitación -->
+                <DataGridTemplateColumn Header="Habilitada">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Habilitada, Mode=TwoWay}" Click="CheckBox_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
                 <!-- Columna de iconos -->
-                <DataGridTemplateColumn Header="Acciones" Width="Auto">
+                <DataGridTemplateColumn Header="Acciones" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <!-- Botón Editar -->
                                 <Button Content="✏️" ToolTip="Editar" Command="{Binding DataContext.EditarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" Click="editRoom_Click"/>
-                                <!-- Botón Eliminar -->
-                                <Button Content="❌" ToolTip="Eliminar" Command="{Binding DataContext.EliminarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" />
+                                <!-- Botón Deshabilitar
+                                <Button Content="❌" ToolTip="Deshabilitar" Command="{Binding DataContext.EliminarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" Click="deleteRoom_Click"/>
+                                -->
                                 <!-- Botón Más Información -->
-                                <Button Content="ℹ️" ToolTip="Más Información" Command="{Binding DataContext.MasInfoCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" />
+                                <Button Content="ℹ️" ToolTip="Más Información" Command="{Binding DataContext.MasInfoCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" Click="roomInfo_Click"/>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

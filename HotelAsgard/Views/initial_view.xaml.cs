@@ -57,6 +57,7 @@ namespace HotelAsgard.Views
             bv.Show();
             this.Close();
         }
+
         private void SearchRooms_Click(object sender, RoutedEventArgs e)
         {
             searchRooms sr = new searchRooms();

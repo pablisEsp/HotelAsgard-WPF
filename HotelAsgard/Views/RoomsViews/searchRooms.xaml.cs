@@ -1,5 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
+using HotelAsgard.Data;
+using HotelAsgard.Models.Rooms;
+using HotelAsgard.ViewModels;
+using HotelAsgard.Views.BookingViews;
+using HotelAsgard.Views.UserViews;
 
 namespace HotelAsgard.Views.RoomsViews
 {
@@ -9,42 +15,17 @@ namespace HotelAsgard.Views.RoomsViews
 
     public partial class searchRooms : Window
     {
-        public ObservableCollection<Habitacion> Habitaciones { get; set; }
+        //public ObservableCollection<Habitacion> Habitaciones { get; set; }
+        public RoomVM RoomVm { get; set; }
+
 
         public searchRooms()
         {
             InitializeComponent();
+            RoomVm = new RoomVM();
+            DataContext = RoomVm; // Enlaza la UI con el ViewModel
             
-            Habitaciones = new ObservableCollection<Habitacion>
-            {
-                new Habitacion
-                {
-                    Codigo = 1,
-                    Nombre = "Suite Deluxe",
-                    NumHuespedes = 2,
-                    Descripcion = "Una suite con vistas al mar.",
-                    Precio = 200,
-                    Oferta = true,
-                    Cuna = false,
-                    CamaExtra = false,
-                    Ocupada = false,
-                    Fecha = "16/01/2025"
-                },
-                new Habitacion
-                {
-                    Codigo = 2,
-                    Nombre = "Habitación Familiar",
-                    NumHuespedes = 4,
-                    Descripcion = "Perfecta para familias.",
-                    Precio = 150,
-                    Oferta = false,
-                    Cuna = true,
-                    CamaExtra = true,
-                    Ocupada = true,
-                    Fecha = "16/01/2025"
-                }
-            };
-            DataContext = this;
+            
         }
 
         private void editRoom_Click(object sender, RoutedEventArgs e)
@@ -54,20 +35,94 @@ namespace HotelAsgard.Views.RoomsViews
             window.Show(); 
         }
 
-    }
+        private void deleteRoom_Click(object sender, RoutedEventArgs e)
+        {
+            // delete room
+        }
 
-    public class Habitacion
-    {
-        public int Codigo { get; set; }
-        public string Nombre { get; set; }
-        public int NumHuespedes { get; set; }
-        public string Descripcion { get; set; }
-        public int Precio { get; set; }
-        public bool Oferta { get; set; }
-        public bool Cuna { get; set; }
-        public bool CamaExtra { get; set; }
-        public bool Ocupada { get; set; }
-        public string Fecha { get; set; }
+        private void roomInfo_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+        
+        private void Perfil_Click(object sender, RoutedEventArgs e)
+        {
+            // Lógica para la opción "Perfil"
+            AddUserWindow addUser = new AddUserWindow();
+            addUser.Show();
+            this.Close();
+        }
+
+        private void BuscarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            SearchUserWindow searchUser = new SearchUserWindow();
+            searchUser.Show();
+            this.Close();
+
+        }
+
+        private void AddUser_Click(object sender, RoutedEventArgs e)
+        {
+            AddUserWindow addUser = new AddUserWindow();
+            addUser.Show();
+            this.Close();
+        }
+
+        private void SearchBooking_Click(object sender, RoutedEventArgs e)
+        {
+            AddReservation addReservation = new AddReservation();
+            addReservation.Show();
+            this.Close();
+        }
+
+        private void AddBooking_Click(object sender, RoutedEventArgs e)
+        {
+           AddReservation addReservation = new AddReservation();
+           addReservation.Show();
+            this.Close();
+        }
+        
+        private void MainWindows_click(object sender, RoutedEventArgs e)
+        {
+            initial_view iv = new initial_view();
+            iv.Show();
+            this.Close();
+        }
+    
+        private RoomService _roomService = new RoomService();
+
+        private async void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox checkBox && checkBox.DataContext is Room room)
+            {
+                try
+                {
+                    // Invertir el estado de Habilitada basado en la casilla marcada
+                    bool newStatus = checkBox.IsChecked == true;
+                    room.Habilitada = newStatus;
+
+                    // Llamar a la API para actualizar el estado en la base de datos
+                    bool success = await _roomService.ToggleRoomAvailability(room);
+            
+                    if (!success)
+                    {
+                        // Si la API falla, revertimos el cambio en la UI
+                        room.Habilitada = !newStatus;
+                        MessageBox.Show("Error al actualizar la habitación.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    
+                    MessageBox.Show("Habitación " + room.Nombre + (room.Habilitada ? " Habilitada" : " Deshabilitada"));
+                    
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        
     }
+    
 }

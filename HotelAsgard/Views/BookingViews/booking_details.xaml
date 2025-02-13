@@ -40,11 +40,11 @@
             <RowDefinition Height="4*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Modificar Reserva"  Grid.Column="0" Grid.Row="0" Style="{StaticResource TituloTextBlockStyle}" Grid.ColumnSpan="2" Margin="10,10,537,10"/>
+        <TextBlock Text="Ver Reserva"  Grid.Column="0" Grid.Row="0" Style="{StaticResource TituloTextBlockStyle}" Grid.ColumnSpan="2" Margin="10,10,537,10"/>
         <Border CornerRadius="50" Grid.Column="0" Grid.Row="1" Margin="15">
-            <Image Source="../../Images/hab_odin.jpg"  Stretch="Fill" />
+            <Image x:Name="HabitacionImage"  Stretch="Fill" />
         </Border>
-        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="16" FontWeight="Bold" Foreground="#3C3C3C" HorizontalAlignment="Center" Margin="0,5,0,0">Habitacion Odin</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="16" FontWeight="Bold" Foreground="#3C3C3C" HorizontalAlignment="Center" Margin="0,5,0,0" Text="{Binding Habitacion.Categoria}" />
         <Grid Grid.Column="1" Grid.Row="1" Background="#F4F4F4" Margin="15,15,15,0" >
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -54,31 +54,28 @@
             <StackPanel Orientation="Horizontal"  Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Top" >
                 <StackPanel >
                     <Label Content="Fecha entrada" Style="{StaticResource labelStyle}"/>
-                    <TextBox Text="24-12-2021"/>
+                    <TextBox Text="{Binding FechaInicio}" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Margin="50,0,60,0">
-                    <Label Content="Fecha entrada" Style="{StaticResource labelStyle}" HorizontalAlignment="Left"/>
-                    <TextBox Text="24-12-2021"/>
+                    <Label Content="Fecha Salida" Style="{StaticResource labelStyle}" HorizontalAlignment="Left"/>
+                    <TextBox Text="{Binding FechaFin}" IsEnabled="False"/>
                 </StackPanel >
                 <StackPanel >
                     <Label Content="Huespedes" Style="{StaticResource labelStyle}"/>
-                    <TextBox  Text="4"/>
+                    <TextBox  Text="{Binding Habitacion.NumPersonas}" IsEnabled="False"/>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Row="1">
                 <Label Content="Precio" Style="{StaticResource labelStyle}"/>
-                <TextBlock Text="502,21e" Style="{StaticResource TituloTextBlockStyle}"/>
+                <TextBlock Text="502,21e" Style="{StaticResource TituloTextBlockStyle}" IsEnabled="False"/>
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Row="2">
                 <Label Content="Cliente" Style="{StaticResource labelStyle}"/>
-                <ComboBox Width="300" HorizontalAlignment="Left" Margin="18,0,0,0"/>
-                <TextBlock Text="Ivan Nieto - ivan@peremaria.com" Foreground="#BCBCBC" VerticalAlignment="Bottom" Margin="19,0,0,0" />
+                <TextBox Width="300" Text="{Binding Usuario.Nombre}" HorizontalAlignment="Left" Margin="18,0,0,0" IsEnabled="False"/>
+                <TextBlock Text="{Binding Usuario.Email}" Foreground="#BCBCBC" VerticalAlignment="Bottom" Margin="19,0,0,0" />
             </StackPanel>
         </Grid>
-        <Border Grid.Row="2" Grid.Column="2" Background="#B0DAF1" CornerRadius="15" Width="100" Height="40" HorizontalAlignment="Right" Margin="0,0,30,0">
-            <Button Background="Transparent" Content="Modificar Reserva" Width="80" Height="40" BorderThickness="0"/>
-        </Border>
     </Grid>
 </Window>
