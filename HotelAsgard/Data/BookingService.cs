@@ -87,6 +87,32 @@ public class BookingService
             return null;
         }
     }
+
+    public async Task<List<Usuario>>? GetUsers()
+    {  try
+        {
+            String urlEndpoint = Constants._baseUrl+"/api/bookings/getUsers";
+
+            var response = await API.GetAsync(urlEndpoint);
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync();
+            var usuarios = JsonConvert.DeserializeObject<List<Usuario>>(json);
+
+            return usuarios;
+        }
+        catch (HttpRequestException ex)
+        {
+            MessageBox.Show(ex.Message);
+            return null;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+            return null;
+        }
+        
+    }
     
     public async Task<List<Room>?> SearchFreeRooms(string fechaInicio, string fechaFin, int numeroHuespedes)
     {

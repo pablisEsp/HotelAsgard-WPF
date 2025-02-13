@@ -131,14 +131,14 @@
                         <!-- Se usa WrapPanel para un layout responsivo -->
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Horizontal" IsItemsHost="True" Margin="5" Height="700"/>
+                                <WrapPanel Orientation="Horizontal" IsItemsHost="True" Margin="5" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <!-- Tarjeta de Habitación -->
                                 <Border BorderBrush="#DDDDDD" BorderThickness="1" CornerRadius="15" 
-                                        Margin="10" Padding="10" Background="White" Width="280" Height="240" >
+                                        Margin="10" Padding="10" Background="White" Width="280" Height="480" >
                                     <!-- Efecto de zoom sutil al pasar el ratón -->
                                     <Border.Style>
                                         <Style TargetType="Border">
@@ -159,18 +159,26 @@
                                             </Style.Triggers>
                                         </Style>
                                     </Border.Style>
-                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Height="1200">
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center"  Height="Infinity"
+                                                d:DataContext="{d:DesignInstance }">
                                         <!-- Imagen -->
-                                        <Image Source="{Binding Imagenes[0], Converter={StaticResource ImageUrlConverter}}" 
-                                               Height="140" Width="260" Stretch="UniformToFill" Margin="0,0,0,10" ClipToBounds="True"/>
+                                        <Image Source="{Binding Imagenes[0], Converter={StaticResource ImageUrlConverter}}"  
+                                               Height="220" Width="200" Stretch="UniformToFill" Margin="0,0,0,10" ClipToBounds="True">
+                                            <Image.Clip>
+                                                <RectangleGeometry RadiusX="15" RadiusY="15" Rect="0,0,200,220"/>
+                                            </Image.Clip>
+                                        </Image>
                                         <!-- Nombre -->
-                                        <TextBlock Text="{Binding Nombre}" FontSize="16" FontWeight="Bold" 
+                                        <TextBlock Text="{Binding Categoria}" FontSize="16" FontWeight="Bold" 
                                                    Foreground="#333333" TextAlignment="Center"/>
                                         <!-- Precio -->
-                                        <TextBlock Text="{Binding Precio, StringFormat=Precio: {0:C}}" 
+                                        <TextBlock Text="{Binding Precio, StringFormat=Precio: {0:C2} / noche}"  
                                                    FontSize="14" Foreground="#777777" TextAlignment="Center"/>
-                                        <Button x:Name="BotonReserva"  Content="Crear Reserva"   Width="400" Height="40" Click="CrearReserva_Click"/>
 
+                                        <Border Background="#B0DAF1" CornerRadius="15" Width="200" Height="40" 
+                                                HorizontalAlignment="Center" Margin="0,20,0,0">
+                                            <Button x:Name="BotonReserva" Click="CrearReserva_Click" Background="Transparent" Content="Crear Reserva" Width="200" Height="40" BorderThickness="0"/>
+                                        </Border>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>
