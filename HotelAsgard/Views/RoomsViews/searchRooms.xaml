@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:HotelAsgard.Views.RoomsViews"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="Buscar Habitaciones" Height="720" Width="1280">
+        Title="Buscar Habitaciones" Height="720" Width="1280"
+        WindowState="Maximized"
+        ResizeMode="CanMinimize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*"/>
@@ -80,15 +82,12 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition Height="0.5*"/>
+                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
 
             <StackPanel Margin="10">
                 <TextBlock Margin="0,0,0,5">Código de la habitación</TextBlock>
@@ -113,36 +112,35 @@
             </StackPanel>
 
 
-            <StackPanel Grid.Row="3" Margin="10,5,10,0" >
-                <TextBlock Margin="0,0,0,5">Precio por noche</TextBlock>
-                <TextBox x:Name="price"></TextBox>
+            <StackPanel Grid.Row="3" Margin="10,5,10,0">
+                <TextBlock Margin="0,0,0,5">Precio</TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBlock VerticalAlignment="Center">Desde</TextBlock>
+                    <TextBox x:Name="initialPrice" Width="60" Margin="5,0"></TextBox>
+
+                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0">Hasta</TextBlock>
+                    <TextBox x:Name="finalPrice" Width="60" Margin="5,0"></TextBox>
+                </StackPanel>
             </StackPanel>
 
             <StackPanel Grid.Row="4" Margin="10,5,10,0" >
-                <CheckBox Content="Oferta"/>
+                <TextBlock Margin="0,0,0,5" >Categoría</TextBlock>
+                <ComboBox x:Name="roomCategory"
+                          ItemsSource="{Binding Categorias}"
+                          SelectedItem="{Binding CategoriaSeleccionada, Mode=TwoWay}" DisplayMemberPath="Nombre">
+                </ComboBox>
             </StackPanel>
 
             <StackPanel Grid.Row="5" Margin="10,5,10,0">
-                <TextBlock  Margin="0,0,0,5" >Opciones adicionales</TextBlock>
-                <StackPanel  Orientation="Horizontal">
-                    <CheckBox Content="Cuna"/>
-                    <CheckBox Content="Cama extra" Margin="10,0,0,0"/>
-                </StackPanel>
+                
             </StackPanel>
 
             <StackPanel Grid.Row="6" Margin="10,5,10,0" >
-                <TextBlock>Reservada / Ocupada</TextBlock>
-                <StackPanel  Orientation="Horizontal">
-                    <RadioButton Margin="5">Sí</RadioButton>
-                    <RadioButton Margin="5">No</RadioButton>
-                </StackPanel>
+                
             </StackPanel>
 
             <StackPanel Grid.Row="7" Margin="10,5,10,0" >
-                <TextBlock Margin="0,0,0,5">Fecha de reserva / ocupación</TextBlock>
-                <ComboBox SelectedIndex="0">
-                    <DatePicker/>
-                </ComboBox>
+                
             </StackPanel>
 
             <Button Grid.Row="8" Height="30" Width="150" Content="Buscar">
@@ -180,12 +178,14 @@
                 <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" Width="*">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
-                            <Setter Property="ToolTip" Value="{Binding Descripcion}" />
-                            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/> <!-- 🔹 Agrega "..." si el texto es muy largo -->
+                            <Setter Property="ToolTip" Value="{Binding Descripcion}"/> <!-- 🔹 Muestra la descripción completa al pasar el ratón -->
+                            <Setter Property="MaxHeight" Value="25"/> <!-- 🔹 Evita que la celda crezca demasiado -->
+                            <Setter Property="VerticalAlignment" Value="Center"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="0.5*"/>
+                <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="*"/>
                 
                 <!-- Columna de CheckBox para habilitar/deshabilitar habitación -->
                 <DataGridTemplateColumn Header="Habilitada">

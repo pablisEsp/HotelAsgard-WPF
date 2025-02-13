@@ -1,8 +1,6 @@
-﻿using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media.Imaging;
 using HotelAsgard.Data;
@@ -12,9 +10,6 @@ using Newtonsoft.Json;
 
 namespace HotelAsgard.Views.RoomsViews
 {
-    /// <summary>
-    /// Lógica de interacción para addRoom.xaml
-    /// </summary>
     public partial class addRoom : Window
     {
         private readonly RoomService _roomService;
@@ -118,6 +113,47 @@ namespace HotelAsgard.Views.RoomsViews
             PreviewImage.Source = null; // Vaciar la imagen principal
             UpdateImageList();
         }
+        
+        private void roomCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (roomCategory.SelectedItem is Category categoriaSeleccionada)
+            {
+                // Depuración: Mostrar en consola qué categoría se ha seleccionado
+                Console.WriteLine($"Categoría seleccionada: {categoriaSeleccionada.Nombre}");
+
+                // Asignar los valores de la categoría a `_room`
+                _room.Categoria = categoriaSeleccionada.Nombre;
+                _room.Tamanyo = categoriaSeleccionada.Tamanyo;
+
+                // 🔹 Se crea una nueva lista de camas para asegurarnos de que no hay referencias cruzadas
+                _room.Camas = categoriaSeleccionada.Camas != null 
+                    ? new List<Bed>(categoriaSeleccionada.Camas) 
+                    : new List<Bed>();
+
+                // 🔹 Se crea una nueva lista de servicios
+                _room.Servicios = categoriaSeleccionada.Servicios != null 
+                    ? new List<string>(categoriaSeleccionada.Servicios) 
+                    : new List<string>();
+
+                _room.NumPersonas = categoriaSeleccionada.NumPersonas;
+                _room.Precio = categoriaSeleccionada.Precio;
+
+                // // Actualizar UI con los valores de la categoría seleccionada
+                // roomSize.Text = _room.Tamanyo.ToString();
+                // maxGuests.Text = _room.NumPersonas.ToString();
+                // roomPrice.Text = _room.Precio.ToString();
+
+                // Depuración: Mostrar el número de camas y servicios en la consola
+                Console.WriteLine($"Tamaño: {_room.Tamanyo}, NumPersonas: {_room.NumPersonas}, Precio: {_room.Precio}");
+                Console.WriteLine($"Camas asignadas: {_room.Camas.Count}, Servicios asignados: {_room.Servicios.Count}");
+            }
+            else
+            {
+                Console.WriteLine("Error: No se pudo obtener la categoría seleccionada.");
+            }
+        }
+
+
 
         private async void SendButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -129,16 +165,26 @@ namespace HotelAsgard.Views.RoomsViews
 
                 // Obtener valores de la UI
                 _room.Nombre = roomName.Text;
-                _room.Categoria = roomCategory.Text;
-                _room.NumPersonas = int.Parse(maxGuests.Text);
-                _room.Precio = decimal.Parse(roomPrice.Text);
+                //_room.Categoria = roomCategory.Text;
+                //_room.NumPersonas = int.Parse(maxGuests.Text);
+                //_room.Precio = decimal.Parse(roomPrice.Text);
                 _room.Habilitada = true;
                 _room.Imagenes = new List<string>(_imagePaths);
 
-                // Convertir camas y servicios en JSON
-                string camasJson = JsonConvert.SerializeObject(new List<Bed>()); // Puedes cambiarlo por la lista real de camas
-                string serviciosJson = JsonConvert.SerializeObject(new List<string>()); // Puedes cambiarlo por la lista real de servicios
+                // ✅ Verificar si `Camas` y `Servicios` están vacíos y evitar enviar `null`
+                if (_room.Camas == null)
+                    _room.Camas = new List<Bed>();
 
+                if (_room.Servicios == null)
+                    _room.Servicios = new List<string>();
+
+                // Depuración: Verificar los datos antes de enviarlos
+                Console.WriteLine($"Enviando habitación: Código={_room.Codigo}, Nombre={_room.Nombre}, Categoría={_room.Categoria}");
+                Console.WriteLine($"Tamaño={_room.Tamanyo}, NumPersonas={_room.NumPersonas}, Precio={_room.Precio}");
+                Console.WriteLine($"Camas={JsonConvert.SerializeObject(_room.Camas)}, Servicios={JsonConvert.SerializeObject(_room.Servicios)}");
+                Console.WriteLine($"Imágenes={_room.Imagenes.Count}");
+
+                
                 bool success = await _roomService.CrearHabitacionAsync(_room, _imagePaths);
 
                 if (success)
@@ -152,7 +198,7 @@ namespace HotelAsgard.Views.RoomsViews
                 }
                 else
                 {
-                    MessageBox.Show("Error al crear la habitación.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Error al crear la habitación. ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception ex)
@@ -160,5 +206,6 @@ namespace HotelAsgard.Views.RoomsViews
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        
     }
 }
