@@ -1,4 +1,6 @@
+using System.Net.Http;
 using System.Windows;
+using HotelAsgard.ViewModels;
 
 namespace HotelAsgard.Views.UserViews
 {
