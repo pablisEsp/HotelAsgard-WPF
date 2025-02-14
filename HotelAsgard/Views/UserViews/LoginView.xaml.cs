@@ -27,6 +27,8 @@ namespace HotelAsgard.Views.UserViews
         {
             InitializeComponent();
             _apiClient = new UserApiClient(new HttpClient());
+            userBox.Text = "admin@gmail.com";
+            passwordBox.Password = "admin1";
 
         }
 
