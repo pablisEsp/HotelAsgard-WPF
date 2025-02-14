@@ -64,7 +64,9 @@ namespace HotelAsgard.Views.UserViews
                 if (result)
                 {
                     MessageBox.Show("Usuario registrado con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-                    this.Close();
+                    initial_view initialView = new initial_view();
+                    initialView.Show();
+                    Close();
                 }
                 else
                 {

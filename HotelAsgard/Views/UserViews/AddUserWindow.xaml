@@ -78,7 +78,8 @@
                 <TextBlock Margin="10" FontSize="30" FontFamily="Mongolian Baiti" Foreground="WhiteSmoke" VerticalAlignment="Top">Rol</TextBlock>
                 <ComboBox x:Name="tipoUsers" Margin="10,0,20,0" FontSize="25">
                     <ComboBoxItem FontFamily="Mongolian Baiti">admin</ComboBoxItem>
-                    <ComboBoxItem FontFamily="Mongolian Baiti">Cliente</ComboBoxItem>
+                    <ComboBoxItem FontFamily="Mongolian Baiti">usuario</ComboBoxItem>
+                    <ComboBoxItem FontFamily="Mongolian Baiti">cliente</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
 

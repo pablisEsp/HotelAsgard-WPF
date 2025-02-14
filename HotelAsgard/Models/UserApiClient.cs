@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.VisualBasic;
+using Constants = HotelAsgard.Constants;
 
 public class UserModel
 {
@@ -62,6 +65,8 @@ public class UserApiClient
     /// <summary>
     /// Inicia sesión y almacena el token JWT.
     /// </summary>
+    
+    
     public async Task<bool> LoginAsync(string email, string password)
     {
         try
@@ -73,6 +78,7 @@ public class UserApiClient
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             var response = await _httpClient.PostAsync($"{_baseUrl}/login", content);
+            
             var responseString = await response.Content.ReadAsStringAsync();
             Console.WriteLine($"📥 Respuesta API: {responseString}"); // Debug
 
@@ -91,6 +97,8 @@ public class UserApiClient
 
                 _httpClient.DefaultRequestHeaders.Authorization =
                     new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                
+                
                 return true;
             }
 
@@ -111,7 +119,7 @@ public class UserApiClient
     {
         try
         {
-            return await _httpClient.GetFromJsonAsync<List<UserModel>>($"{_baseUrl}/getAll");
+            return await _httpClient.GetFromJsonAsync<List<UserModel>>($"{_baseUrl}/getAll/");
         }
         catch (Exception ex)
         {
