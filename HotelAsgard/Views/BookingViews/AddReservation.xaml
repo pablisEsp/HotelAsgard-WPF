@@ -52,7 +52,13 @@
         <!-- Efecto de sombra sutil -->
         <DropShadowEffect x:Key="ShadowEffect" Color="Black" Direction="270" ShadowDepth="3" BlurRadius="5" Opacity="0.3"/>
     </Window.Resources>
+<Grid>
+    <Grid.Background>
+        <ImageBrush ImageSource="../../Images/paisaje_cutre.png" Stretch="UniformToFill" />
+    </Grid.Background>
 
+    <!-- Main Layout -->
+    <Border Margin="20,20,20,20" Background="White" Opacity="0.9" CornerRadius="10">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -94,7 +100,7 @@
 
         <!-- Buscador -->
         <Grid Grid.Row="1" Background="White" Margin="40,10,40,0">
-            <TextBlock Text="Buscar Habitaciones" Style="{StaticResource TituloTextBlockStyle}" FontSize="28"/>
+            <TextBlock Text="Buscar Reservas" Style="{StaticResource TituloTextBlockStyle}" FontSize="28"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                 <StackPanel Orientation="Vertical" Margin="20">
                     <Label Content="Número de Huéspedes" Style="{StaticResource LabelStyle}"/>
@@ -190,4 +196,7 @@
             </Border>
         </Grid>
     </Grid>
+    </Border>
+</Grid>
+    
 </Window>

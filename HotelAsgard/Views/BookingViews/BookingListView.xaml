@@ -60,6 +60,13 @@
     </Window.Resources>
     
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="../../Images/paisaje_cutre.png" Stretch="UniformToFill" />
+        </Grid.Background>
+
+        <!-- Main Layout -->
+        <Border Margin="20,20,20,20" Background="White" Opacity="0.9" CornerRadius="10">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="4*"/>
@@ -159,7 +166,7 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Resultado" FontWeight="Bold" FontSize="32" HorizontalAlignment="Left"  Foreground="#3C3C3C"/>
+            <TextBlock Text="Listado de Reservas Creadas" FontWeight="Bold" FontSize="32" HorizontalAlignment="Left"  Foreground="#3C3C3C"/>
         
             <DataGrid Grid.Row="1"
                       x:Name="ReservasDataGrid"
@@ -193,4 +200,7 @@
             </DataGrid>
         </Grid>
     </Grid>
+    </Border>
+    </Grid>
+
 </Window>

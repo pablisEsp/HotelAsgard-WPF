@@ -68,7 +68,7 @@
 
             <StackPanel Orientation="Vertical" Grid.Row="1">
                 <Label Content="Precio" Style="{StaticResource labelStyle}"/>
-                <TextBlock Text="502,21e" Style="{StaticResource TituloTextBlockStyle}" IsEnabled="False"/>
+                <TextBlock Text="{Binding Precio, StringFormat='{}{0} €'}" Style="{StaticResource TituloTextBlockStyle}" IsEnabled="False"/>
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Row="2">

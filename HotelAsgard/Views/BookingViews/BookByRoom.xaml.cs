@@ -74,7 +74,7 @@ namespace HotelAsgard.Views.BookingViews
             {
                 int noches = (FechaSalida - FechaEntrada).Days;
                 _precioFinal = noches * SelectedRoom.Precio;
-                Precio.Text = _precioFinal.ToString(CultureInfo.InvariantCulture);
+                Precio.Text = _precioFinal.ToString(CultureInfo.InvariantCulture)+"€";
             }
             else
             {
