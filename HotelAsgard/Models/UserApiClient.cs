@@ -42,11 +42,19 @@ public class UserApiClient
         try
         {
             var response = await _httpClient.PostAsJsonAsync($"{_baseUrl}/register", user);
+            var responseContent = await response.Content.ReadAsStringAsync(); // Capturar respuesta JSON
+            Console.WriteLine($"📥 Respuesta API: {response.StatusCode} - {responseContent}"); // Debug
+
+            if (!response.IsSuccessStatusCode)
+            {
+                MessageBox.Show($"Error: {responseContent}", "Error API", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
             return response.IsSuccessStatusCode;
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error en RegisterUserAsync: {ex.Message}");
+            Console.WriteLine($"❌ Error en RegisterUserAsync: {ex.Message}");
             return false;
         }
     }
