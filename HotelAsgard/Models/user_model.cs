@@ -19,5 +19,6 @@ public class Usuario
     public string Tipo { get; set; }
     public List<Reserva> Reservas { get; set; }
     public DateTime FechaRegistro { get; set; }
+    public string Image {get;set;}
 }
 

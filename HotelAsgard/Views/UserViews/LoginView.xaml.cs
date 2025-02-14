@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,19 +20,40 @@ namespace HotelAsgard.Views.UserViews
     /// </summary>
     public partial class LoginView : Window
     {
+
+        private readonly UserApiClient _apiClient;
+
         public LoginView()
         {
             InitializeComponent();
-            
+            _apiClient = new UserApiClient(new HttpClient());
+
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            if ((userBox.Text != "") && (passwordBox.Password != ""))
+            string email = userBox.Text.Trim();
+            string password = passwordBox.Password.Trim();
+
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                initial_view iv = new initial_view();
+                MessageBox.Show("⚠️ Debes ingresar un email y una contraseña.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            bool isLoggedIn = await _apiClient.LoginAsync(email, password);
+
+            if (isLoggedIn)
+            {
+                MessageBox.Show("✅ Inicio de sesión exitoso.", "Bienvenido", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                initial_view initial = new initial_view();
+                initial.Show();
                 this.Close();
-                iv.Show();
+            }
+            else
+            {
+                MessageBox.Show("❌ Email o contraseña incorrectos.", "Error de autenticación", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
