@@ -159,7 +159,7 @@ public class BookingService
         try
         {
             string baseUrl = Constants._baseUrl; 
-            string endpoint = "/api/bookings/createBooking";
+            string endpoint = "/api/bookings/createBookingWPF";
             string fullUrlEndpoint = baseUrl + endpoint;
             
             string json = JsonConvert.SerializeObject(reserva);

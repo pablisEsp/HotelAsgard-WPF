@@ -17,7 +17,7 @@ public class Usuario
     public string Movil { get; set; }
     public DateTime FechaNacimiento { get; set; }
     public string Tipo { get; set; }
-    public List<Reserva> Reservas { get; set; }
+    public List<String> Reservas { get; set; } //este es el id de 
     public DateTime FechaRegistro { get; set; }
     public string Image {get;set;}
 }
