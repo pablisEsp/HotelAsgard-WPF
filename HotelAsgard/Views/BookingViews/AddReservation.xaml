@@ -5,202 +5,189 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:utils="clr-namespace:HotelAsgard.Utils"
         mc:Ignorable="d"
-        Title="AddReservation" Height="720" Width="1280">
+        WindowState="Maximized"
+        ResizeMode="CanMinimize"
+        Title="Añadir Reserva" Height="720" Width="1280" Background="#F9F9F9">
+    
     <Window.Resources>
         <utils:ImageUrlConverter x:Key="ImageUrlConverter"/>
-        <!-- Estilo para el TextBlock de título aa -->
+
+        <!-- Estilo para Títulos -->
         <Style x:Key="TituloTextBlockStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="20" />
-
-            <Setter Property="FontWeight" Value="Bold" />
-
-            <Setter Property="Foreground" Value="#B0DAF1" />
-
-            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#2C3E50"/>
+            <Setter Property="Margin" Value="10,5,10,5"/>
         </Style>
 
-        <Style x:Key="labelStyle" TargetType="Label">
-            <Setter Property="FontSize" Value="12" />
-            <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="Foreground" Value="#3C3C3C" />
-            <Setter Property="Margin" Value="2" />
+        <!-- Estilo para Labels -->
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#3C3C3C"/>
+            <Setter Property="Margin" Value="5"/>
         </Style>
 
-        <Style x:Key="menuStyle" TargetType="Menu">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="FontWeight" Value="Bold" />
-        </Style>
-
-        <Style x:Key="menuItemStyle" TargetType="MenuItem">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderBrush" Value="Transparent" />
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="Padding" Value="10,5" />
-            <Setter Property="Cursor" Value="Hand" />
+        <!-- Estilo para Botón Redondeado -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#3498DB"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Margin" Value="10"/>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Foreground" Value="#42525a" />
-                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Background" Value="#2980B9"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <!-- Efecto de sombra sutil -->
+        <DropShadowEffect x:Key="ShadowEffect" Color="Black" Direction="270" ShadowDepth="3" BlurRadius="5" Opacity="0.3"/>
     </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
-            <RowDefinition Height="5*" />
+            <RowDefinition Height="3*" />
             <RowDefinition Height="6*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin=" 0,0,0,10">
+
+        <!-- Encabezado -->
+        <Grid Grid.Row="0" Margin="20,10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="../../Images/logo_con_fondo.png" Width="80" Height="80" />
-                    <TextBlock Text="Hotel Asgard" VerticalAlignment="Center" Foreground="#3C3C3C" FontWeight="DemiBold" FontSize="22" />
-                    <Border Margin="20,0,20,0" BorderBrush="#B0DAF1" BorderThickness="1" Height="60" Width="2" />
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                        <TextBlock Text="Bienvenido Ivan" Foreground="#3C3C3C" FontWeight="Medium" FontSize="18" />
-                        <TextBlock Text="Cerrar Sesion" Foreground="#BCBCBC" FontSize="16" HorizontalAlignment="Center" />
-                    </StackPanel>
-                </StackPanel>
+
+            <!-- Logo y Nombre -->
+            <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Center">
+                <Image Source="../../Images/logo_con_fondo.png" Width="70" Height="70"/>
+                <TextBlock Text="Hotel Asgard" VerticalAlignment="Center" Foreground="#2C3E3C" FontWeight="Bold" FontSize="22" Margin="10,0"/>
             </StackPanel>
-           
-            <Menu VerticalAlignment="Center" Background="Transparent"  Grid.Column="1" Width="648">
 
-                <MenuItem Style="{StaticResource menuItemStyle}" Header="Menu" FontSize="16" FontWeight="Bold" Click="MainWindows_click"/>
-                <!-- Sección de Usuario -->
-                <MenuItem Style="{StaticResource menuItemStyle}" Header="Usuario" FontSize="16" FontWeight="Bold">
-                    <MenuItem Header="Perfil" Click="Perfil_Click" />
-                    <MenuItem Header="Buscar Usuario" Click="BuscarUsuario_Click" />
-                    <MenuItem Header="Añadir Usuario" Click="AddUser_Click" />
+            <!-- Menú Superior -->
+            <Menu Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <MenuItem Header="Menú" FontSize="16" FontWeight="Bold" Click="MainWindows_click"/>
+                <MenuItem Header="Usuario" FontSize="16" FontWeight="Bold">
+                    <MenuItem Header="Perfil" Click="Perfil_Click"/>
+                    <MenuItem Header="Buscar Usuario" Click="BuscarUsuario_Click"/>
+                    <MenuItem Header="Añadir Usuario" Click="AddUser_Click"/>
                 </MenuItem>
-
-                <!-- Sección de Reservas -->
-                <MenuItem Style="{StaticResource menuItemStyle}"  Header="Reservas" FontSize="16" FontWeight="Bold">
-                    <MenuItem Header="Buscar Reservas" Click="SearchBooking_Click" />
-                    <MenuItem Header="Añadir Reservas" Click="AddBooking_Click" />
+                <MenuItem Header="Reservas" FontSize="16" FontWeight="Bold">
+                    <MenuItem Header="Buscar Reservas" Click="SearchBooking_Click"/>
+                    <MenuItem Header="Añadir Reservas" Click="AddBooking_Click"/>
                 </MenuItem>
-
-                <!-- Sección de Habitaciones -->
-                <MenuItem Style="{StaticResource menuItemStyle}"  Header="Habitaciones" FontSize="16" FontWeight="Bold">
-                    <MenuItem Header="Buscar Habitaciones" />
-                    <MenuItem Header="Añadir Habitaciones" />
+                <MenuItem Header="Habitaciones" FontSize="16" FontWeight="Bold">
+                    <MenuItem Header="Buscar Habitaciones"/>
+                    <MenuItem Header="Añadir Habitaciones"/>
                 </MenuItem>
             </Menu>
-
         </Grid>
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="2.5*" />
-            </Grid.RowDefinitions>
-            <TextBlock Text="Buscador :" Margin="10,10,10,0" Grid.Row="0" Style="{StaticResource TituloTextBlockStyle}" FontSize="40" VerticalAlignment="Bottom" FontStretch="Condensed" />
-            <Grid Grid.Row="1" Background="#F4F4F4" Margin="70,10,70,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="15" HorizontalAlignment="Center">
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                        <Label Content="Número de huéspedes" Style="{StaticResource labelStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="-6,8,0,0" />
-                        <ComboBox VerticalAlignment="Bottom" Margin="0,12,0,0" SelectedIndex="1" x:Name="NumHuespedes">
-                            <ComboBox.Items>
-                                <ComboBoxItem>1</ComboBoxItem>
-                                <ComboBoxItem>2</ComboBoxItem>
-                                <ComboBoxItem>3</ComboBoxItem>
-                                <ComboBoxItem>4</ComboBoxItem>
-                                <ComboBoxItem>5</ComboBoxItem>
-                                <ComboBoxItem>6</ComboBoxItem>
-                            </ComboBox.Items>
-                        </ComboBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Margin="120,0,120,0">
-                        <Label Content="Fecha de entrada" Style="{StaticResource labelStyle}" Margin="-6,8,0,0" />
-                        <DatePicker Margin="0,12,0,0"
-                            x:Name="fechaInicio"
-                            SelectedDateFormat="Short"
-                            IsDropDownOpen="False"
-                            PreviewTextInput="DatePicker_PreviewTextInput"
-                            PreviewKeyDown="DatePicker_PreviewKeyDown"
-                            GotFocus="DatePicker_GotFocus"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center" />
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical">
-                        <Label Content="Fecha Salida" Style="{StaticResource labelStyle}" Margin="-6,8,0,0" />
-                        <DatePicker Margin="0,12,0,0"
-                                    x:Name="fechaFin"
-                                    SelectedDateFormat="Short"
-                                    IsDropDownOpen="False"
-                                    PreviewTextInput="DatePicker_PreviewTextInput"
-                                    PreviewKeyDown="DatePicker_PreviewKeyDown"
-                                    GotFocus="DatePicker_GotFocus"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center" />
-                    </StackPanel>
+
+        <!-- Buscador -->
+        <Grid Grid.Row="1" Background="White" Margin="40,10,40,0">
+            <TextBlock Text="Buscar Habitaciones" Style="{StaticResource TituloTextBlockStyle}" FontSize="28"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <StackPanel Orientation="Vertical" Margin="20">
+                    <Label Content="Número de Huéspedes" Style="{StaticResource LabelStyle}"/>
+                    <ComboBox Width="150" SelectedIndex="1" x:Name="NumHuespedes">
+                        <ComboBox.Items>
+                            <ComboBoxItem>1</ComboBoxItem>
+                            <ComboBoxItem>2</ComboBoxItem>
+                            <ComboBoxItem>3</ComboBoxItem>
+                            <ComboBoxItem>4</ComboBoxItem>
+                            <ComboBoxItem>5</ComboBoxItem>
+                            <ComboBoxItem>6</ComboBoxItem>
+                        </ComboBox.Items>
+                    </ComboBox>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Left">
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="160,0,0,0">
-                        <Label Content="Precio Noche" Style="{StaticResource labelStyle}" HorizontalAlignment="Center" />
-                        <Slider Width="300" Value="500" Minimum="100" Maximum="1000"  Margin="0,10,0,0" TickPlacement="TopLeft" IsSnapToTickEnabled="True" AutoToolTipPlacement="BottomRight" TickFrequency="50" />
-                        <TextBlock Text="0"
-                       HorizontalAlignment="Left"
-                           VerticalAlignment="Bottom"
-                                        Margin="0,0,0,-14" />
-                        <TextBlock Text="1000"
-                            HorizontalAlignment="Right"
-                           VerticalAlignment="Bottom"
-                                    Margin="0,0,0,-14" />
-                    </StackPanel>
-                    <Border  Grid.Column="1" Background="#B0DAF1" CornerRadius="15" Width="100" Height="40" HorizontalAlignment="Right" Margin="200,0,30,0">
-                        <Button Background="Transparent" Content="Buscar" Width="80" Height="40" BorderThickness="0" />
-                    </Border>
+                <StackPanel Orientation="Vertical" Margin="20">
+                    <Label Content="Fecha de Entrada" Style="{StaticResource LabelStyle}"/>
+                    <DatePicker Width="150" x:Name="fechaInicio"/>
                 </StackPanel>
-            </Grid>
+                <StackPanel Orientation="Vertical" Margin="20">
+                    <Label Content="Fecha de Salida" Style="{StaticResource LabelStyle}"/>
+                    <DatePicker Width="150" x:Name="fechaFin"/>
+                </StackPanel>
+            </StackPanel>
+            <Button Content="Buscar" Style="{StaticResource RoundedButtonStyle}" Margin="0,80,0,0" Click="SearchFreeRooms_Click"/>
         </Grid>
-        <Grid Grid.Row="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="5*" />
-            </Grid.RowDefinitions>
-            <TextBlock Text="Resultados :"  Grid.Row="0" FontSize="42" FontWeight="Bold" />
-            <!--<StackPanel Orientation="Vertical" Grid.Row="1" VerticalAlignment="Top">
-                <Image Source="../../Images/hab_odin.jpg" Width="300" Height="200" />
-                <TextBlock Text="Habitación Odin" HorizontalAlignment="Center" Foreground="#3C3C3C" FontSize="20" FontWeight="DemiBold" />
-                <TextBlock Text="36€ / noche" Foreground="#B0DAF1" HorizontalAlignment="Center" FontSize="18" />
-                <Border  Grid.Column="1" Background="#B0DAF1" CornerRadius="15" Margin="0,0,0,10" Width="180" Height="30" HorizontalAlignment="Center">
-                    <Button Background="Transparent" Content="Añadir Reserva" Width="180" Height="30" BorderThickness="0" />
-                </Border>
-            </StackPanel>-->
-            <ScrollViewer HorizontalScrollBarVisibility="Auto"  Grid.Row="1" VerticalScrollBarVisibility="Disabled">
-                <ItemsControl ItemsSource="{Binding Habitaciones}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal" />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="10" Margin="10,10,10,20" Padding="10">
-                                <StackPanel Orientation="Vertical" Margin="5" Width="300">
-                                    <!-- Imagen -->
-                                    <Image Source="{Binding Imagenes[0]}" Height="150" Stretch="UniformToFill" Margin="0,0,0,10" />
 
-                                    <!-- Nombre -->
-                                    <TextBlock Text="{Binding Nombre}" FontSize="16" FontWeight="Bold" Margin="0,0,0,5" />
+        <!-- Resultados -->
+        <Grid Grid.Row="2" Margin="40,10,40,20">
+            <TextBlock Text="Resultados" Style="{StaticResource TituloTextBlockStyle}" FontSize="28" Margin="0,0,0,10"/>
+            <Border CornerRadius="10" Background="White" Padding="10" Margin="0,40,0,0" Effect="{DynamicResource ShadowEffect}">
+                <!-- Se elimina la altura fija para que ocupe el espacio disponible -->
+                <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Disabled"
+                              Background="Transparent">
+                    <ItemsControl ItemsSource="{Binding Habitaciones}">
+                        <!-- Se usa WrapPanel para un layout responsivo -->
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" IsItemsHost="True" Margin="5" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <!-- Tarjeta de Habitación -->
+                                <Border BorderBrush="#DDDDDD" BorderThickness="1" CornerRadius="15" 
+                                        Margin="10" Padding="10" Background="White" Width="280" Height="480" >
+                                    <!-- Efecto de zoom sutil al pasar el ratón -->
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                                            <Setter Property="RenderTransform">
+                                                <Setter.Value>
+                                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="RenderTransform">
+                                                        <Setter.Value>
+                                                            <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center"  Height="Infinity"
+                                                d:DataContext="{d:DesignInstance }">
+                                        <!-- Imagen -->
+                                        <Image Source="{Binding Imagenes[0], Converter={StaticResource ImageUrlConverter}}"  
+                                               Height="220" Width="200" Stretch="UniformToFill" Margin="0,0,0,10" ClipToBounds="True">
+                                            <Image.Clip>
+                                                <RectangleGeometry RadiusX="15" RadiusY="15" Rect="0,0,200,220"/>
+                                            </Image.Clip>
+                                        </Image>
+                                        <!-- Nombre -->
+                                        <TextBlock Text="{Binding Categoria}" FontSize="16" FontWeight="Bold" 
+                                                   Foreground="#333333" TextAlignment="Center"/>
+                                        <!-- Precio -->
+                                        <TextBlock Text="{Binding Precio, StringFormat=Precio: {0:C2} / noche}"  
+                                                   FontSize="14" Foreground="#777777" TextAlignment="Center"/>
 
-                                    <!-- Precio -->
-                                    <TextBlock Text="{Binding Precio, StringFormat=Precio: {0:C}}" FontSize="14" Foreground="Gray" />
-                                </StackPanel>
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </ScrollViewer>
+                                        <Border Background="#B0DAF1" CornerRadius="15" Width="200" Height="40" 
+                                                HorizontalAlignment="Center" Margin="0,20,0,0">
+                                            <Button x:Name="BotonReserva" Click="CrearReserva_Click" Background="Transparent" Content="Crear Reserva" Width="200" Height="40" BorderThickness="0"/>
+                                        </Border>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
         </Grid>
     </Grid>
 </Window>

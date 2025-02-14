@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HotelAsgard.Views.BookingViews"
+        WindowState="Maximized"
+        ResizeMode="CanMinimize"
         mc:Ignorable="d"
         Title="BookingListView" Height="720" Width="1280">
     <Window.Resources>
@@ -80,7 +81,7 @@
 
             <!-- Sección de Reservas -->
             <MenuItem Style="{StaticResource menuItemStyle}"  Header="Reservas" FontSize="16" FontWeight="Bold">
-                <MenuItem Header="Buscar Reservas" Click="SearchBooking_Click" />
+                <MenuItem Header="Lista Reservas" Click="SearchBooking_Click" />
                 <MenuItem Header="Añadir Reservas" Click="AddBooking_Click" />
             </MenuItem>
 

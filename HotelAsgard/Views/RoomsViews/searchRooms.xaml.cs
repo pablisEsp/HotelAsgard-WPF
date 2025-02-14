@@ -9,21 +9,19 @@ using HotelAsgard.Views.UserViews;
 
 namespace HotelAsgard.Views.RoomsViews
 {
-    /// <summary>
-    /// Lógica de interacción para searchRooms.xaml
-    /// </summary>
 
     public partial class searchRooms : Window
     {
         //public ObservableCollection<Habitacion> Habitaciones { get; set; }
-        public RoomVM RoomVm { get; set; }
+        public RoomVM RoomVM { get; set; }
+        private readonly RoomService _roomService;
 
 
         public searchRooms()
         {
             InitializeComponent();
-            RoomVm = new RoomVM();
-            DataContext = RoomVm; // Enlaza la UI con el ViewModel
+            RoomVM = new RoomVM();
+            DataContext = RoomVM; // Enlaza la UI con el ViewModel
             
             
         }
@@ -70,8 +68,8 @@ namespace HotelAsgard.Views.RoomsViews
 
         private void SearchBooking_Click(object sender, RoutedEventArgs e)
         {
-            AddReservation addReservation = new AddReservation();
-            addReservation.Show();
+            BookingListView bookingListView = new BookingListView();
+            bookingListView.Show();
             this.Close();
         }
 
@@ -89,7 +87,6 @@ namespace HotelAsgard.Views.RoomsViews
             this.Close();
         }
     
-        private RoomService _roomService = new RoomService();
 
         private async void CheckBox_Click(object sender, RoutedEventArgs e)
         {

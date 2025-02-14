@@ -4,7 +4,6 @@ using System.Net.Http.Headers;
 using System.Windows;
 using HotelAsgard.Models.Rooms;
 using Newtonsoft.Json;
-using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 namespace HotelAsgard.Data;
 
@@ -20,7 +19,7 @@ public class RoomService
     public HttpClient API => _httpClient;
     
 
-    public async Task<List<Room>> GetRooms() //function to get all rooms
+    public async Task<List<Room>> GetRooms()
     {
         try
         {
@@ -59,7 +58,7 @@ public class RoomService
         }
     }
     
-    public async Task<List<Category>> GetCategorias() // function to get categories
+    public async Task<List<Category>> GetCategorias()
     {
         try
         {
@@ -68,7 +67,16 @@ public class RoomService
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();
+
+            // 🔹 Depuración: Verificar el JSON recibido antes de deserializar
+            Console.WriteLine($"JSON recibido desde el backend: {json}");
+
             var categorias = JsonConvert.DeserializeObject<List<Category>>(json);
+
+            foreach (var categoria in categorias)
+            {
+                Console.WriteLine($"Categoría: {categoria.Nombre}, Camas JSON: {JsonConvert.SerializeObject(categoria.Camas)}");
+            }
 
             return categorias;
         }
