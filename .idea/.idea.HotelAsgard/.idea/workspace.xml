@@ -7,16 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7a451a5-7359-440e-ac54-39ee04ea3eb7" name="Changes" comment="Adding images changed. Categories implemented">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelAsgard/Data/RoomService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Data/RoomService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelAsgard/ViewModels/Rooms/AddRoomVM.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/ViewModels/Rooms/AddRoomVM.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/addRoom.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/addRoom.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/addRoom.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/addRoom.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/editRoom.xaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/RoomsViews/editRoom.xaml.cs" beforeDir="false" />
-    </list>
-    <list default="true" id="7231264f-3ac7-4bfa-b42f-c742d79c953a" name="Changes" comment="Update things of FranRama" />
+    <list default="true" id="c7a451a5-7359-440e-ac54-39ee04ea3eb7" name="Changes" comment="Falta getOne para acceder al _id" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,9 +19,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-        <entry key="$PROJECT_DIR$" value="FranRama" />
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Luismi-Brench" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,15 +37,6 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/243a037ca7a04510a506adfdd94befbac90930/53/4e3dbb16/Encoding.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9a297a7e45534117ba648d6a8ce98a8ef60938/4f/925d5455/MessageBoxButton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3146526cace5c153434b15691561ac6ba930a9e7453c78d803b9b6fa41a65/StringContent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5db77782baa778fabcf4eeb678821516f8a4a5085c75d2d913faffe62b135af/Selector.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c439425da351c75ac7d966a1cc8324b51a9c471865af79d2f2f3fcb65e392/HttpClient.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/ViewModels/AddReservationViewModel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Views/BookingViews/AddReservation.xaml" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Francisco/source/repos/HotelAsgard-WPF/HotelAsgard/Views/BookingViews/BookByRoom.xaml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/BookingViews/BookByRoom.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/BookingViews/BookingListView.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/RoomsViews/addRoom.g.cs" root0="SKIP_HIGHLIGHTING" />
@@ -64,7 +44,8 @@
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/UserViews/LoginView.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/UserViews/SearchUserWindow.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HotelAsgard/obj/Debug/net8.0-windows/Views/initial_view.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/528231ff9f911f33068aaa888c96c7cc92cabbf0bc1f31386d66e14174ecae/Grid.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -136,7 +117,7 @@
       <created>1738259109166</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1738259109166</updated>
+      <updated>1738097614919</updated>
       <workItem from="1738259110851" duration="779000" />
       <workItem from="1738595240670" duration="670000" />
       <workItem from="1738766923233" duration="456000" />
@@ -150,7 +131,6 @@
       <workItem from="1739197917735" duration="5887000" />
       <workItem from="1739209868311" duration="6200000" />
       <workItem from="1739287750063" duration="1200000" />
-      <updated>1738097614919</updated>
       <workItem from="1738097618037" duration="178000" />
       <workItem from="1738166478674" duration="7203000" />
       <workItem from="1738250057522" duration="102000" />
@@ -183,29 +163,29 @@
       <option name="project" value="LOCAL" />
       <updated>1738863772289</updated>
     </task>
-    <task id="LOCAL-00004" summary="Added Newton JSON on nuggget">
+    <task id="LOCAL-00004" summary="PabloRama merged with master">
       <option name="closed" value="true" />
-      <created>1738864739788</created>
+      <created>1739199470226</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1738864739788</updated>
+      <updated>1739199470226</updated>
     </task>
-    <task id="LOCAL-00005" summary="algo del workspace.xml">
+    <task id="LOCAL-00005" summary="Adding images changed. Categories implemented">
       <option name="closed" value="true" />
-      <created>1738865126614</created>
+      <created>1739363853473</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1738865126614</updated>
+      <updated>1739363853473</updated>
     </task>
-    <task id="LOCAL-00006" summary="things changed of fran rama">
+    <task id="LOCAL-00006" summary="Falta getOne para acceder al _id">
       <option name="closed" value="true" />
-      <created>1738914533872</created>
+      <created>1739550592361</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1738914533872</updated>
+      <updated>1739550592361</updated>
     </task>
     <task id="LOCAL-00007" summary="no se que es esto , pero esta en el git ignore">
       <option name="closed" value="true" />
@@ -239,23 +219,6 @@
       <option name="project" value="LOCAL" />
       <updated>1739204146424</updated>
     </task>
-    <task id="LOCAL-00004" summary="PabloRama merged with master">
-      <option name="closed" value="true" />
-      <created>1739199470226</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1739199470226</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Adding images changed. Categories implemented">
-      <option name="closed" value="true" />
-      <created>1739363853473</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1739363853473</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
     <task id="LOCAL-00011" summary="Update things of FranRama">
       <option name="closed" value="true" />
       <created>1739292209011</created>
@@ -264,7 +227,7 @@
       <option name="project" value="LOCAL" />
       <updated>1739292209011</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,7 +254,8 @@
     <MESSAGE value="Adding updates" />
     <MESSAGE value="PabloRama merged with master" />
     <MESSAGE value="Adding images changed. Categories implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding images changed. Categories implemented" />
+    <MESSAGE value="Falta getOne para acceder al _id" />
+    <option name="LAST_COMMIT_MESSAGE" value="Falta getOne para acceder al _id" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
