@@ -29,15 +29,23 @@ namespace HotelAsgard.Views.RoomsViews
 
         private void editRoom_Click(object sender, RoutedEventArgs e)
         {
-            //Habitaciones[0]
-            addRoom window = new addRoom("Editar habitación", "Editar");
-            window.Show(); 
+            if (sender is Button button && button.CommandParameter is Room selectedRoom)
+            {
+                addRoom editWindow = new addRoom("Editar Habitación", "Guardar Cambios", selectedRoom, false);
+                editWindow.Show();
+                this.Close();
+            }
         }
 
        
         private void roomInfo_Click(object sender, RoutedEventArgs e)
         {
-
+            if (sender is Button button && button.CommandParameter is Room selectedRoom)
+            {
+                addRoom infoWindow = new addRoom("Detalles de la Habitación", "Cerrar", selectedRoom, true);
+                infoWindow.ShowDialog();
+                this.Close();
+            }
         }
         
         private void Perfil_Click(object sender, RoutedEventArgs e)

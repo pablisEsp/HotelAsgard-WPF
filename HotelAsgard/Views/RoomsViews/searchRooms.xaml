@@ -20,8 +20,10 @@
         <SolidColorBrush x:Key="DataGridCellBorderBrush" Color="#DDDDDD" />
         <Style x:Key="DataGridCellStyle" TargetType="DataGridCell">
             <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="BorderBrush" Value="{StaticResource DataGridCellBorderBrush}" />
-            <Setter Property="BorderThickness" Value="0,0,0,1" /> <Setter Property="Padding" Value="5" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" /> 
+            <Setter Property="Padding" Value="5" />
             <Setter Property="TextBlock.TextAlignment" Value="Left" />
         </Style>
 
@@ -273,15 +275,10 @@
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                         <!-- Botón Editar -->
                                         <Button Content="✏️" ToolTip="Editar"
-                                                Command="{Binding DataContext.EditarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                                 CommandParameter="{Binding}" Margin="2" Background="Transparent"
                                                 Click="editRoom_Click" />
-                                        <!-- Botón Deshabilitar
-                                <Button Content="❌" ToolTip="Deshabilitar" Command="{Binding DataContext.EliminarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" Click="deleteRoom_Click"/>
-                                -->
                                         <!-- Botón Más Información -->
                                         <Button Content="ℹ️" ToolTip="Más Información"
-                                                Command="{Binding DataContext.MasInfoCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                                 CommandParameter="{Binding}" Margin="2" Background="Transparent"
                                                 Click="roomInfo_Click" />
                                     </StackPanel>

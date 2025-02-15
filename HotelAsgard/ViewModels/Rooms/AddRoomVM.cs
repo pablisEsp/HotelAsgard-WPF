@@ -17,6 +17,8 @@ namespace HotelAsgard.ViewModels
         private ObservableCollection<string> _imagenes;
         private string _codigo;
         
+        private bool _isReadOnlyMode;
+        
         public ObservableCollection<string> Imagenes
         {
             get => _imagenes;
@@ -59,7 +61,24 @@ namespace HotelAsgard.ViewModels
                 OnPropertyChanged(nameof(Camas));
             }
         }
+        
+        public bool IsReadOnlyMode
+        {
+            get => _isReadOnlyMode;
+            set
+            {
+                if (_isReadOnlyMode != value)
+                {
+                    _isReadOnlyMode = value;
+                    OnPropertyChanged(nameof(IsReadOnlyMode));
+                    OnPropertyChanged(nameof(IsEditMode)); // Notificar cambio en IsEditMode
+                }
+            }
+        }
 
+        public bool IsEditMode => !IsReadOnlyMode;
+
+        
         public int Precio => CategoriaSeleccionada?.Precio ?? 0;
         public int NumPersonas => CategoriaSeleccionada?.NumPersonas ?? 0;
         public List<Bed> Camas => CategoriaSeleccionada?.Camas ?? new List<Bed>();
@@ -119,10 +138,7 @@ namespace HotelAsgard.ViewModels
                 return false;
             }
         }
-
-        /// <summary>
-        /// Abre un diálogo para seleccionar imágenes y las agrega a la lista.
-        /// </summary>
+        
         public void AgregarImagen()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
@@ -139,6 +155,8 @@ namespace HotelAsgard.ViewModels
                 }
             }
         }
+        
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

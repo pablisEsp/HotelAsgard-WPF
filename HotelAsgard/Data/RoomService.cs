@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Windows;
 using HotelAsgard.Models.Rooms;
 using Newtonsoft.Json;
@@ -15,9 +16,9 @@ public class RoomService
     {
         _httpClient = new HttpClient();
     }
-    
+
     public HttpClient API => _httpClient;
-    
+
 
     public async Task<List<Room>> GetRooms()
     {
@@ -42,7 +43,7 @@ public class RoomService
             throw new Exception($"Error: {ex.Message}");
         }
     }
-    
+
     public async Task<bool> ToggleRoomAvailability(Room room) // function to toggle availability
     {
         try
@@ -57,7 +58,7 @@ public class RoomService
             throw new Exception($"Error al cambiar el estado de la habitación: {ex.Message}");
         }
     }
-    
+
     public async Task<List<Category>> GetCategorias()
     {
         try
@@ -75,7 +76,8 @@ public class RoomService
 
             foreach (var categoria in categorias)
             {
-                Console.WriteLine($"Categoría: {categoria.Nombre}, Camas JSON: {JsonConvert.SerializeObject(categoria.Camas)}");
+                Console.WriteLine(
+                    $"Categoría: {categoria.Nombre}, Camas JSON: {JsonConvert.SerializeObject(categoria.Camas)}");
             }
 
             return categorias;
@@ -85,7 +87,7 @@ public class RoomService
             throw new Exception($"Error al obtener las categorías: {ex.Message}");
         }
     }
-    
+
     public async Task<string> ObtenerNuevoCodigoAsync()
     {
         try
@@ -99,61 +101,64 @@ public class RoomService
 
                 return data.ContainsKey("codigo") ? data["codigo"] : "HAB000";
             }
+
             return "HAB000";
         }
         catch
         {
-            MessageBox.Show("Error al obtener el nuevo código de habitación.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Error al obtener el nuevo código de habitación.", "Error", MessageBoxButton.OK,
+                MessageBoxImage.Error);
             return "HAB000";
         }
     }
-    
+
     public async Task<bool> CrearHabitacionAsync(Room room, List<string> imagePaths)
+    {
+        try
         {
-            try
+            var formData = new MultipartFormDataContent();
+
+            // Datos básicos de la habitación
+            formData.Add(new StringContent(room.Codigo), "codigo");
+            formData.Add(new StringContent(room.Nombre), "nombre");
+            formData.Add(new StringContent(room.Categoria), "categoria");
+            formData.Add(new StringContent(room.Tamanyo.ToString()), "tamanyo");
+            formData.Add(new StringContent(room.NumPersonas.ToString()), "numPersonas");
+            formData.Add(new StringContent(room.Precio.ToString()), "precio");
+            formData.Add(new StringContent(room.Descripcion), "descripcion");
+            formData.Add(new StringContent(room.Habilitada ? "true" : "false"), "habilitada");
+
+            // ✅ SOLUCIÓN: Serializar `camas` y `servicios` con Newtonsoft.Json
+            formData.Add(new StringContent(JsonConvert.SerializeObject(room.Camas)), "camas");
+            formData.Add(new StringContent(JsonConvert.SerializeObject(room.Servicios)), "servicios");
+
+            // Adjuntar imágenes
+            foreach (var imagePath in imagePaths)
             {
-                var formData = new MultipartFormDataContent();
-
-                // Datos básicos de la habitación
-                formData.Add(new StringContent(room.Codigo), "codigo");
-                formData.Add(new StringContent(room.Nombre), "nombre");
-                formData.Add(new StringContent(room.Categoria), "categoria");
-                formData.Add(new StringContent(room.Tamanyo.ToString()), "tamanyo");
-                formData.Add(new StringContent(room.NumPersonas.ToString()), "numPersonas");
-                formData.Add(new StringContent(room.Precio.ToString()), "precio");
-                formData.Add(new StringContent(room.Descripcion), "descripcion");
-                formData.Add(new StringContent(room.Habilitada ? "true" : "false"), "habilitada");
-
-                // ✅ SOLUCIÓN: Serializar `camas` y `servicios` con Newtonsoft.Json
-                formData.Add(new StringContent(JsonConvert.SerializeObject(room.Camas)), "camas");
-                formData.Add(new StringContent(JsonConvert.SerializeObject(room.Servicios)), "servicios");
-
-                // Adjuntar imágenes
-                foreach (var imagePath in imagePaths)
-                {
-                    var imageContent = new ByteArrayContent(File.ReadAllBytes(imagePath));
-                    imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
-                    formData.Add(imageContent, "imagenes", Path.GetFileName(imagePath));
-                }
-
-                // Hacer la petición POST
-                HttpResponseMessage response = await _httpClient.PostAsync("http://localhost:3000/api/rooms/", formData);
-
-                return response.IsSuccessStatusCode;
+                var imageContent = new ByteArrayContent(File.ReadAllBytes(imagePath));
+                imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
+                formData.Add(imageContent, "imagenes", Path.GetFileName(imagePath));
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error en la API: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
+
+            // Hacer la petición POST
+            HttpResponseMessage response = await _httpClient.PostAsync("http://localhost:3000/api/rooms/", formData);
+
+            return response.IsSuccessStatusCode;
         }
-    
-    public async Task<List<Room>> SearchRooms(string codigo, string nombre, string categoria, int? numPersonas, int? tamanyoMin, int? tamanyoMax, decimal? precioMin, decimal? precioMax, bool? habilitada)
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Error en la API: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            return false;
+        }
+    }
+
+    public async Task<List<Room>> SearchRooms(string codigo, string nombre, string categoria, int? numPersonas,
+        int? tamanyoMin, int? tamanyoMax, decimal? precioMin, decimal? precioMax, bool? habilitada)
     {
         try
         {
             var url = "http://localhost:3000/api/rooms/filter?";
-        
+
             if (!string.IsNullOrEmpty(codigo)) url += $"codigo={codigo}&";
             if (!string.IsNullOrEmpty(nombre)) url += $"nombre={nombre}&";
             if (!string.IsNullOrEmpty(categoria)) url += $"categoria={categoria}&";
@@ -163,7 +168,7 @@ public class RoomService
             if (precioMin.HasValue) url += $"precioMin={precioMin}&";
             if (precioMax.HasValue) url += $"precioMax={precioMax}&";
             if (habilitada.HasValue) url += $"habilitada={habilitada.ToString().ToLower()}&";
-            
+
             Console.WriteLine($"🔍 URL generada: {url}"); // 👈 Verifica qué datos se están enviando a la API
 
             var response = await _httpClient.GetAsync(url);
@@ -179,5 +184,51 @@ public class RoomService
             throw new Exception($"Error al filtrar habitaciones: {ex.Message}");
         }
     }
-    
+
+    public async Task<bool> ActualizarHabitacionAsync(Room room, List<string> imagePaths)
+    {
+        try
+        {
+            string url = $"http://localhost:3000/api/rooms/{room.Codigo}";
+
+            var formData = new MultipartFormDataContent();
+
+            // 🔹 Asegurar que se envían todas las imágenes actuales (incluyendo las que no son nuevas)
+            formData.Add(new StringContent(JsonConvert.SerializeObject(imagePaths)), "imagenes");
+
+            formData.Add(new StringContent(room.Codigo), "codigo");
+            formData.Add(new StringContent(room.Nombre), "nombre");
+            formData.Add(new StringContent(room.Categoria), "categoria");
+            formData.Add(new StringContent(room.Tamanyo.ToString()), "tamanyo");
+            formData.Add(new StringContent(room.NumPersonas.ToString()), "numPersonas");
+            formData.Add(new StringContent(room.Precio.ToString()), "precio");
+            formData.Add(new StringContent(room.Descripcion), "descripcion");
+            formData.Add(new StringContent(room.Habilitada ? "true" : "false"), "habilitada");
+
+            // 🔹 Serializar `camas` y `servicios`
+            formData.Add(new StringContent(JsonConvert.SerializeObject(room.Camas)), "camas");
+            formData.Add(new StringContent(JsonConvert.SerializeObject(room.Servicios)), "servicios");
+
+            // 🔹 Agregar imágenes nuevas (archivos físicos)
+            foreach (var imagePath in imagePaths)
+            {
+                if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
+                {
+                    var imageContent = new ByteArrayContent(File.ReadAllBytes(imagePath));
+                    imageContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
+                    formData.Add(imageContent, "imagenes", Path.GetFileName(imagePath));
+                }
+            }
+
+            HttpResponseMessage response = await _httpClient.PutAsync(url, formData);
+
+            return response.IsSuccessStatusCode;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Error al actualizar la habitación: {ex.Message}", "Error", MessageBoxButton.OK,
+                MessageBoxImage.Error);
+            return false;
+        }
+    }
 }
