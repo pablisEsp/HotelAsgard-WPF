@@ -28,8 +28,10 @@
         <!-- Title -->
         <TextBlock x:Name="title" VerticalAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="#B0DAF1"></TextBlock>
 
+        <!-- Botton back -->
+        <Button Content="Volver" Click="GoBackButton" HorizontalAlignment="Right" Grid.Column="2"/>
+        
         <!-- Name & Code -->
-
         <Grid Margin="10" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -67,7 +69,7 @@
             <TextBlock Margin="0,0,0,5" FontSize="20" Foreground="#3C3C3C">Descripción</TextBlock>
             <RichTextBox
                 x:Name="DescriptionRichTextBox"
-                Height="80" VerticalScrollBarVisibility="Auto">
+                Height="64" VerticalScrollBarVisibility="Auto">
                 <FlowDocument>
                     <Paragraph x:Name="descriptionText" LineHeight="5" />
                 </FlowDocument>

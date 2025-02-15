@@ -51,7 +51,9 @@
             </Style>
 
             <Style x:Key="DataGridRowStyle" TargetType="DataGridRow">
-                <Setter Property="Height" Value="Auto"/> <Setter Property="VerticalContentAlignment" Value="Center"/> </Style>
+                <Setter Property="Height" Value="Auto"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
 
             <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="{StaticResource TuColorDeDetalle}"/>
             <SolidColorBrush x:Key="ButtonForegroundBrush" Color="White"/>

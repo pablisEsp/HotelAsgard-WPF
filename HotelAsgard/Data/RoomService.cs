@@ -147,7 +147,37 @@ public class RoomService
                 return false;
             }
         }
+    
+    public async Task<List<Room>> SearchRooms(string codigo, string nombre, string categoria, int? numPersonas, int? tamanyoMin, int? tamanyoMax, decimal? precioMin, decimal? precioMax, bool? habilitada)
+    {
+        try
+        {
+            var url = "http://localhost:3000/api/rooms/filter?";
+        
+            if (!string.IsNullOrEmpty(codigo)) url += $"codigo={codigo}&";
+            if (!string.IsNullOrEmpty(nombre)) url += $"nombre={nombre}&";
+            if (!string.IsNullOrEmpty(categoria)) url += $"categoria={categoria}&";
+            if (numPersonas.HasValue) url += $"numPersonas={numPersonas.Value}&";
+            if (tamanyoMin.HasValue) url += $"tamanyoMin={tamanyoMin}&";
+            if (tamanyoMax.HasValue) url += $"tamanyoMax={tamanyoMax}&";
+            if (precioMin.HasValue) url += $"precioMin={precioMin}&";
+            if (precioMax.HasValue) url += $"precioMax={precioMax}&";
+            if (habilitada.HasValue) url += $"habilitada={habilitada.ToString().ToLower()}&";
+            
+            Console.WriteLine($"🔍 URL generada: {url}"); // 👈 Verifica qué datos se están enviando a la API
 
+            var response = await _httpClient.GetAsync(url);
+            response.EnsureSuccessStatusCode();
 
+            var json = await response.Content.ReadAsStringAsync();
+            var habitaciones = JsonConvert.DeserializeObject<List<Room>>(json);
+
+            return habitaciones;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Error al filtrar habitaciones: {ex.Message}");
+        }
+    }
     
 }
