@@ -206,6 +206,12 @@ namespace HotelAsgard.Views.RoomsViews
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        
+
+        private void GoBackButton(object sender, RoutedEventArgs e)
+        {
+            searchRooms sr = new searchRooms();
+            sr.Show();
+            this.Close();
+        }
     }
 }

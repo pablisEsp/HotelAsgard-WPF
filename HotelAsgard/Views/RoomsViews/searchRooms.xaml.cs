@@ -21,6 +21,7 @@ namespace HotelAsgard.Views.RoomsViews
         {
             InitializeComponent();
             RoomVM = new RoomVM();
+            _roomService = new RoomService();
             DataContext = RoomVM; // Enlaza la UI con el ViewModel
             
             
@@ -33,11 +34,7 @@ namespace HotelAsgard.Views.RoomsViews
             window.Show(); 
         }
 
-        private void deleteRoom_Click(object sender, RoutedEventArgs e)
-        {
-            // delete room
-        }
-
+       
         private void roomInfo_Click(object sender, RoutedEventArgs e)
         {
 
@@ -88,7 +85,7 @@ namespace HotelAsgard.Views.RoomsViews
         }
     
 
-        private async void CheckBox_Click(object sender, RoutedEventArgs e)
+        private async void CheckBox_Click(object sender, RoutedEventArgs e) // Checkbo habilitada
         {
             if (sender is CheckBox checkBox && checkBox.DataContext is Room room)
             {
@@ -108,7 +105,7 @@ namespace HotelAsgard.Views.RoomsViews
                         MessageBox.Show("Error al actualizar la habitación.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     
-                    MessageBox.Show("Habitación " + room.Nombre + (room.Habilitada ? " Habilitada" : " Deshabilitada"));
+                    MessageBox.Show("Habitación " + room.Nombre + (room.Habilitada ? " Habilitada" : " Deshabilitada"), "Habitación Editada", MessageBoxButton.OK, MessageBoxImage.Information);
                     
 
                 }
@@ -118,8 +115,34 @@ namespace HotelAsgard.Views.RoomsViews
                 }
             }
         }
-
         
+        private async void OnSearchClick(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is RoomVM viewModel)
+            {
+                await viewModel.SearchRoomsAsync();
+            }
+        }
+
+        private void AddRoomButton_ClickClick(object sender, RoutedEventArgs e)
+        {
+            addRoom ar = new addRoom("Añadir habitación", "Añadir");
+            ar.Show();
+        }
+        
+        // Just numbers allowed for text
+        private void OnlyNumbers(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = !int.TryParse(e.Text, out _);
+        }
+
+        private void ClearFilterClick(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is RoomVM viewModel)
+            {
+                viewModel.ClearFilters();
+            }
+        }
     }
     
 }

@@ -9,220 +9,299 @@
         Title="Buscar Habitaciones" Height="720" Width="1280"
         WindowState="Maximized"
         ResizeMode="CanMinimize">
+    <Window.Resources>
+        <Color x:Key="TuColorDeDetalle">#B0DAF1</Color>
+        <SolidColorBrush x:Key="TuColorDeDetalleBrush" Color="{StaticResource TuColorDeDetalle}" />
+
+        <SolidColorBrush x:Key="DataGridRowBackgroundBrush" Color="White" />
+        <SolidColorBrush x:Key="DataGridAlternatingRowBackgroundBrush" Color="#F0F0F0" />
+        <SolidColorBrush x:Key="DataGridBorderBrush" Color="{StaticResource TuColorDeDetalle}" />
+        <SolidColorBrush x:Key="DataGridHeaderBackgroundBrush" Color="{StaticResource TuColorDeDetalle}" />
+        <SolidColorBrush x:Key="DataGridCellBorderBrush" Color="#DDDDDD" />
+        <Style x:Key="DataGridCellStyle" TargetType="DataGridCell">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="BorderBrush" Value="{StaticResource DataGridCellBorderBrush}" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" /> <Setter Property="Padding" Value="5" />
+            <Setter Property="TextBlock.TextAlignment" Value="Left" />
+        </Style>
+
+        <Style x:Key="DataGridColumnHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="{StaticResource DataGridHeaderBackgroundBrush}" />
+            <Setter Property="Foreground" Value="White" /> <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Padding" Value="8,5" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="BorderBrush" Value="{StaticResource DataGridBorderBrush}" />
+        </Style>
+
+        <Style x:Key="DataGridRowStyle" TargetType="DataGridRow">
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="0.40*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.35*"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        <!-- Background Image -->
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/paisaje_cutre.png" Stretch="UniformToFill" />
+        </Grid.Background>
+
+        <!-- Main Layout -->
+        <Border Margin="20,20,20,20" Background="White" Opacity="0.9" CornerRadius="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="0.40*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.35*" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
 
-        <StackPanel Margin="15,0,0,0" HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Top">
-            <Image Source="../../Images/logo_con_fondo.png" Width="100" Height="150"></Image>
-            <TextBlock Margin="10,0,0,0" FontSize="28" VerticalAlignment="Center">Hotel Asgard</TextBlock>
-        </StackPanel>
-
-
-        <Menu VerticalAlignment="Center" Background="Transparent"  Grid.Column="1" Width="648">
-            <Menu.Resources>
-                <Style x:Key="menuItemStyle" TargetType="MenuItem">
-                    <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="BorderBrush" Value="Transparent" />
-                    <Setter Property="Foreground" Value="Black" />
-                    <Setter Property="Padding" Value="10,5" />
-                    <Setter Property="Cursor" Value="Hand" />
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="#42525a" />
-                            <Setter Property="FontWeight" Value="Bold" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Menu.Resources>
-
-            <MenuItem Style="{StaticResource menuItemStyle}" Header="Menu" FontSize="16" FontWeight="Bold" Click="MainWindows_click"/>
-            <!-- Sección de Usuario -->
-            <MenuItem Style="{StaticResource menuItemStyle}" Header="Usuario" FontSize="16" FontWeight="Bold">
-                <MenuItem Header="Perfil" Click="Perfil_Click" />
-                <MenuItem Header="Buscar Usuario" Click="BuscarUsuario_Click" />
-                <MenuItem Header="Añadir Usuario" Click="AddUser_Click" />
-            </MenuItem>
-
-            <!-- Sección de Reservas -->
-            <MenuItem Style="{StaticResource menuItemStyle}"  Header="Reservas" FontSize="16" FontWeight="Bold">
-                <MenuItem Header="Lista Reservas" Click="SearchBooking_Click" />
-                <MenuItem Header="Añadir Reservas" Click="AddBooking_Click" />
-            </MenuItem>
-
-            <!-- Sección de Habitaciones -->
-            <MenuItem Style="{StaticResource menuItemStyle}"  Header="Habitaciones" FontSize="16" FontWeight="Bold">
-                <MenuItem Header="Buscar Habitaciones" />
-                <MenuItem Header="Añadir Habitaciones" />
-            </MenuItem>
-        </Menu>
-
-
-        <StackPanel Margin="40,0,0,0" Grid.Row="1" VerticalAlignment="Bottom">
-            <TextBlock Foreground="#B0DAF1" FontSize="48" FontWeight="Bold">Buscador</TextBlock>
-        </StackPanel>
-
-        <StackPanel Margin="10,0,0,0" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom">
-            <TextBlock  FontSize="40" FontWeight="Bold">Habitaciones</TextBlock>
-        </StackPanel>
-
-        <!-- Buscador -->
-        <Grid Margin="40,10,10,10" Grid.Row="2" Grid.RowSpan="2" Background="#F4F4F4">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-            <StackPanel Margin="10">
-                <TextBlock Margin="0,0,0,5">Código de la habitación</TextBlock>
-                <TextBox x:Name="room_Code"></TextBox>
-            </StackPanel>
-
-            <StackPanel Grid.Row="1" Margin="10">
-                <TextBlock Margin="0,0,0,5">Nombre de la habitación</TextBlock>
-                <TextBox x:Name="room_Name"></TextBox>
-            </StackPanel>
-
-            <StackPanel Grid.Row="2" Margin="10,5,10,0">
-                <TextBlock Margin="0,0,0,5">Número de huéspedes</TextBlock>
-                <ComboBox x:Name="guests_Number" SelectedIndex="0">
-                    <ComboBoxItem>1</ComboBoxItem>
-                    <ComboBoxItem>2</ComboBoxItem>
-                    <ComboBoxItem>3</ComboBoxItem>
-                    <ComboBoxItem>4</ComboBoxItem>
-                    <ComboBoxItem>5</ComboBoxItem>
-                    <ComboBoxItem>6</ComboBoxItem>
-                </ComboBox>
-            </StackPanel>
-
-
-            <StackPanel Grid.Row="3" Margin="10,5,10,0">
-                <TextBlock Margin="0,0,0,5">Precio</TextBlock>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <TextBlock VerticalAlignment="Center">Desde</TextBlock>
-                    <TextBox x:Name="initialPrice" Width="60" Margin="5,0"></TextBox>
-
-                    <TextBlock VerticalAlignment="Center" Margin="10,0,0,0">Hasta</TextBlock>
-                    <TextBox x:Name="finalPrice" Width="60" Margin="5,0"></TextBox>
+                <StackPanel Margin="15,0,0,0" HorizontalAlignment="Left" Orientation="Horizontal"
+                            VerticalAlignment="Top">
+                    <Image Source="../../Images/logo_con_fondo.png" Width="75" Height="75"></Image>
+                    <TextBlock Margin="10,0,0,0" FontSize="28" VerticalAlignment="Center">Hotel Asgard</TextBlock>
                 </StackPanel>
-            </StackPanel>
 
-            <StackPanel Grid.Row="4" Margin="10,5,10,0" >
-                <TextBlock Margin="0,0,0,5" >Categoría</TextBlock>
-                <ComboBox x:Name="roomCategory"
-                          ItemsSource="{Binding Categorias}"
-                          SelectedItem="{Binding CategoriaSeleccionada, Mode=TwoWay}" DisplayMemberPath="Nombre">
-                </ComboBox>
-            </StackPanel>
 
-            <StackPanel Grid.Row="5" Margin="10,5,10,0">
-                
-            </StackPanel>
-
-            <StackPanel Grid.Row="6" Margin="10,5,10,0" >
-                
-            </StackPanel>
-
-            <StackPanel Grid.Row="7" Margin="10,5,10,0" >
-                
-            </StackPanel>
-
-            <Button Grid.Row="8" Height="30" Width="150" Content="Buscar">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="12"
-                    BorderBrush="#B0DAF1"
-                    BorderThickness="2"
-                    Background="#B0DAF1">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-        </Grid>
-        
-                 
-        
-        <!-- RESULTADOS HABITACIONES -->
-        <DataGrid Grid.Row="2" Grid.Column="1"
-                  ItemsSource="{Binding Rooms}" 
-                  AutoGenerateColumns="False" 
-                  Margin="10" 
-                  CanUserAddRows="False" 
-                  CanUserDeleteRows="False"
-                  IsReadOnly="True">
-                  <!--VirtualizingPanel.IsVirtualizing="True"
-                  VirtualizingPanel.VirtualizationMode="Recycling"-->
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" Width="*"/>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
-                <DataGridTextColumn Header="Categoria" Binding="{Binding Categoria}" Width="*"/>
-                <DataGridTextColumn Header="Tamaño" Binding="{Binding Tamanyo}" Width="*"/>
-                <DataGridTextColumn Header="Huéspedes" Binding="{Binding NumPersonas}" Width="*"/>
-                <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" Width="*">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/> <!-- 🔹 Agrega "..." si el texto es muy largo -->
-                            <Setter Property="ToolTip" Value="{Binding Descripcion}"/> <!-- 🔹 Muestra la descripción completa al pasar el ratón -->
-                            <Setter Property="MaxHeight" Value="25"/> <!-- 🔹 Evita que la celda crezca demasiado -->
-                            <Setter Property="VerticalAlignment" Value="Center"/>
+                <Menu VerticalAlignment="Center" Background="Transparent" Grid.Column="1" Width="648">
+                    <Menu.Resources>
+                        <Style x:Key="menuItemStyle" TargetType="MenuItem">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                            <Setter Property="Foreground" Value="Black" />
+                            <Setter Property="Padding" Value="10,5" />
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="#42525a" />
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                </Trigger>
+                            </Style.Triggers>
                         </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="*"/>
-                
-                <!-- Columna de CheckBox para habilitar/deshabilitar habitación -->
-                <DataGridTemplateColumn Header="Habilitada">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <CheckBox IsChecked="{Binding Habilitada, Mode=TwoWay}" Click="CheckBox_Click"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                
-                <!-- Columna de iconos -->
-                <DataGridTemplateColumn Header="Acciones" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <!-- Botón Editar -->
-                                <Button Content="✏️" ToolTip="Editar" Command="{Binding DataContext.EditarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" Click="editRoom_Click"/>
-                                <!-- Botón Deshabilitar
+                    </Menu.Resources>
+
+                    <MenuItem Style="{StaticResource menuItemStyle}" Header="Menu" FontSize="16" FontWeight="Bold"
+                              Click="MainWindows_click" />
+                    <!-- Sección de Usuario -->
+                    <MenuItem Style="{StaticResource menuItemStyle}" Header="Usuario" FontSize="16" FontWeight="Bold">
+                        <MenuItem Header="Perfil" Click="Perfil_Click" />
+                        <MenuItem Header="Buscar Usuario" Click="BuscarUsuario_Click" />
+                        <MenuItem Header="Añadir Usuario" Click="AddUser_Click" />
+                    </MenuItem>
+
+                    <!-- Sección de Reservas -->
+                    <MenuItem Style="{StaticResource menuItemStyle}" Header="Reservas" FontSize="16" FontWeight="Bold">
+                        <MenuItem Header="Lista Reservas" Click="SearchBooking_Click" />
+                        <MenuItem Header="Añadir Reservas" Click="AddBooking_Click" />
+                    </MenuItem>
+
+                    <!-- Sección de Habitaciones -->
+                    <MenuItem Style="{StaticResource menuItemStyle}" Header="Habitaciones" FontSize="16"
+                              FontWeight="Bold">
+                        <MenuItem Header="Buscar Habitaciones" />
+                        <MenuItem Header="Añadir Habitaciones" />
+                    </MenuItem>
+                </Menu>
+
+
+                <StackPanel Margin="40,0,0,0" Grid.Row="1" VerticalAlignment="Bottom">
+                    <TextBlock Foreground="#B0DAF1" FontSize="48" FontWeight="Bold">Buscador</TextBlock>
+                </StackPanel>
+
+                <StackPanel Margin="10,0,0,0" Orientation="Horizontal" Grid.Column="1" Grid.Row="1"
+                            VerticalAlignment="Bottom">
+                    <TextBlock FontSize="40" FontWeight="Bold">Habitaciones</TextBlock>
+                </StackPanel>
+
+                <!-- Buscador -->
+                <Grid Margin="40,10,10,20" Grid.Row="2" Grid.RowSpan="2" Background="#F4F4F4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Margin="10">
+                        <TextBlock Margin="0,0,0,5">Código de la habitación</TextBlock>
+                        <TextBox Text="{Binding RoomCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Margin="10">
+                        <TextBlock Margin="0,0,0,5">Nombre de la habitación</TextBlock>
+                        <TextBox Text="{Binding RoomName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="2" Margin="10,5,10,0">
+                        <TextBlock Margin="0,0,0,5">Categoría</TextBlock>
+                        <ComboBox
+                            ItemsSource="{Binding Categorias}"
+                            SelectedItem="{Binding CategoriaSeleccionada, Mode=TwoWay}" DisplayMemberPath="Nombre">
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="5" Margin="10,5,10,0">
+                        <TextBlock Margin="0,0,0,5">Número de huéspedes</TextBlock>
+                        <TextBox Text="{Binding NumPersonasMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 PreviewTextInput="OnlyNumbers" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="3" Margin="10,5,10,0">
+                        <TextBlock Margin="0,0,0,5">Tamaño</TextBlock>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <TextBlock VerticalAlignment="Center">Desde</TextBlock>
+                            <TextBox Text="{Binding InitialSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Width="60" Margin="5,0" PreviewTextInput="OnlyNumbers" />
+
+                            <TextBlock VerticalAlignment="Center" Margin="10,0,0,0">Hasta</TextBlock>
+                            <TextBox Text="{Binding FinalSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Width="60" Margin="5,0" PreviewTextInput="OnlyNumbers" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="4" Margin="10,5,10,0">
+                        <TextBlock Margin="0,0,0,5">Precio</TextBlock>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <TextBlock VerticalAlignment="Center">Desde</TextBlock>
+                            <TextBox Text="{Binding InitialPrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Width="60" Margin="5,0" PreviewTextInput="OnlyNumbers" />
+
+                            <TextBlock VerticalAlignment="Center" Margin="10,0,0,0">Hasta</TextBlock>
+                            <TextBox Text="{Binding FinalPrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Width="60" Margin="5,0" PreviewTextInput="OnlyNumbers" />
+                        </StackPanel>
+                    </StackPanel>
+
+
+                    <StackPanel Grid.Row="6" Margin="10,15,10,0">
+                        <CheckBox IsChecked="{Binding IsRoomUsable, Mode=TwoWay}" Content="Habilitada" IsEnabled="True" />
+                    </StackPanel>
+
+                    <Button Grid.Row="7" Height="25" Width="125" Content="Limpiar filtros" Click="ClearFilterClick"
+                            VerticalAlignment="Center">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border CornerRadius="12"
+                                        BorderBrush="#B0DAF1"
+                                        BorderThickness="2"
+                                        Background="#B0DAF1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Grid.Row="8" Height="30" Width="150" Content="Buscar" VerticalAlignment="Top" Click="OnSearchClick">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border CornerRadius="12"
+                                        BorderBrush="#B0DAF1"
+                                        BorderThickness="2"
+                                        Background="#B0DAF1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+
+
+                <!-- RESULTADOS HABITACIONES -->
+                <DataGrid Grid.Row="2" Grid.Column="1"
+                          ItemsSource="{Binding Rooms}"
+                          AutoGenerateColumns="False"
+                          Margin="10,10,20,10"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          IsReadOnly="True"
+                          RowBackground="{StaticResource DataGridRowBackgroundBrush}"
+                          AlternatingRowBackground="{StaticResource DataGridAlternatingRowBackgroundBrush}"
+                          BorderBrush="{StaticResource DataGridBorderBrush}"
+                          BorderThickness="1"
+                          GridLinesVisibility="Horizontal"
+                          HeadersVisibility="Column"
+                          CellStyle="{StaticResource DataGridCellStyle}"
+                          ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"
+                          RowStyle="{StaticResource DataGridRowStyle}"
+                          VirtualizingPanel.IsVirtualizing="True"
+                          VirtualizingPanel.VirtualizationMode="Recycling">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" Width="*" />
+                        <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*" />
+                        <DataGridTextColumn Header="Categoria" Binding="{Binding Categoria}" Width="*" />
+                        <DataGridTextColumn Header="Tamaño" Binding="{Binding Tamanyo}" Width="*" />
+                        <DataGridTextColumn Header="Huéspedes" Binding="{Binding NumPersonas}" Width="*" />
+                        <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}" Width="*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                                    <!-- 🔹 Agrega "..." si el texto es muy largo -->
+                                    <Setter Property="ToolTip" Value="{Binding Descripcion}" />
+                                    <!-- 🔹 Muestra la descripción completa al pasar el ratón -->
+                                    <Setter Property="MaxHeight" Value="25" />
+                                    <!-- 🔹 Evita que la celda crezca demasiado -->
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="*" />
+
+                        <!-- Columna de CheckBox para habilitar/deshabilitar habitación -->
+                        <DataGridTemplateColumn Header="Habilitada">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding Habilitada, Mode=TwoWay}"
+                                              HorizontalAlignment="Center"
+                                              Click="CheckBox_Click" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <!-- Columna de iconos -->
+                        <DataGridTemplateColumn Header="Acciones" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <!-- Botón Editar -->
+                                        <Button Content="✏️" ToolTip="Editar"
+                                                Command="{Binding DataContext.EditarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                                CommandParameter="{Binding}" Margin="2" Background="Transparent"
+                                                Click="editRoom_Click" />
+                                        <!-- Botón Deshabilitar
                                 <Button Content="❌" ToolTip="Deshabilitar" Command="{Binding DataContext.EliminarCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" Click="deleteRoom_Click"/>
                                 -->
-                                <!-- Botón Más Información -->
-                                <Button Content="ℹ️" ToolTip="Más Información" Command="{Binding DataContext.MasInfoCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" Margin="2" Background="Transparent" Click="roomInfo_Click"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-            
-        </DataGrid>
-        
-        <!-- Botón añadir habitación -->
-        <Button Margin="0,0,10,0" HorizontalAlignment="Right" BorderBrush="Transparent" Grid.Column="2" Grid.Row="3" Background="Transparent">
-            <StackPanel>
-                <Image Width="40" Source="../../Images/add_users.png"></Image>
-            </StackPanel>
-        </Button>
+                                        <!-- Botón Más Información -->
+                                        <Button Content="ℹ️" ToolTip="Más Información"
+                                                Command="{Binding DataContext.MasInfoCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                                CommandParameter="{Binding}" Margin="2" Background="Transparent"
+                                                Click="roomInfo_Click" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
 
+                </DataGrid>
 
+                <!-- Botón añadir habitación -->
+                <Button Margin="0,0,10,0" HorizontalAlignment="Right" BorderBrush="Transparent" Grid.Column="2"
+                        Grid.Row="3"
+                        Background="Transparent"
+                        Click="AddRoomButton_ClickClick">
+                    <StackPanel>
+                        <Image Width="40" Source="../../Images/add_users.png"></Image>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
