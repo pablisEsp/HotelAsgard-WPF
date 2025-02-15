@@ -7,9 +7,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7231264f-3ac7-4bfa-b42f-c742d79c953a" name="Changes" comment="">
+    <list default="true" id="7231264f-3ac7-4bfa-b42f-c742d79c953a" name="Changes" comment="Update things of FranRama">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HotelAsgard/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Models/UserApiClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Models/UserApiClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Utils/dataExamples.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Utils/dataExamples.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/ViewModels/userViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/ViewModels/userViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/AddUserWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/AddUserWindow.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/AddUserWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/AddUserWindow.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/SearchUserWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/SearchUserWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/SearchUserWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HotelAsgard/Views/UserViews/SearchUserWindow.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,21 +72,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.HotelAsgard.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Luismi-Brench&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.HotelAsgard.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Luismi-Brench",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="HotelAsgard" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -124,11 +130,7 @@
       <workItem from="1739287750063" duration="1200000" />
       <workItem from="1739446625705" duration="2383000" />
       <workItem from="1739455621136" duration="20000" />
-      <workItem from="1739471983848" duration="4396000" />
-      <workItem from="1739489300873" duration="423000" />
-      <workItem from="1739536434450" duration="501000" />
-      <workItem from="1739582099810" duration="34000" />
-      <workItem from="1739639315115" duration="12000" />
+      <workItem from="1739471983848" duration="3436000" />
     </task>
     <task id="LOCAL-00001" summary="changes on AddReservation.xaml.cs">
       <option name="closed" value="true" />
@@ -218,15 +220,7 @@
       <option name="project" value="LOCAL" />
       <updated>1739292209011</updated>
     </task>
-    <task id="LOCAL-00012" summary="Funciones completas(falta modificar usuario)">
-      <option name="closed" value="true" />
-      <created>1739478424195</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1739478424195</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,12 +251,24 @@
     <MESSAGE value="we need to change the menu&#10;and the addResevatio" />
     <MESSAGE value="theres things" />
     <MESSAGE value="Update things of FranRama" />
-    <MESSAGE value="Funciones completas(falta modificar usuario)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Funciones completas(falta modificar usuario)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update things of FranRama" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/HotelAsgard/Models/UserApiClient.cs</url>
+          <line>40</line>
+          <properties documentPath="C:\Users\Luismi\Desktop\GitHub Intermodular\HotelAsgard-WPF\HotelAsgard\Models\UserApiClient.cs" containingFunctionPresentation="Method 'RegisterUserAsync'">
+            <startOffsets>
+              <option value="1237" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1238" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/HotelAsgard/Models/UserApiClient.cs</url>
           <line>59</line>
