@@ -231,4 +231,36 @@ public class RoomService
             return false;
         }
     }
+    
+    public async Task<bool> RoomExists(string codigo)
+    {
+        if (string.IsNullOrEmpty(codigo))
+        {
+            return false;
+        }
+
+        string url = $"http://localhost:3000/api/rooms/{codigo}";
+
+        
+        try
+        {
+            HttpResponseMessage response = await _httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true; // 🔹 Si la API devuelve un 200, la habitación existe
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return false; // 🔹 Si la API devuelve un 404, la habitación no existe
+            }
+
+            return false; // 🔹 Si hay otro error, asumimos que no existe
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al verificar la existencia de la habitación: {ex.Message}");
+            return false; // 🔹 Si ocurre un error, asumimos que la habitación no existe
+        }
+    }
 }

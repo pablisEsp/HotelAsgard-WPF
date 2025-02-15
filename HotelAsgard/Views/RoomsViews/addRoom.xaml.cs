@@ -22,25 +22,26 @@ namespace HotelAsgard.Views.RoomsViews
             InitializeComponent();
             _roomService = new RoomService();
             _viewModel = new AddRoomVM();
-            _room = new Room();
-            
+            _room = new Room(); // 🔹 Se crea una nueva habitación
+
             DataContext = _viewModel;
 
             title.Text = titleText;
             this.Title = titleText;
             sendButton.Content = buttonText;
-            
 
-            // Obtener nuevo código desde la API
-            LoadNewRoomCode();
+            LoadNewRoomCode(); // 🔹 Se obtiene un nuevo código de habitación
+
+            _viewModel.IsReadOnlyMode = false; // 🔹 Modo edición activado (botón "Enviar" visible)
         }
+
         
         public addRoom(string titleText, string buttonText, Room roomToEdit, bool isReadOnly = false)
         {
             InitializeComponent();
             _roomService = new RoomService();
             _viewModel = new AddRoomVM();
-            _room = roomToEdit ?? new Room(); // Si es `null`, se crea una nueva
+            _room = roomToEdit ?? new Room(); // 🔹 Si `roomToEdit` es null, significa que estamos creando una nueva habitación
 
             DataContext = _viewModel;
 
@@ -50,19 +51,21 @@ namespace HotelAsgard.Views.RoomsViews
 
             if (roomToEdit != null)
             {
-                LoadRoomData(roomToEdit);
+                LoadRoomData(roomToEdit); // 🔹 Cargar datos de la habitación
             }
             else
             {
-                LoadNewRoomCode();
+                LoadNewRoomCode(); // 🔹 Si no hay habitación, crear una nueva
             }
 
-            // 🔹 Si está en modo solo lectura, bloquear los controles
+            _viewModel.IsReadOnlyMode = isReadOnly; // 🔹 Se define si es solo lectura o editable
+
             if (isReadOnly)
             {
-                SetReadOnlyMode();
+                SetReadOnlyMode(); // 🔹 Si es solo lectura, deshabilitar controles
             }
         }
+
 
         
         private async void LoadNewRoomCode()
@@ -243,7 +246,7 @@ namespace HotelAsgard.Views.RoomsViews
             try
             {
                 searchRooms searchRoom;
-                
+
                 TextRange textRange = new TextRange(DescriptionRichTextBox.Document.ContentStart, DescriptionRichTextBox.Document.ContentEnd);
                 _room.Descripcion = textRange.Text.Trim();
 
@@ -256,13 +259,17 @@ namespace HotelAsgard.Views.RoomsViews
 
                 bool success;
 
-                // 🔹 Si el código de la habitación ya existe, significa que estamos actualizando
-                if (!string.IsNullOrEmpty(_room.Codigo))
+                // 🔹 Verificamos si la habitación YA EXISTE en la base de datos
+                bool habitacionExiste = await _roomService.RoomExists(_room.Codigo);
+
+                if (habitacionExiste)
                 {
+                    // 🔹 Si la habitación ya existe en la base de datos, la actualizamos
                     success = await _roomService.ActualizarHabitacionAsync(_room, _imagePaths);
                 }
                 else
                 {
+                    // 🔹 Si la habitación no existe, creamos una nueva
                     success = await _roomService.CrearHabitacionAsync(_room, _imagePaths);
                 }
 
@@ -278,14 +285,16 @@ namespace HotelAsgard.Views.RoomsViews
                     MessageBox.Show("Error al guardar la habitación.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     searchRoom.Show();
                     this.Close();
-
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Console.WriteLine($"❌ Detalle del error: {ex}");
             }
         }
+
+
 
 
         private void GoBackButton(object sender, RoutedEventArgs e)

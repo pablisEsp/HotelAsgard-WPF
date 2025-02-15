@@ -72,6 +72,8 @@ namespace HotelAsgard.ViewModels
                     _isReadOnlyMode = value;
                     OnPropertyChanged(nameof(IsReadOnlyMode));
                     OnPropertyChanged(nameof(IsEditMode)); // Notificar cambio en IsEditMode
+                    OnPropertyChanged(nameof(SendButtonVisibility)); // 🔹 Asegurar que el botón se actualice
+
                 }
             }
         }
@@ -156,7 +158,8 @@ namespace HotelAsgard.ViewModels
             }
         }
         
-        
+        public Visibility SendButtonVisibility => IsReadOnlyMode ? Visibility.Collapsed : Visibility.Visible;
+    
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
