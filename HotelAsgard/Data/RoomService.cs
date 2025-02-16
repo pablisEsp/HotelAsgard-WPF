@@ -69,16 +69,8 @@ public class RoomService
 
             var json = await response.Content.ReadAsStringAsync();
 
-            // 🔹 Depuración: Verificar el JSON recibido antes de deserializar
-            Console.WriteLine($"JSON recibido desde el backend: {json}");
 
             var categorias = JsonConvert.DeserializeObject<List<Category>>(json);
-
-            foreach (var categoria in categorias)
-            {
-                Console.WriteLine(
-                    $"Categoría: {categoria.Nombre}, Camas JSON: {JsonConvert.SerializeObject(categoria.Camas)}");
-            }
 
             return categorias;
         }
@@ -128,7 +120,6 @@ public class RoomService
             formData.Add(new StringContent(room.Descripcion), "descripcion");
             formData.Add(new StringContent(room.Habilitada ? "true" : "false"), "habilitada");
 
-            // ✅ SOLUCIÓN: Serializar `camas` y `servicios` con Newtonsoft.Json
             formData.Add(new StringContent(JsonConvert.SerializeObject(room.Camas)), "camas");
             formData.Add(new StringContent(JsonConvert.SerializeObject(room.Servicios)), "servicios");
 
@@ -169,7 +160,6 @@ public class RoomService
             if (precioMax.HasValue) url += $"precioMax={precioMax}&";
             if (habilitada.HasValue) url += $"habilitada={habilitada.ToString().ToLower()}&";
 
-            Console.WriteLine($"🔍 URL generada: {url}"); // 👈 Verifica qué datos se están enviando a la API
 
             var response = await _httpClient.GetAsync(url);
             response.EnsureSuccessStatusCode();
@@ -193,7 +183,7 @@ public class RoomService
 
             var formData = new MultipartFormDataContent();
 
-            // 🔹 Asegurar que se envían todas las imágenes actuales (incluyendo las que no son nuevas)
+            // Asegurar que se envían todas las imágenes actuales (incluyendo las que no son nuevas)
             formData.Add(new StringContent(JsonConvert.SerializeObject(imagePaths)), "imagenes");
 
             formData.Add(new StringContent(room.Codigo), "codigo");
@@ -205,11 +195,11 @@ public class RoomService
             formData.Add(new StringContent(room.Descripcion), "descripcion");
             formData.Add(new StringContent(room.Habilitada ? "true" : "false"), "habilitada");
 
-            // 🔹 Serializar `camas` y `servicios`
+            // Serializar `camas` y `servicios`
             formData.Add(new StringContent(JsonConvert.SerializeObject(room.Camas)), "camas");
             formData.Add(new StringContent(JsonConvert.SerializeObject(room.Servicios)), "servicios");
 
-            // 🔹 Agregar imágenes nuevas (archivos físicos)
+            // Agregar imágenes nuevas (archivos físicos)
             foreach (var imagePath in imagePaths)
             {
                 if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
@@ -240,7 +230,6 @@ public class RoomService
         }
 
         string url = $"http://localhost:3000/api/rooms/{codigo}";
-
         
         try
         {
@@ -248,19 +237,18 @@ public class RoomService
 
             if (response.IsSuccessStatusCode)
             {
-                return true; // 🔹 Si la API devuelve un 200, la habitación existe
+                return true; // Si la API devuelve un 200, la habitación existe
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                return false; // 🔹 Si la API devuelve un 404, la habitación no existe
+                return false; // Si la API devuelve un 404, la habitación no existe
             }
 
-            return false; // 🔹 Si hay otro error, asumimos que no existe
+            return false; // Si hay otro error, asumimos que no existe
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error al verificar la existencia de la habitación: {ex.Message}");
-            return false; // 🔹 Si ocurre un error, asumimos que la habitación no existe
+            return false; // Si ocurre un error, asumimos que la habitación no existe
         }
     }
 }
