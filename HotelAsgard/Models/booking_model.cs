@@ -5,6 +5,7 @@ namespace HotelAsgard.Models;
 
 public class Reserva
 {
+    public string? _id { get; set; } 
     public string Codigo { get; set; } = null!;
     public DateTime? FechaInicio { get; set; } = null!;
     public DateTime? FechaFin { get; set; } =null!;

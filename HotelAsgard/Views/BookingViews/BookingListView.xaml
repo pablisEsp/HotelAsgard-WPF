@@ -157,7 +157,7 @@
                         <ComboBoxItem Content="admin"/>
                         <ComboBoxItem Content="cliente"/>
                     </ComboBox>
-                    <Border Background="#B0DAF1" CornerRadius="15" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="19" >
+                    <Border Name="Broder" Background="#B0DAF1" CornerRadius="15" Width="100" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="19" >
                         <Button Background="Transparent" Content="Buscar" Width="80" Height="30" BorderThickness="0" Click="SearchBooking_OnClick"/>
                     </Border>
                 </StackPanel>
