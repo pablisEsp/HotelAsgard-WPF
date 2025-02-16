@@ -35,13 +35,14 @@ namespace HotelAsgard.Views.RoomsViews
             _viewModel.IsReadOnlyMode = false; // 🔹 Modo edición activado (botón "Enviar" visible)
         }
 
-        
+
         public addRoom(string titleText, string buttonText, Room roomToEdit, bool isReadOnly = false)
         {
             InitializeComponent();
             _roomService = new RoomService();
             _viewModel = new AddRoomVM();
-            _room = roomToEdit ?? new Room(); // 🔹 Si `roomToEdit` es null, significa que estamos creando una nueva habitación
+            _room = roomToEdit ??
+                    new Room(); // 🔹 Si `roomToEdit` es null, significa que estamos creando una nueva habitación
 
             DataContext = _viewModel;
 
@@ -67,7 +68,6 @@ namespace HotelAsgard.Views.RoomsViews
         }
 
 
-        
         private async void LoadNewRoomCode()
         {
             _room.Codigo = await _roomService.ObtenerNuevoCodigoAsync();
@@ -84,7 +84,8 @@ namespace HotelAsgard.Views.RoomsViews
 
             if (_viewModel.Categorias.Any())
             {
-                _viewModel.CategoriaSeleccionada = _viewModel.Categorias.FirstOrDefault(c => c.Nombre == roomToEdit.Categoria);
+                _viewModel.CategoriaSeleccionada =
+                    _viewModel.Categorias.FirstOrDefault(c => c.Nombre == roomToEdit.Categoria);
             }
 
             maxGuests.Text = roomToEdit.NumPersonas.ToString();
@@ -110,7 +111,6 @@ namespace HotelAsgard.Views.RoomsViews
         }
 
 
-
         private void UploadImageButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
@@ -128,6 +128,7 @@ namespace HotelAsgard.Views.RoomsViews
                         _imagePaths.Add(file);
                     }
                 }
+
                 UpdateImageList();
             }
         }
@@ -157,7 +158,6 @@ namespace HotelAsgard.Views.RoomsViews
                 PreviewImage.Source = null;
             }
         }
-
 
 
         private void DeleteSelectedImage_Click(object sender, RoutedEventArgs e)
@@ -199,45 +199,67 @@ namespace HotelAsgard.Views.RoomsViews
             PreviewImage.Source = null; // Vaciar la imagen principal
             UpdateImageList();
         }
-        
+
         private void roomCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (roomCategory.SelectedItem is Category categoriaSeleccionada)
             {
-                // Depuración: Mostrar en consola qué categoría se ha seleccionado
-                Console.WriteLine($"Categoría seleccionada: {categoriaSeleccionada.Nombre}");
+                if (categoriaSeleccionada.Nombre == "Añadir nueva categoría") // Detectar la opción especial
+                {
+                    AbrirVentanaNuevaCategoria();
+                }
+                else
+                {
+                    // Asignar los valores de la categoría seleccionada a la habitación
+                    _room.Categoria = categoriaSeleccionada.Nombre;
+                    _room.Tamanyo = categoriaSeleccionada.Tamanyo;
 
-                // Asignar los valores de la categoría a `_room`
-                _room.Categoria = categoriaSeleccionada.Nombre;
-                _room.Tamanyo = categoriaSeleccionada.Tamanyo;
+                    // Se crea una nueva lista de camas para evitar referencias cruzadas
+                    _room.Camas = categoriaSeleccionada.Camas != null
+                        ? new List<Bed>(categoriaSeleccionada.Camas)
+                        : new List<Bed>();
 
-                // 🔹 Se crea una nueva lista de camas para asegurarnos de que no hay referencias cruzadas
-                _room.Camas = categoriaSeleccionada.Camas != null 
-                    ? new List<Bed>(categoriaSeleccionada.Camas) 
-                    : new List<Bed>();
+                    // Se crea una nueva lista de servicios
+                    _room.Servicios = categoriaSeleccionada.Servicios != null
+                        ? new List<string>(categoriaSeleccionada.Servicios)
+                        : new List<string>();
 
-                // 🔹 Se crea una nueva lista de servicios
-                _room.Servicios = categoriaSeleccionada.Servicios != null 
-                    ? new List<string>(categoriaSeleccionada.Servicios) 
-                    : new List<string>();
+                    _room.NumPersonas = categoriaSeleccionada.NumPersonas;
+                    _room.Precio = categoriaSeleccionada.Precio;
 
-                _room.NumPersonas = categoriaSeleccionada.NumPersonas;
-                _room.Precio = categoriaSeleccionada.Precio;
+                    // Depuración: Mostrar en consola los datos seleccionados
+                    Console.WriteLine($"Categoría seleccionada: {_room.Categoria}");
+                    Console.WriteLine(
+                        $"Tamaño: {_room.Tamanyo}, NumPersonas: {_room.NumPersonas}, Precio: {_room.Precio}");
+                    Console.WriteLine($"Camas: {_room.Camas.Count}, Servicios: {_room.Servicios.Count}");
+                }
+            }
+        }
 
-                // // Actualizar UI con los valores de la categoría seleccionada
-                // roomSize.Text = _room.Tamanyo.ToString();
-                // maxGuests.Text = _room.NumPersonas.ToString();
-                // roomPrice.Text = _room.Precio.ToString();
+        private void AbrirVentanaNuevaCategoria()
+        {
+            NewCategory ventanaNuevaCategoria = new NewCategory();
+            if (ventanaNuevaCategoria.ShowDialog() == true) // Si el usuario presionó "Guardar"
+            {
+                Category nuevaCategoria = new Category
+                {
+                    Nombre = ventanaNuevaCategoria.NuevaCategoria.Nombre,
+                    Tamanyo = ventanaNuevaCategoria.NuevaCategoria.Tamanyo,
+                    NumPersonas = ventanaNuevaCategoria.NuevaCategoria.NumPersonas,
+                    Precio = ventanaNuevaCategoria.NuevaCategoria.Precio,
+                    Camas = ventanaNuevaCategoria.NuevaCategoria.Camas, // 🔹 Agregar camas correctamente
+                    Servicios = ventanaNuevaCategoria.NuevaCategoria.Servicios
+                };
 
-                // Depuración: Mostrar el número de camas y servicios en la consola
-                Console.WriteLine($"Tamaño: {_room.Tamanyo}, NumPersonas: {_room.NumPersonas}, Precio: {_room.Precio}");
-                Console.WriteLine($"Camas asignadas: {_room.Camas.Count}, Servicios asignados: {_room.Servicios.Count}");
+                _viewModel.AgregarNuevaCategoria(nuevaCategoria);
             }
             else
             {
-                Console.WriteLine("Error: No se pudo obtener la categoría seleccionada.");
+                // Si el usuario cancela, evitar que quede seleccionada la opción de "Añadir nueva categoría"
+                roomCategory.SelectedIndex = -1;
             }
         }
+
 
 
 
@@ -247,7 +269,8 @@ namespace HotelAsgard.Views.RoomsViews
             {
                 searchRooms searchRoom;
 
-                TextRange textRange = new TextRange(DescriptionRichTextBox.Document.ContentStart, DescriptionRichTextBox.Document.ContentEnd);
+                TextRange textRange = new TextRange(DescriptionRichTextBox.Document.ContentStart,
+                    DescriptionRichTextBox.Document.ContentEnd);
                 _room.Descripcion = textRange.Text.Trim();
 
                 _room.Nombre = roomName.Text;
@@ -276,13 +299,15 @@ namespace HotelAsgard.Views.RoomsViews
                 searchRoom = new searchRooms();
                 if (success)
                 {
-                    MessageBox.Show("Habitación guardada con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Habitación guardada con éxito.", "Éxito", MessageBoxButton.OK,
+                        MessageBoxImage.Information);
                     searchRoom.Show();
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Error al guardar la habitación.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Error al guardar la habitación.", "Error", MessageBoxButton.OK,
+                        MessageBoxImage.Error);
                     searchRoom.Show();
                     this.Close();
                 }
@@ -295,22 +320,20 @@ namespace HotelAsgard.Views.RoomsViews
         }
 
 
-
-
         private void GoBackButton(object sender, RoutedEventArgs e)
         {
             searchRooms sr = new searchRooms();
             sr.Show();
             this.Close();
         }
-        
+
         private void SetReadOnlyMode()
         {
             roomName.IsReadOnly = true;
             roomCategory.IsEnabled = false;
             maxGuests.IsReadOnly = true;
             roomPrice.IsReadOnly = true;
-    
+
             // 🔹 Deshabilitar la edición de la descripción
             DescriptionRichTextBox.IsReadOnly = true;
 
@@ -323,6 +346,5 @@ namespace HotelAsgard.Views.RoomsViews
             // 🔹 Deshabilitar el botón de guardar
             sendButton.Visibility = Visibility.Collapsed;
         }
-
     }
 }
