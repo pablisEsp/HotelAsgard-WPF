@@ -4,7 +4,7 @@ public class UsuarioSingleton
 {
     private static UsuarioSingleton? instancia;
 
-    public Usuario UsuarioActual { get; private set; }
+    public static Usuario UsuarioActual { get; private set; }
 
     private UsuarioSingleton(Usuario usuario)
     {

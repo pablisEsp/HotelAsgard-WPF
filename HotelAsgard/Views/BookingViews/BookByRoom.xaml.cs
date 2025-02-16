@@ -47,7 +47,6 @@ namespace HotelAsgard.Views.BookingViews
         public BookByRoom(Room selectedRoom, DateTime fechaEntrada, DateTime fechaSalida, int numeroHuespedes)
         {
             InitializeComponent();
-            
             SelectedRoom = selectedRoom;
             FechaEntrada = fechaEntrada;
             FechaSalida = fechaSalida;
@@ -109,7 +108,7 @@ namespace HotelAsgard.Views.BookingViews
                 habitacion = SelectedRoom._id, // MongoDB ObjectId de la habitación
                 usuario = UsuarioSeleccionado._id, // MongoDB ObjectId del usuario
                 precio = (double)_precioFinal, // Convertimos a double por si la API lo requiere
-                usuarioLogeado = idUSuarioLogeado 
+                usuarioLogeado = UsuarioSingleton.UsuarioActual._id
             };
 
             bool success = await _apiService.CreateBookingAsync(nuevaReserva);

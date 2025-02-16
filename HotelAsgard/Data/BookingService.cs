@@ -174,6 +174,33 @@ public class BookingService
             return false;
         }
     }
+
+    public async Task<Usuario?> GetUser(string email)
+    {
+        try
+        {
+            string baseUrl = Constants._baseUrl; 
+            string endpoint = "/api/bookings/getUser";
+            string fullUrlEndpoint = baseUrl + endpoint;
+            var requestBody = new
+            {
+                email
+            };
+            var jsonContent = new StringContent(JsonConvert.SerializeObject(requestBody), Encoding.UTF8, "application/json");
+
+            var response = await API.PostAsync(fullUrlEndpoint, jsonContent);
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<Usuario>(json);
+            return result;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
     
     public async Task<string?> GetNextBookingCodeAsync()
     {

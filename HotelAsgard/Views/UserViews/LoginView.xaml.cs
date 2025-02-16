@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Http;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using HotelAsgard.Data;
+using HotelAsgard.Models;
 
 namespace HotelAsgard.Views.UserViews
 {
@@ -22,11 +12,12 @@ namespace HotelAsgard.Views.UserViews
     {
 
         private readonly UserApiClient _apiClient;
-
+        private readonly BookingService _bookingService;
         public LoginView()
         {
             InitializeComponent();
             _apiClient = new UserApiClient(new HttpClient());
+            _bookingService = new BookingService();
             userBox.Text = "admin@gmail.com";
             passwordBox.Password = "admin1";
 
@@ -44,19 +35,28 @@ namespace HotelAsgard.Views.UserViews
             }
 
             bool isLoggedIn = await _apiClient.LoginAsync(email, password);
-
-            if (isLoggedIn)
+            try
             {
-                MessageBox.Show("✅ Inicio de sesión exitoso.", "Bienvenido", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                initial_view initial = new initial_view();
-                initial.Show();
-                this.Close();
+                if (isLoggedIn)
+                {
+                    MessageBox.Show("✅ Inicio de sesión exitoso.", "Bienvenido", MessageBoxButton.OK, MessageBoxImage.Information);
+                    initial_view initial = new initial_view();
+                    Usuario? userLogged = await _bookingService.GetUser(email);
+                    UsuarioSingleton.ObtenerInstancia(userLogged!);
+                    initial.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("❌ Email o contraseña incorrectos.", "Error de autenticación", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else
+            catch (Exception exception)
             {
-                MessageBox.Show("❌ Email o contraseña incorrectos.", "Error de autenticación", MessageBoxButton.OK, MessageBoxImage.Error);
+                Console.WriteLine(exception);
+               
             }
+           
         }
     }
 }
