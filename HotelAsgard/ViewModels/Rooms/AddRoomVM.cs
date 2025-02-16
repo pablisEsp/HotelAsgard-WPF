@@ -109,10 +109,13 @@ namespace HotelAsgard.ViewModels
                         Categorias.Add(categoria);
                     }
 
-                    // 🔹 Asegurar que la opción "Añadir nueva categoría" siempre esté al final
-                    if (!Categorias.Any(c => c.Nombre == "Añadir nueva categoría"))
+                    // Solo agregar "Añadir nueva categoría" si el usuario es admin
+                    if (UsuarioSingleton.UsuarioActual.Tipo == "admin")
                     {
-                        Categorias.Add(new Category { Nombre = "Añadir nueva categoría" });
+                        if (!Categorias.Any(c => c.Nombre == "Añadir nueva categoría"))
+                        {
+                            Categorias.Add(new Category { Nombre = "Añadir nueva categoría" });
+                        }
                     }
                 });
             }
