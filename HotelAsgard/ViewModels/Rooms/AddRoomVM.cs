@@ -6,6 +6,7 @@ using System.Windows;
 using HotelAsgard.Data;
 using HotelAsgard.Models.Rooms;
 using Microsoft.Win32;
+using System.Collections.Generic;
 
 namespace HotelAsgard.ViewModels
 {
@@ -16,9 +17,8 @@ namespace HotelAsgard.ViewModels
         private Category _categoriaSeleccionada;
         private ObservableCollection<string> _imagenes;
         private string _codigo;
-        
         private bool _isReadOnlyMode;
-        
+
         public ObservableCollection<string> Imagenes
         {
             get => _imagenes;
@@ -45,7 +45,7 @@ namespace HotelAsgard.ViewModels
             set
             {
                 _categorias = value;
-                OnPropertyChanged(); // Notifica que la colección ha cambiado
+                OnPropertyChanged();
             }
         }
 
@@ -59,9 +59,10 @@ namespace HotelAsgard.ViewModels
                 OnPropertyChanged(nameof(Precio));
                 OnPropertyChanged(nameof(NumPersonas));
                 OnPropertyChanged(nameof(Camas));
+                OnPropertyChanged(nameof(Servicios));
             }
         }
-        
+
         public bool IsReadOnlyMode
         {
             get => _isReadOnlyMode;
@@ -71,27 +72,26 @@ namespace HotelAsgard.ViewModels
                 {
                     _isReadOnlyMode = value;
                     OnPropertyChanged(nameof(IsReadOnlyMode));
-                    OnPropertyChanged(nameof(IsEditMode)); // Notificar cambio en IsEditMode
-                    OnPropertyChanged(nameof(SendButtonVisibility)); // 🔹 Asegurar que el botón se actualice
-
+                    OnPropertyChanged(nameof(IsEditMode));
+                    OnPropertyChanged(nameof(SendButtonVisibility));
                 }
             }
         }
 
         public bool IsEditMode => !IsReadOnlyMode;
 
-        
         public int Precio => CategoriaSeleccionada?.Precio ?? 0;
         public int NumPersonas => CategoriaSeleccionada?.NumPersonas ?? 0;
         public List<Bed> Camas => CategoriaSeleccionada?.Camas ?? new List<Bed>();
+        public List<string> Servicios => CategoriaSeleccionada?.Servicios ?? new List<string>();
 
         public AddRoomVM()
         {
             _roomService = new RoomService();
             Categorias = new ObservableCollection<Category>();
+
             _ = LoadCategorias();
             Imagenes = new ObservableCollection<string>();
-
         }
 
         private async Task LoadCategorias()
@@ -100,13 +100,19 @@ namespace HotelAsgard.ViewModels
             {
                 var categoriasList = await _roomService.GetCategorias();
 
-                // Asegurar que la actualización se haga en la UI principal
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     Categorias.Clear();
+
                     foreach (var categoria in categoriasList)
                     {
                         Categorias.Add(categoria);
+                    }
+
+                    // 🔹 Asegurar que la opción "Añadir nueva categoría" siempre esté al final
+                    if (!Categorias.Any(c => c.Nombre == "Añadir nueva categoría"))
+                    {
+                        Categorias.Add(new Category { Nombre = "Añadir nueva categoría" });
                     }
                 });
             }
@@ -115,7 +121,33 @@ namespace HotelAsgard.ViewModels
                 MessageBox.Show($"Error al cargar categorías: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        
+
+        /// <summary>
+        /// Método para agregar una nueva categoría a la lista de categorías.
+        /// </summary>
+        public void AgregarNuevaCategoria(Category nuevaCategoria)
+        {
+            if (nuevaCategoria == null || string.IsNullOrWhiteSpace(nuevaCategoria.Nombre))
+            {
+                MessageBox.Show("La nueva categoría no es válida.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                if (!_categorias.Any(c => c.Nombre == nuevaCategoria.Nombre))
+                {
+                    // Insertar la nueva categoría antes de "Añadir nueva categoría"
+                    _categorias.Insert(_categorias.Count - 1, nuevaCategoria);
+                    CategoriaSeleccionada = nuevaCategoria; // 🔹 Seleccionar automáticamente
+                }
+                else
+                {
+                    MessageBox.Show("Esta categoría ya existe.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            });
+        }
+
         public async Task<string> ObtenerNuevoCodigo()
         {
             Codigo = await _roomService.ObtenerNuevoCodigoAsync();
@@ -140,7 +172,7 @@ namespace HotelAsgard.ViewModels
                 return false;
             }
         }
-        
+
         public void AgregarImagen()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
@@ -157,9 +189,8 @@ namespace HotelAsgard.ViewModels
                 }
             }
         }
-        
+
         public Visibility SendButtonVisibility => IsReadOnlyMode ? Visibility.Collapsed : Visibility.Visible;
-    
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -63,7 +63,6 @@
     <Resource Include="Images\Icons\bar.png" />
     <Resource Include="Images\Icons\billiard.png" />
     <Resource Include="Images\Icons\coffeMaker.png" />
-    <Resource Include="Images\Icons\description.png" />
     <Resource Include="Images\Icons\fridge.png" />
     <Resource Include="Images\Icons\gym.png" />
     <Resource Include="Images\Icons\kitchen.png" />
@@ -76,10 +75,14 @@
     <Resource Include="Images\Icons\wifi.png" />
     <Resource Include="Images\info.png" />
     <Resource Include="Images\logo_con_fondo.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\RoomsViews\" />
+    <None Remove="Images\Icons\minibar.png" />
+    <Resource Include="Images\Icons\minibar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <None Remove="Images\Icons\iron.png" />
+    <Resource Include="Images\Icons\iron.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

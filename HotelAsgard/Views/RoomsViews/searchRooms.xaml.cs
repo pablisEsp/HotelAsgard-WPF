@@ -136,6 +136,7 @@ namespace HotelAsgard.Views.RoomsViews
         {
             addRoom ar = new addRoom("Añadir habitación", "Añadir");
             ar.Show();
+            this.Close();
         }
         
         // Just numbers allowed for text

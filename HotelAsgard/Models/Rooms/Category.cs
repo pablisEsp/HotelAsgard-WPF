@@ -6,7 +6,12 @@ public class Category
 {
     [JsonProperty("_id")]
     public string Id { get; set; }        // El "_id" de MongoDB
-    public string Nombre => Id;
+    public string Nombre
+    {
+        get => Id;
+        set => Id = value;
+    }
+
     public int Precio { get; set; }       // Precio de la categoría
     public int NumPersonas { get; set; }  // Capacidad de huéspedes
     
