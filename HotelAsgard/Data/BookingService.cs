@@ -1,4 +1,5 @@
 using System.Net.Http;
+using System.Runtime.InteropServices.JavaScript;
 using System.Text;
 using System.Windows;
 using HotelAsgard.Models;
@@ -237,6 +238,24 @@ public class BookingService
         {
             MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             return null;
+        }
+    }
+
+    public async Task<bool> deleteBooking(string codigo)
+    {
+        try
+        {
+            string baseUrl = Constants._baseUrl; 
+            string endpoint = $"/api/bookings/deleteBooking?codigo={codigo}";
+            string fullUrlEndpoint = baseUrl + endpoint;
+            
+            HttpResponseMessage response = await _httpClient.DeleteAsync(fullUrlEndpoint);
+            return response.IsSuccessStatusCode;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al crear la reserva: {ex.Message}");
+            return false;
         }
     }
 }

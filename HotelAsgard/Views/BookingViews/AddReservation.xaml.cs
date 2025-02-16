@@ -118,7 +118,8 @@ namespace HotelAsgard.Views.BookingViews
                     viewModel.HabitacionSeleccionada,
                     fechaInicio.SelectedDate.Value,
                     fechaFin.SelectedDate.Value,
-                    numHuespedes);
+                    numHuespedes,
+                    this);
 
                 bookWindow.ShowDialog();
             }

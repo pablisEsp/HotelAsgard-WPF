@@ -14,7 +14,7 @@ namespace HotelAsgard.Views.BookingViews
     public partial class BookingListView : Window
     {
         private readonly BookingService _bookingService;
-        private BookingListViewModel _viewModel;
+        internal BookingListViewModel _viewModel;
 
         public BookingListView()
         {
@@ -29,7 +29,7 @@ namespace HotelAsgard.Views.BookingViews
             LoadBookingsAsync();
         }
 
-        private async void LoadBookingsAsync()
+        internal async void LoadBookingsAsync()
         {
             try
             {
@@ -213,7 +213,8 @@ namespace HotelAsgard.Views.BookingViews
             var selectedReserva = ReservasDataGrid.SelectedItem as Reserva;
             if (selectedReserva != null)
             {
-                booking_details bd = new booking_details(selectedReserva);
+                
+                booking_details bd = new booking_details(selectedReserva,this);
                 bd.ShowDialog();
             }
         }

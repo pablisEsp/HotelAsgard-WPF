@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HotelAsgard.Views.BookingViews"
         mc:Ignorable="d"
         Title="booking_details" Height="450" Width="800">
     <Window.Resources>
@@ -40,7 +39,7 @@
             <RowDefinition Height="4*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Ver Reserva"  Grid.Column="0" Grid.Row="0" Style="{StaticResource TituloTextBlockStyle}" Grid.ColumnSpan="2" Margin="10,10,537,10"/>
+        <TextBlock Text="Detalles Reserva"  Grid.Column="0" Grid.Row="0" Style="{StaticResource TituloTextBlockStyle}" Grid.ColumnSpan="2" Margin="10,10,537,10"/>
         <Border CornerRadius="50" Grid.Column="0" Grid.Row="1" Margin="15">
             <Image x:Name="HabitacionImage"  Stretch="Fill" />
         </Border>
@@ -76,6 +75,11 @@
                 <TextBox Width="300" Text="{Binding Usuario.Nombre}" HorizontalAlignment="Left" Margin="18,0,0,0" IsEnabled="False"/>
                 <TextBlock Text="{Binding Usuario.Email}" Foreground="#BCBCBC" VerticalAlignment="Bottom" Margin="19,0,0,0" />
             </StackPanel>
+            
         </Grid>
+        <Border x:Name="Broder" Grid.Row="2" Grid.Column="1" Background="#B0DAF1" CornerRadius="15" Width="100" Height="30" HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="19" >
+            <Button Background="Transparent" Content="Eliminar Reserva" Width="80" Height="30" BorderThickness="0"  Click="DeleteBooking_Click">
+            </Button>
+        </Border>
     </Grid>
 </Window>

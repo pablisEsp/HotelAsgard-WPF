@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using HotelAsgard.Data;
 using HotelAsgard.Models;
+
 
 namespace HotelAsgard.Views.BookingViews
 {
@@ -19,10 +11,18 @@ namespace HotelAsgard.Views.BookingViews
     /// Lógica de interacción para booking_details.xaml
     /// </summary>
     public partial class booking_details : Window
-    {
-        public booking_details(Reserva reserva)
+    {   
+        private readonly BookingListView _parentWindow; 
+        bool IsAdmin = false;
+        BookingService _booBookingService ;
+        public booking_details(Reserva reserva, BookingListView parentWindow)
         {
+            
             InitializeComponent();
+            _booBookingService = new BookingService();
+            _parentWindow = parentWindow; 
+            Broder.SetValue(Border.VisibilityProperty,
+            UsuarioSingleton.UsuarioActual.Tipo == "admin" ? Visibility.Visible : Visibility.Collapsed);
             DataContext = reserva;
             if (reserva.Habitacion.Imagenes.Count > 0)
             {
@@ -45,6 +45,33 @@ namespace HotelAsgard.Views.BookingViews
             {
                 Console.WriteLine($"Error cargando imagen: {ex.Message}");
             }
+        }
+
+        private async void DeleteBooking_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show(
+                "¿Estás seguro de que deseas eliminar la reserva?", 
+                "Confirmación", 
+                MessageBoxButton.YesNo, 
+                MessageBoxImage.Warning
+            );
+
+            if (result == MessageBoxResult.Yes)
+            {
+                bool deleted = await _booBookingService.deleteBooking(((Reserva)DataContext).Codigo!);
+                if (deleted)
+                {
+                    ShowTemporaryMessage("Reserva eliminada correctamente", 500);
+                }
+            }
+        }
+        private async void ShowTemporaryMessage(string message, int duration)
+        {
+            MessageBox.Show(message, "Información", MessageBoxButton.OK, MessageBoxImage.Information);
+            await Task.Delay(duration);
+            _parentWindow._viewModel.Reservas.Clear();
+            _parentWindow.LoadBookingsAsync();
+            this.Close();
         }
     }
     

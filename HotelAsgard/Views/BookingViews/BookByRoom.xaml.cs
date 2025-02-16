@@ -5,6 +5,7 @@ using System.Windows;
 using HotelAsgard.Data;
 using HotelAsgard.Models;
 using HotelAsgard.Models.Rooms;
+using HotelAsgard.ViewModels;
 
 namespace HotelAsgard.Views.BookingViews
 {
@@ -23,6 +24,7 @@ namespace HotelAsgard.Views.BookingViews
         
         public string usuarioInfo = "no hay ningun usuario seleccionado";
         
+        private AddReservation _addReservation;
 
         #region INotifyPropertyChanged Members
         public event PropertyChangedEventHandler PropertyChanged;
@@ -44,7 +46,7 @@ namespace HotelAsgard.Views.BookingViews
 
         private readonly BookingService _apiService;
 
-        public BookByRoom(Room selectedRoom, DateTime fechaEntrada, DateTime fechaSalida, int numeroHuespedes)
+        public BookByRoom(Room selectedRoom, DateTime fechaEntrada, DateTime fechaSalida, int numeroHuespedes, AddReservation parentview)
         {
             InitializeComponent();
             SelectedRoom = selectedRoom;
@@ -52,6 +54,7 @@ namespace HotelAsgard.Views.BookingViews
             FechaSalida = fechaSalida;
             NumeroHuespedes = numeroHuespedes;
             _apiService = new BookingService();
+            _addReservation = parentview;
 
             DataContext = this;
             CalcularPrecioFinal();
@@ -115,6 +118,7 @@ namespace HotelAsgard.Views.BookingViews
 
             if (success)
             {
+                ((AddReservationViewModel)_addReservation.DataContext).Habitaciones.Clear();
                 MessageBox.Show($"Reserva creada con éxito! Código: {nuevoCodigo}", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
