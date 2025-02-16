@@ -17,7 +17,7 @@ namespace HotelAsgard.Views.BookingViews
         BookingService _booBookingService ;
         public booking_details(Reserva reserva, BookingListView parentWindow)
         {
-            
+            //aqui esta el Singleton
             InitializeComponent();
             _booBookingService = new BookingService();
             _parentWindow = parentWindow; 
