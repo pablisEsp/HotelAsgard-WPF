@@ -23,6 +23,8 @@
         <SolidColorBrush x:Key="WhiteBrush" Color="White" />
 
         <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">

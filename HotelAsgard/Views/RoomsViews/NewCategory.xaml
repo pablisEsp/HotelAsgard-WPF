@@ -9,6 +9,273 @@
         WindowState="Maximized"
         ResizeMode="CanMinimize"
         Title="Nueva Categoria" Height="1080" Width="1920">
+    <Window.Resources>
+        <Color x:Key="TuColorDeDetalle">#B0DAF1</Color>
+        <SolidColorBrush x:Key="TuColorDeDetalleBrush" Color="{StaticResource TuColorDeDetalle}" />
+
+        <!-- Colores Principales -->
+        <Color x:Key="PrimaryColor">#4A90E2</Color>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}" />
+        <SolidColorBrush x:Key="LightGrayBrush" Color="#E5E5E5" />
+        <SolidColorBrush x:Key="GrayBrush" Color="#B0B0B0" />
+        <SolidColorBrush x:Key="HoverBrush" Color="#D6E9FF" />
+        <SolidColorBrush x:Key="WhiteBrush" Color="White" />
+
+        <!-- Estilo para los botones -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                CornerRadius="12"
+                                BorderBrush="#B0DAF1"
+                                BorderThickness="2"
+                                Background="#B0DAF1">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <!-- Cambiamos a colores más claros y disminuimos ligeramente la opacidad -->
+                                <Setter TargetName="border" Property="Background" Value="#E0E0E0" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="#E0E0E0" />
+                                <Setter Property="Foreground" Value="#A0A0A0" />
+                                <Setter TargetName="border" Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <!-- Estilo para TODOS los TextBox -->
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="MinWidth" Value="110" />
+            <Setter Property="Height" Value="28" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Background" Value="{StaticResource WhiteBrush}" />
+            <Setter Property="BorderBrush" Value="#CCCCCC" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid>
+                            <Border x:Name="border"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="6" />
+                            <!-- Sin margen para que el contenido se vea completo -->
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="0" Focusable="False" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource GrayBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush"
+                                        Value="{StaticResource PrimaryBrush}" />
+                                <Setter TargetName="border" Property="Background" Value="{StaticResource HoverBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilo personalizado para el ComboBox -->
+        <Style TargetType="ComboBox">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Padding" Value="4" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="#FFAAAAAA" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <!-- Botón para desplegar la lista -->
+                            <ToggleButton x:Name="ToggleButton"
+                                          Focusable="false"
+                                          IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                          ClickMode="Press"
+                                          Background="{TemplateBinding Background}"
+                                          BorderBrush="{TemplateBinding BorderBrush}"
+                                          BorderThickness="{TemplateBinding BorderThickness}">
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="ToggleButton">
+                                        <Border x:Name="ToggleBorder"
+                                                Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                CornerRadius="4">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition Width="20" />
+                                                </Grid.ColumnDefinitions>
+                                                <ContentPresenter VerticalAlignment="Center" Margin="4,0,0,0" />
+                                                <!-- Icono de flecha -->
+                                                <Path Grid.Column="1"
+                                                      HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"
+                                                      Data="M 0 0 L 4 4 L 8 0 Z"
+                                                      Fill="Black" />
+                                            </Grid>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="ToggleBorder" Property="Background"
+                                                        Value="#FFF0F0F0" />
+                                            </Trigger>
+                                            <Trigger Property="IsPressed" Value="True">
+                                                <Setter TargetName="ToggleBorder" Property="Background"
+                                                        Value="#FFE0E0E0" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+
+                            <!-- Contenido seleccionado -->
+                            <ContentPresenter x:Name="ContentSite"
+                                              IsHitTestVisible="False"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                              Margin="6,3,25,3"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Left" />
+
+                            <!-- Popup con los ítems -->
+                            <Popup x:Name="Popup"
+                                   Placement="Bottom"
+                                   IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   AllowsTransparency="True"
+                                   Focusable="False"
+                                   PopupAnimation="Slide">
+                                <Grid x:Name="DropDown"
+                                      SnapsToDevicePixels="True"
+                                      MinWidth="{TemplateBinding ActualWidth}"
+                                      MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border x:Name="DropDownBorder"
+                                            Background="White"
+                                            BorderThickness="1"
+                                            BorderBrush="#FFAAAAAA"
+                                            CornerRadius="4" />
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True"
+                                                    KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasItems" Value="false">
+                                <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="Gray" />
+                                <Setter TargetName="DropDownBorder" Property="Background" Value="#FFF0F0F0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilo personalizado para ListBox -->
+        <Style TargetType="ListBox">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Background" Value="{StaticResource WhiteBrush}" />
+            <Setter Property="BorderBrush" Value="#CCCCCC" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="6">
+                            <ScrollViewer>
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource GrayBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush"
+                                        Value="{StaticResource PrimaryBrush}" />
+                                <Setter TargetName="border" Property="Background" Value="{StaticResource HoverBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilo para todos los CheckBox -->
+        <Style TargetType="CheckBox">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Grid VerticalAlignment="Center" Margin="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <!-- Recuadro del CheckBox -->
+                            <Border x:Name="Border"
+                                    Width="16" Height="16"
+                                    Background="White"
+                                    BorderBrush="{StaticResource LightGrayBrush}"
+                                    BorderThickness="2" />
+                            <!-- Marca de verificación -->
+                            <Path x:Name="CheckMark"
+                                  Data="M3,8 L6,11 L13,4"
+                                  Stroke="Transparent"
+                                  StrokeThickness="2"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center" />
+                            <!-- Contenido (texto) -->
+                            <ContentPresenter Grid.Column="1"
+                                              Margin="4,0,0,0"
+                                              VerticalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Border" Property="BorderBrush"
+                                        Value="{StaticResource PrimaryBrush}" />
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="{StaticResource PrimaryBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource GrayBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="Gray" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="Gray" />
+                                <Setter TargetName="CheckMark" Property="Stroke" Value="Gray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <!-- Contenedor principal con margen y fondo (opcional) -->
     <Grid>
         <!-- Background Image -->
@@ -19,156 +286,161 @@
         <!-- Main Layout -->
         <Border Margin="20,20,20,20" Background="White" Opacity="0.9" CornerRadius="10">
             <Grid Margin="20">
-                <!-- Contenedor centrado -->
-                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="600">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />  <!-- Título -->
-                        <RowDefinition Height="Auto" />  <!-- Nombre -->
-                        <RowDefinition Height="Auto" />  <!-- Tamaño -->
-                        <RowDefinition Height="Auto" />  <!-- Número de huéspedes -->
-                        <RowDefinition Height="Auto" />  <!-- Precio -->
-                        <RowDefinition Height="Auto" />  <!-- Camas -->
-                        <RowDefinition Height="Auto" />  <!-- Servicios -->
-                        <RowDefinition Height="Auto" />  <!-- Botones -->
-                    </Grid.RowDefinitions>
+                <ScrollViewer>
+                    <!-- Contenedor centrado -->
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="600">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />  <!-- Título -->
+                            <RowDefinition Height="Auto" />  <!-- Nombre -->
+                            <RowDefinition Height="Auto" />  <!-- Tamaño -->
+                            <RowDefinition Height="Auto" />  <!-- Número de huéspedes -->
+                            <RowDefinition Height="Auto" />  <!-- Precio -->
+                            <RowDefinition Height="Auto" />  <!-- Camas -->
+                            <RowDefinition Height="Auto" />  <!-- Servicios -->
 
-                    <!-- Título -->
-                    <TextBlock Foreground="#B0DAF1" Grid.Row="0"
-                               Text="Creación de Categoria"
-                               FontSize="26"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               Margin="0,0,0,20" />
+                        </Grid.RowDefinitions>
 
-                    <!-- Nombre de la Categoría -->
-                    <StackPanel Grid.Row="1" Margin="0,0,0,10">
-                        <TextBlock Text="Nombre de la nueva categoría:"
-                                   FontSize="16"
-                                   Margin="0,0,0,5"
-                                   HorizontalAlignment="Center" />
-                        <TextBox x:Name="txtNombreCategoria" Width="300" HorizontalAlignment="Center"
-                                 TextChanged="InputChanged" />
-                    </StackPanel>
+                        <!-- Título -->
+                        <TextBlock Foreground="#B0DAF1" Grid.Row="0"
+                                   Text="Creación de Categoria"
+                                   FontSize="26"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,0,0,10" />
 
-                    <!-- Tamaño -->
-                    <StackPanel Grid.Row="2" Margin="0,0,0,10">
-                        <TextBlock Text="Tamaño de la habitación (m²):"
-                                   FontSize="16"
-                                   Margin="0,0,0,5"
-                                   HorizontalAlignment="Center" />
-                        <TextBox x:Name="txtTamanyo" Width="300" HorizontalAlignment="Center"
-                                 PreviewTextInput="OnlyNumbers" TextChanged="MaxValueCheck" />
-                    </StackPanel>
+                        <!-- Nombre de la Categoría -->
+                        <StackPanel Grid.Row="1" Margin="0,0,0,10">
+                            <TextBlock Text="Nombre de la nueva categoría:"
+                                       FontSize="16"
+                                       Margin="0,0,0,5"
+                                       HorizontalAlignment="Center" />
+                            <TextBox x:Name="txtNombreCategoria" Width="300" HorizontalAlignment="Center"
+                                     TextChanged="InputChanged" />
+                        </StackPanel>
 
-                    <!-- Número de Huéspedes -->
-                    <StackPanel Grid.Row="3" Margin="0,0,0,10">
-                        <TextBlock Text="Número de huéspedes:"
-                                   FontSize="16"
-                                   Margin="0,0,0,5"
-                                   HorizontalAlignment="Center" />
-                        <TextBox x:Name="txtNumHuespedes" Width="300" HorizontalAlignment="Center"
-                                 PreviewTextInput="OnlyNumbers" TextChanged="MaxValueCheck" />
-                    </StackPanel>
-
-                    <!-- Precio -->
-                    <StackPanel Grid.Row="4" Margin="0,0,0,10">
-                        <TextBlock Text="Precio (€):"
-                                   FontSize="16"
-                                   Margin="0,0,0,5"
-                                   HorizontalAlignment="Center" />
-                        <TextBox x:Name="txtPrecio" Width="300" HorizontalAlignment="Center"
-                                 PreviewTextInput="OnlyNumbers" TextChanged="MaxValueCheck"/>
-                    </StackPanel>
-
-                    <!-- Selección de Camas -->
-                    <StackPanel Grid.Row="5" Margin="0,0,0,10">
-                        <TextBlock Text="Número de camas por tipo:"
-                                   FontSize="16"
-                                   Margin="0,0,0,5"
-                                   HorizontalAlignment="Center" />
-                        <Grid HorizontalAlignment="Center">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
-                            <!-- King -->
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="King:" Width="80"
-                                       VerticalAlignment="Center" Margin="5" />
-                            <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtCamasKing" Width="50"
-                                     Text="0" HorizontalAlignment="Center" Margin="5"
+                        <!-- Tamaño -->
+                        <StackPanel Grid.Row="2" Margin="0,0,0,10">
+                            <TextBlock Text="Tamaño de la habitación (m²):"
+                                       FontSize="16"
+                                       Margin="0,0,0,5"
+                                       HorizontalAlignment="Center" />
+                            <TextBox x:Name="txtTamanyo" Width="300" HorizontalAlignment="Center"
                                      PreviewTextInput="OnlyNumbers" TextChanged="MaxValueCheck" />
+                        </StackPanel>
 
-                            <!-- Queen -->
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Queen:" Width="80"
-                                       VerticalAlignment="Center" Margin="5" />
-                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtCamasQueen" Width="50"
-                                     Text="0" HorizontalAlignment="Center" Margin="5"
+                        <!-- Número de Huéspedes -->
+                        <StackPanel Grid.Row="3" Margin="0,0,0,10">
+                            <TextBlock Text="Número de huéspedes:"
+                                       FontSize="16"
+                                       Margin="0,0,0,5"
+                                       HorizontalAlignment="Center" />
+                            <TextBox x:Name="txtNumHuespedes" Width="300" HorizontalAlignment="Center"
                                      PreviewTextInput="OnlyNumbers" TextChanged="MaxValueCheck" />
+                        </StackPanel>
 
-                            <!-- Double -->
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Double:" Width="80"
-                                       VerticalAlignment="Center" Margin="5" />
-                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtCamasDouble" Width="50"
-                                     Text="0" HorizontalAlignment="Center" Margin="5"
+                        <!-- Precio -->
+                        <StackPanel Grid.Row="4" Margin="0,0,0,10">
+                            <TextBlock Text="Precio (€):"
+                                       FontSize="16"
+                                       Margin="0,0,0,5"
+                                       HorizontalAlignment="Center" />
+                            <TextBox x:Name="txtPrecio" Width="300" HorizontalAlignment="Center"
                                      PreviewTextInput="OnlyNumbers" TextChanged="MaxValueCheck" />
+                        </StackPanel>
 
-                            <!-- Twin -->
-                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Twin:" Width="80"
-                                       VerticalAlignment="Center" Margin="5" />
-                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtCamasTwin" Width="50"
-                                     Text="0" HorizontalAlignment="Center" Margin="5"
-                                     PreviewTextInput="OnlyNumbers" TextChanged="MaxValueCheck" />
+                        <!-- Selección de Camas -->
+                        <StackPanel Grid.Row="5" Margin="0,0,0,10">
+                            <TextBlock Text="Número de camas por tipo:"
+                                       FontSize="16"
+                                       Margin="0,0,0,5"
+                                       HorizontalAlignment="Center" />
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
 
-                            <!-- Sofá Cama -->
-                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Sofá Cama:" Width="80"
-                                       VerticalAlignment="Center" Margin="5" />
-                            <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtCamasSofa" Width="50"
-                                     Text="0" HorizontalAlignment="Center" Margin="5"
-                                     PreviewTextInput="OnlyNumbers" TextChanged="MaxValueCheck" />
-                        </Grid>
-                    </StackPanel>
+                                <!-- King -->
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="King:" Width="80"
+                                           VerticalAlignment="Center" Margin="5" />
+                                <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtCamasKing" Width="50"
+                                         Text="0" HorizontalAlignment="Center" Margin="5"
+                                         PreviewTextInput="OnlyNumbers" TextChanged="MaxValueCheck" />
 
-                    <!-- Selección de Servicios -->
-                    <StackPanel Grid.Row="6" Margin="0,0,0,10">
-                        <TextBlock Text="Selecciona los servicios:"
-                                   FontSize="16"
-                                   Margin="0,0,0,5"
-                                   HorizontalAlignment="Center" />
-                        <ListBox x:Name="lstServicios" Width="400" Height="200" HorizontalAlignment="Center">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Margin="5">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <!-- Imagen del servicio -->
-                                        <Image Source="{Binding Icono}" Width="30" Height="30" Grid.Column="0"
-                                               VerticalAlignment="Center" Margin="10,0,10,0" />
-                                        <!-- CheckBox con el nombre -->
-                                        <CheckBox Content="{Binding Nombre}" IsChecked="{Binding Seleccionado}"
-                                                  Grid.Column="1" VerticalAlignment="Center" FontSize="14" />
-                                    </Grid>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </StackPanel>
+                                <!-- Queen -->
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Queen:" Width="80"
+                                           VerticalAlignment="Center" Margin="5" />
+                                <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtCamasQueen" Width="50"
+                                         Text="0" HorizontalAlignment="Center" Margin="5"
+                                         PreviewTextInput="OnlyNumbers" TextChanged="MaxValueCheck" />
 
-                    <!-- Botones -->
-                    <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Content="Cancelar" Width="80" Margin="0,0,10,0" Click="Cancelar_Click" />
-                        <Button Content="Guardar" Width="80" Click="Guardar_Click"
-                                IsEnabled="{Binding IsFormValid}" />
-                    </StackPanel>
-                </Grid>
+                                <!-- Double -->
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Double:" Width="80"
+                                           VerticalAlignment="Center" Margin="5" />
+                                <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtCamasDouble" Width="50"
+                                         Text="0" HorizontalAlignment="Center" Margin="5"
+                                         PreviewTextInput="OnlyNumbers" TextChanged="MaxValueCheck" />
+
+                                <!-- Twin -->
+                                <TextBlock Grid.Row="3" Grid.Column="0" Text="Twin:" Width="80"
+                                           VerticalAlignment="Center" Margin="5" />
+                                <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtCamasTwin" Width="50"
+                                         Text="0" HorizontalAlignment="Center" Margin="5"
+                                         PreviewTextInput="OnlyNumbers" TextChanged="MaxValueCheck" />
+
+                                <!-- Sofá Cama -->
+                                <TextBlock Grid.Row="4" Grid.Column="0" Text="Sofá Cama:" Width="80"
+                                           VerticalAlignment="Center" Margin="5" />
+                                <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtCamasSofa" Width="50"
+                                         Text="0" HorizontalAlignment="Center" Margin="5"
+                                         PreviewTextInput="OnlyNumbers" TextChanged="MaxValueCheck" />
+                            </Grid>
+                        </StackPanel>
+
+                        <!-- Selección de Servicios -->
+                        <StackPanel Grid.Row="6" Margin="0,0,0,10">
+                            <TextBlock Text="Selecciona los servicios:"
+                                       FontSize="16"
+                                       Margin="0,0,0,5"
+                                       HorizontalAlignment="Center" />
+                            <ListBox x:Name="lstServicios" Width="400" Height="200" HorizontalAlignment="Center">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="5">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <!-- Imagen del servicio -->
+                                            <Image Source="{Binding Icono}" Width="30" Height="30" Grid.Column="0"
+                                                   VerticalAlignment="Center" Margin="10,0,10,0" />
+                                            <!-- CheckBox con el nombre -->
+                                            <CheckBox Content="{Binding Nombre}" IsChecked="{Binding Seleccionado}"
+                                                      Grid.Column="1" VerticalAlignment="Center" FontSize="14" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button Content="Cancelar" Width="80" Margin="0,0,10,0" Click="Cancelar_Click"
+                                        Style="{StaticResource RoundedButtonStyle}" />
+                                <Button Content="Guardar" Width="80" Click="Guardar_Click"
+                                        IsEnabled="{Binding IsFormValid}" Style="{StaticResource RoundedButtonStyle}" />
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Botones -->
+
+                    </Grid>
+                </ScrollViewer>
+
             </Grid>
         </Border>
     </Grid>
