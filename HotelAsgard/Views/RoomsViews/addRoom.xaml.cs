@@ -318,6 +318,27 @@ namespace HotelAsgard.Views.RoomsViews
                 _room.Precio = decimal.Parse(roomPrice.Text);
                 _room.Imagenes = new List<string>(_imagePaths);
                 _room.Habilitada = true;
+                
+                // Verificar que la descripción y el nombre no estén vacíos
+                if (string.IsNullOrWhiteSpace(_room.Descripcion) || string.IsNullOrWhiteSpace(_room.Nombre))
+                {
+                    MessageBox.Show("El nombre y/o la descripción de la habitación no pueden estar vacíos.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Verificar si hay al menos 1 imagen
+                if (_room.Imagenes.Count < 1)
+                {
+                    MessageBox.Show("Debes añadir al menos 1 imagen a la habitación.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Verificar si hay más de 5 imágenes
+                if (_room.Imagenes.Count > 5)
+                {
+                    MessageBox.Show("No puedes añadir más de 5 imágenes a la habitación.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
 
                 bool success;
 
@@ -354,7 +375,6 @@ namespace HotelAsgard.Views.RoomsViews
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                Console.WriteLine($"❌ Detalle del error: {ex}");
             }
         }
 
