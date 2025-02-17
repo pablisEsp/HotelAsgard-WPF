@@ -114,7 +114,7 @@ namespace HotelAsgard.ViewModels
                     RoomCode, 
                     RoomName, 
                     CategoriaSeleccionada?.Nombre, 
-                    NumPersonasMax.HasValue ? NumPersonasMax : null, 
+                    NumPersonasMax, 
                     InitialSize, 
                     FinalSize, 
                     InitialPrice, 
@@ -145,7 +145,20 @@ namespace HotelAsgard.ViewModels
         public int? FinalSize { get; set; }
         public decimal? InitialPrice { get; set; }
         public decimal? FinalPrice { get; set; }
-        public bool? IsRoomUsable { get; set; }
+        private bool _isRoomUsable = true; // Inicializado en true
+
+        public bool IsRoomUsable
+        {
+            get => _isRoomUsable;
+            set
+            {
+                if (_isRoomUsable != value)
+                {
+                    _isRoomUsable = value;
+                    OnPropertyChanged(nameof(IsRoomUsable));
+                }
+            }
+        }
 
         
         
@@ -159,7 +172,7 @@ namespace HotelAsgard.ViewModels
             FinalSize = null;
             InitialPrice = null;
             FinalPrice = null;
-            IsRoomUsable = null;
+            IsRoomUsable = true;
 
             OnPropertyChanged(nameof(RoomCode));
             OnPropertyChanged(nameof(RoomName));
