@@ -325,6 +325,13 @@ namespace HotelAsgard.Views.RoomsViews
                     MessageBox.Show("El nombre y/o la descripción de la habitación no pueden estar vacíos.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
+                
+                // Verificar que la categoría no esté vacía
+                if (string.IsNullOrWhiteSpace(_room.Categoria))
+                {
+                    MessageBox.Show("Debes seleccionar una categoría para la habitación.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
 
                 // Verificar si hay al menos 1 imagen
                 if (_room.Imagenes.Count < 1)
