@@ -276,6 +276,7 @@
             </Setter>
         </Style>
     </Window.Resources>
+    
     <!-- Contenedor principal con margen y fondo (opcional) -->
     <Grid>
         <!-- Background Image -->
@@ -284,7 +285,7 @@
         </Grid.Background>
 
         <!-- Main Layout -->
-        <Border Margin="20,20,20,20" Background="White" Opacity="0.9" CornerRadius="10">
+        <Border Margin="20,20,20,20" Background="White" Opacity="0.94" CornerRadius="10">
             <Grid Margin="20">
                 <ScrollViewer>
                     <!-- Contenedor centrado -->

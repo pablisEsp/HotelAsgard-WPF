@@ -301,9 +301,7 @@ namespace HotelAsgard.Views.RoomsViews
             }
         }
 
-
-
-
+        
         private async void SendButton_OnClick(object sender, RoutedEventArgs e)
         {
             try
