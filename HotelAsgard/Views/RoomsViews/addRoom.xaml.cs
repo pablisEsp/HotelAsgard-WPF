@@ -162,20 +162,43 @@ namespace HotelAsgard.Views.RoomsViews
 
         private void DeleteSelectedImage_Click(object sender, RoutedEventArgs e)
         {
-            if (ImageListBox.SelectedIndex >= 0)
+            // Verificar si hay imágenes en la lista
+            if (_imagePaths.Count == 0 || ImageListBox.SelectedIndex == -1)
             {
-                int selectedIndex = ImageListBox.SelectedIndex + 1; // +1 porque la principal no está en la lista
+                return; // No hay imágenes o no hay ninguna seleccionada, no hacer nada
+            }
+            
+            // Mostrar cuadro de diálogo de confirmación
+            MessageBoxResult result = MessageBox.Show(
+                "¿Estás seguro de que quieres eliminar la imagen seleccionada?", 
+                "Confirmar eliminación", 
+                MessageBoxButton.YesNo, 
+                MessageBoxImage.Warning);
 
-                if (selectedIndex < _imagePaths.Count)
+            // Si el usuario selecciona "Yes", proceder con la eliminación
+            if (result == MessageBoxResult.Yes)
+            {
+                if (ImageListBox.SelectedIndex >= 0)
                 {
-                    _imagePaths.RemoveAt(selectedIndex);
-                    UpdateImageList();
+                    int selectedIndex = ImageListBox.SelectedIndex + 1; // +1 porque la principal no está en la lista
+
+                    if (selectedIndex < _imagePaths.Count)
+                    {
+                        _imagePaths.RemoveAt(selectedIndex);
+                        UpdateImageList();
+                    }
                 }
             }
         }
 
         private void SetAsMainImage_Click(object sender, RoutedEventArgs e)
         {
+            // Verificar si hay imágenes en la lista
+            if (_imagePaths.Count == 0)
+            {
+                return; // No hay imágenes o no hay ninguna seleccionada, no hacer nada
+            }
+            
             if (ImageListBox.SelectedIndex >= 0)
             {
                 int selectedIndex = ImageListBox.SelectedIndex + 1; // +1 porque la principal no está en la lista
@@ -195,10 +218,28 @@ namespace HotelAsgard.Views.RoomsViews
 
         private void DeleteAllImages_Click(object sender, RoutedEventArgs e)
         {
-            _imagePaths.Clear();
-            PreviewImage.Source = null; // Vaciar la imagen principal
-            UpdateImageList();
+            // Verificar si hay imágenes en la lista
+            if (_imagePaths.Count == 0)
+            {
+                return; // No hay imágenes o no hay ninguna seleccionada, no hacer nada
+            }
+            
+            // Mostrar cuadro de diálogo de confirmación
+            MessageBoxResult result = MessageBox.Show(
+                "¿Estás seguro de que quieres eliminar todas las imágenes?", 
+                "Confirmar eliminación", 
+                MessageBoxButton.YesNo, 
+                MessageBoxImage.Warning);
+
+            // Si el usuario selecciona "Yes", proceder con la eliminación
+            if (result == MessageBoxResult.Yes)
+            {
+                _imagePaths.Clear();
+                PreviewImage.Source = null; // Vaciar la imagen principal
+                UpdateImageList();
+            }
         }
+
 
         private void roomCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
