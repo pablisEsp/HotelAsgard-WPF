@@ -6,7 +6,7 @@
     <Application.Resources>
             <Style TargetType="Window">
                 <Setter Property="WindowStartupLocation" Value="CenterOwner"/>
-                <Setter Property="FontFamily" Value="Segoe UI"/>
+                <Setter  Property="FontFamily" Value="Segoe UI"/>
             </Style>
     
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
