@@ -124,7 +124,7 @@ namespace HotelAsgard.ViewModels
 
                 Application.Current.Dispatcher.Invoke(() =>
                 {
-                    Rooms.Clear(); // 🔹 Limpiar la lista antes de agregar nuevas habitaciones
+                    Rooms.Clear(); // Limpiar la lista antes de agregar nuevas habitaciones
                     foreach (var habitacion in habitaciones)
                     {
                         Rooms.Add(habitacion);

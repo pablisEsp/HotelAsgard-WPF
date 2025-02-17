@@ -142,7 +142,7 @@ namespace HotelAsgard.ViewModels
                 {
                     // Insertar la nueva categoría antes de "Añadir nueva categoría"
                     _categorias.Insert(_categorias.Count - 1, nuevaCategoria);
-                    CategoriaSeleccionada = nuevaCategoria; // 🔹 Seleccionar automáticamente
+                    CategoriaSeleccionada = nuevaCategoria; //  Seleccionar automáticamente
                 }
                 else
                 {

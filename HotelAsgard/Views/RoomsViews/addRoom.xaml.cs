@@ -22,7 +22,7 @@ namespace HotelAsgard.Views.RoomsViews
             InitializeComponent();
             _roomService = new RoomService();
             _viewModel = new AddRoomVM();
-            _room = new Room(); // 🔹 Se crea una nueva habitación
+            _room = new Room(); // Se crea una nueva habitación
 
             DataContext = _viewModel;
 
@@ -30,9 +30,9 @@ namespace HotelAsgard.Views.RoomsViews
             this.Title = titleText;
             sendButton.Content = buttonText;
 
-            LoadNewRoomCode(); // 🔹 Se obtiene un nuevo código de habitación
+            LoadNewRoomCode(); // Se obtiene un nuevo código de habitación
 
-            _viewModel.IsReadOnlyMode = false; // 🔹 Modo edición activado (botón "Enviar" visible)
+            _viewModel.IsReadOnlyMode = false; // Modo edición activado (botón "Enviar" visible)
         }
 
 
@@ -42,7 +42,7 @@ namespace HotelAsgard.Views.RoomsViews
             _roomService = new RoomService();
             _viewModel = new AddRoomVM();
             _room = roomToEdit ??
-                    new Room(); // 🔹 Si `roomToEdit` es null, significa que estamos creando una nueva habitación
+                    new Room(); // Si `roomToEdit` es null, significa que estamos creando una nueva habitación
 
             DataContext = _viewModel;
 
@@ -52,18 +52,18 @@ namespace HotelAsgard.Views.RoomsViews
 
             if (roomToEdit != null)
             {
-                LoadRoomData(roomToEdit); // 🔹 Cargar datos de la habitación
+                LoadRoomData(roomToEdit); // Cargar datos de la habitación
             }
             else
             {
-                LoadNewRoomCode(); // 🔹 Si no hay habitación, crear una nueva
+                LoadNewRoomCode(); // Si no hay habitación, crear una nueva
             }
 
-            _viewModel.IsReadOnlyMode = isReadOnly; // 🔹 Se define si es solo lectura o editable
+            _viewModel.IsReadOnlyMode = isReadOnly; // Se define si es solo lectura o editable
 
             if (isReadOnly)
             {
-                SetReadOnlyMode(); // 🔹 Si es solo lectura, deshabilitar controles
+                SetReadOnlyMode(); // Si es solo lectura, deshabilitar controles
             }
         }
 
@@ -79,7 +79,7 @@ namespace HotelAsgard.Views.RoomsViews
             roomCode.Text = roomToEdit.Codigo;
             roomName.Text = roomToEdit.Nombre;
 
-            // 🔹 Asegurar que las categorías están cargadas antes de seleccionar una
+            // Asegurar que las categorías están cargadas antes de seleccionar una
             await Task.Delay(500); // Pequeña pausa para esperar la carga
 
             if (_viewModel.Categorias.Any())
@@ -97,7 +97,7 @@ namespace HotelAsgard.Views.RoomsViews
                 DescriptionRichTextBox.Document.Blocks.Add(new Paragraph(new Run(roomToEdit.Descripcion)));
             }
 
-            // 🔹 Asegurar que las imágenes tengan una URL absoluta
+            // Asegurar que las imágenes tengan una URL absoluta
             string baseUrl = "http://localhost:3000";
 
             if (roomToEdit.Imagenes != null && roomToEdit.Imagenes.Any())
@@ -205,7 +205,7 @@ namespace HotelAsgard.Views.RoomsViews
 
                 if (selectedIndex < _imagePaths.Count)
                 {
-                    // 🔹 Mover la imagen seleccionada al primer lugar
+                    // Mover la imagen seleccionada al primer lugar
                     string selectedImage = _imagePaths[selectedIndex];
                     _imagePaths.RemoveAt(selectedIndex);
                     _imagePaths.Insert(0, selectedImage);
@@ -288,7 +288,7 @@ namespace HotelAsgard.Views.RoomsViews
                     Tamanyo = ventanaNuevaCategoria.NuevaCategoria.Tamanyo,
                     NumPersonas = ventanaNuevaCategoria.NuevaCategoria.NumPersonas,
                     Precio = ventanaNuevaCategoria.NuevaCategoria.Precio,
-                    Camas = ventanaNuevaCategoria.NuevaCategoria.Camas, // 🔹 Agregar camas correctamente
+                    Camas = ventanaNuevaCategoria.NuevaCategoria.Camas,
                     Servicios = ventanaNuevaCategoria.NuevaCategoria.Servicios
                 };
 
@@ -323,17 +323,17 @@ namespace HotelAsgard.Views.RoomsViews
 
                 bool success;
 
-                // 🔹 Verificamos si la habitación YA EXISTE en la base de datos
+                // Verificamos si la habitación YA EXISTE en la base de datos
                 bool habitacionExiste = await _roomService.RoomExists(_room.Codigo);
 
                 if (habitacionExiste)
                 {
-                    // 🔹 Si la habitación ya existe en la base de datos, la actualizamos
+                    // Si la habitación ya existe en la base de datos, la actualizamos
                     success = await _roomService.ActualizarHabitacionAsync(_room, _imagePaths);
                 }
                 else
                 {
-                    // 🔹 Si la habitación no existe, creamos una nueva
+                    // Si la habitación no existe, creamos una nueva
                     success = await _roomService.CrearHabitacionAsync(_room, _imagePaths);
                 }
 
@@ -375,16 +375,16 @@ namespace HotelAsgard.Views.RoomsViews
             maxGuests.IsReadOnly = true;
             roomPrice.IsReadOnly = true;
 
-            // 🔹 Deshabilitar la edición de la descripción
+            // Deshabilitar la edición de la descripción
             DescriptionRichTextBox.IsReadOnly = true;
 
-            // 🔹 Deshabilitar botones de imágenes
+            // Deshabilitar botones de imágenes
             UploadImageButton.IsEnabled = false;
             DeleteSelectedImage.IsEnabled = false;
             SetAsMainImage.IsEnabled = false;
             DeleteAllImages.IsEnabled = false;
 
-            // 🔹 Deshabilitar el botón de guardar
+            // Deshabilitar el botón de guardar
             sendButton.Visibility = Visibility.Collapsed;
         }
     }

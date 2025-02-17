@@ -143,31 +143,31 @@ public partial class NewCategory : INotifyPropertyChanged
 
                 if (textBox.Name == "txtPrecio" && value > MAX_PRICE)
                 {
-                    newValue = MAX_PRICE; // 🔹 Límite 100,000 €
+                    newValue = MAX_PRICE; // Límite 100,000 €
                 }
                 else if (textBox.Name == "txtTamanyo" && value > MAX_HABITACION_SIZE)
                 {
-                    newValue = MAX_HABITACION_SIZE; // 🔹 Límite 10,000m²
+                    newValue = MAX_HABITACION_SIZE; // Límite 10,000m²
                 }
                 else if (textBox.Name == "txtNumHuespedes" && value > MAX_HUESPEDES)
                 {
-                    newValue = MAX_HUESPEDES; // 🔹 Límite 50 huéspedes
+                    newValue = MAX_HUESPEDES; // Límite 50 huéspedes
                 }
                 else if (textBox.Name.Contains("Camas") && value > MAX_CAMAS)
                 {
-                    newValue = MAX_CAMAS; // 🔹 Límite 10 camas por tipo
+                    newValue = MAX_CAMAS; // Límite 10 camas por tipo
                 }
 
-                // 🔹 Solo actualizamos el TextBox si realmente cambió el valor
+                // Solo actualizamos el TextBox si realmente cambió el valor
                 if (value != newValue)
                 {
                     textBox.Text = newValue.ToString();
-                    textBox.CaretIndex = textBox.Text.Length; // 🔹 Mueve el cursor al final
+                    textBox.CaretIndex = textBox.Text.Length; // Mueve el cursor al final
                 }
             }
             else
             {
-                textBox.Text = "0"; // 🔹 Si el valor no es numérico, lo pone en 0
+                textBox.Text = "0"; // Si el valor no es numérico, lo pone en 0
                 textBox.CaretIndex = textBox.Text.Length;
             }
 

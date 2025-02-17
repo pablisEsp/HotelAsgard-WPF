@@ -447,11 +447,11 @@
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="TextTrimming" Value="CharacterEllipsis" />
-                                    <!-- 🔹 Agrega "..." si el texto es muy largo -->
+                                    <!-- Agrega "..." si el texto es muy largo -->
                                     <Setter Property="ToolTip" Value="{Binding Descripcion}" />
-                                    <!-- 🔹 Muestra la descripción completa al pasar el ratón -->
+                                    <!-- Muestra la descripción completa al pasar el ratón -->
                                     <Setter Property="MaxHeight" Value="25" />
-                                    <!-- 🔹 Evita que la celda crezca demasiado -->
+                                    <!-- Evita que la celda crezca demasiado -->
                                     <Setter Property="VerticalAlignment" Value="Center" />
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
