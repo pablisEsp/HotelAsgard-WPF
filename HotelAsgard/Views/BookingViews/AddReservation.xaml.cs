@@ -151,10 +151,20 @@ namespace HotelAsgard.Views.BookingViews
                 MessageBox.Show("Por favor, seleccione ambas fechas.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+            
+            DateTime hoy = DateTime.Today;
+            DateTime fechaInicioSeleccionada = fechaInicio.SelectedDate.Value;
+            DateTime fechaFinSeleccionada = fechaFin.SelectedDate.Value;
 
-            if (fechaInicio.SelectedDate >= fechaFin.SelectedDate)
+            if (fechaInicioSeleccionada < hoy || fechaFinSeleccionada < hoy)
             {
-                MessageBox.Show("La fecha de entrada debe ser anterior a la fecha de salida.", "Fechas inválidas", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Las fechas deben ser posteriores al día de hoy.", "Fechas inválidas", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (fechaInicioSeleccionada >= fechaFinSeleccionada)
+            {
+                MessageBox.Show("La fecha de inicio debe ser anterior a la fecha de fin.", "Fechas inválidas", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 

@@ -185,6 +185,7 @@
                       CellStyle="{StaticResource DataGridCellStyle}"
                       ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"
                       RowStyle="{StaticResource DataGridRowStyle}"
+                      HorizontalAlignment="Center"
                       MouseDoubleClick="OpenDetails_OnMouseDoubleClick">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" Width="100" />

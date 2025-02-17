@@ -78,7 +78,7 @@
             
         </Grid>
         <Border x:Name="Broder" Grid.Row="2" Grid.Column="1" Background="#B0DAF1" CornerRadius="15" Width="100" Height="30" HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="19" >
-            <Button Background="Transparent" Content="Eliminar Reserva" Width="80" Height="30" BorderThickness="0"  Click="DeleteBooking_Click">
+            <Button Background="Transparent" Content="Eliminar Reserva" Width="100" Height="30" BorderThickness="0"  Click="DeleteBooking_Click">
             </Button>
         </Border>
     </Grid>
