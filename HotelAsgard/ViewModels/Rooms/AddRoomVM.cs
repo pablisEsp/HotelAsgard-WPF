@@ -109,10 +109,13 @@ namespace HotelAsgard.ViewModels
                         Categorias.Add(categoria);
                     }
 
-                    // 🔹 Asegurar que la opción "Añadir nueva categoría" siempre esté al final
-                    if (!Categorias.Any(c => c.Nombre == "Añadir nueva categoría"))
+                    // Solo agregar "Añadir nueva categoría" si el usuario es admin
+                    if (UsuarioSingleton.UsuarioActual.Tipo == "admin")
                     {
-                        Categorias.Add(new Category { Nombre = "Añadir nueva categoría" });
+                        if (!Categorias.Any(c => c.Nombre == "Añadir nueva categoría"))
+                        {
+                            Categorias.Add(new Category { Nombre = "Añadir nueva categoría" });
+                        }
                     }
                 });
             }
@@ -139,7 +142,7 @@ namespace HotelAsgard.ViewModels
                 {
                     // Insertar la nueva categoría antes de "Añadir nueva categoría"
                     _categorias.Insert(_categorias.Count - 1, nuevaCategoria);
-                    CategoriaSeleccionada = nuevaCategoria; // 🔹 Seleccionar automáticamente
+                    CategoriaSeleccionada = nuevaCategoria; //  Seleccionar automáticamente
                 }
                 else
                 {

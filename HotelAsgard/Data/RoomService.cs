@@ -153,7 +153,7 @@ public class RoomService
             if (!string.IsNullOrEmpty(codigo)) url += $"codigo={codigo}&";
             if (!string.IsNullOrEmpty(nombre)) url += $"nombre={nombre}&";
             if (!string.IsNullOrEmpty(categoria)) url += $"categoria={categoria}&";
-            if (numPersonas.HasValue) url += $"numPersonas={numPersonas.Value}&";
+            if (numPersonas.HasValue) url += $"numPersonas={numPersonas}&";
             if (tamanyoMin.HasValue) url += $"tamanyoMin={tamanyoMin}&";
             if (tamanyoMax.HasValue) url += $"tamanyoMax={tamanyoMax}&";
             if (precioMin.HasValue) url += $"precioMin={precioMin}&";
