@@ -52,7 +52,8 @@ namespace HotelAsgard.Views.BookingViews
             if (((Reserva)DataContext).FechaInicio < DateTime.Now)
             {
                 MessageBox.Show("No se puede eliminar una reserva que ya se ha iniciado");
-                return;
+                return; 
+                    
             }
             MessageBoxResult result = MessageBox.Show(
                 "¿Estás seguro de que deseas eliminar la reserva?", 
