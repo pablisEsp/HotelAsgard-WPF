@@ -77,7 +77,7 @@ public class UserApiClient
 
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PostAsync($"{_baseUrl}/login", content);
+            var response = await _httpClient.PostAsync($"{_baseUrl}/logincorporate", content);
             
             var responseString = await response.Content.ReadAsStringAsync();
             Console.WriteLine($"📥 Respuesta API: {responseString}"); // Debug
